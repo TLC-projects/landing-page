@@ -1,0 +1,78 @@
+:root {
+
+    /* 
+      Utilizamos HSL para definir los colores, lo que nos permite crear sistemas de color dinámicos y fácilmente ajustables.
+      https://www.joshwcomeau.com/css/color-formats/#superpowered-design-tokens-9 
+    */
+
+    /* ============================================
+     BRAND COLOR SYSTEM
+     ============================================ */
+    --brand-hue: 207deg;
+    --brand-sat: 100%;
+    --brand-lit: 15%;
+
+    --clr-brand: hsl(var(--brand-hue) var(--brand-sat) var(--brand-lit));
+    --clr-brand-light: hsl(var(--brand-hue) var(--brand-sat) calc(var(--brand-lit) + 3%));
+    --clr-brand-dark: hsl(var(--brand-hue) var(--brand-sat) calc(var(--brand-lit) - 10%));
+    --clr-brand-hover: hsl(var(--brand-hue) var(--brand-sat) calc(var(--brand-lit) + 5%));
+
+    /* ============================================
+     ACCENT COLOR SYSTEM
+     ============================================ */
+    --accent-hue: 20deg;
+    --accent-sat: 95%;
+    --accent-lit: 60%;
+
+    --clr-accent: hsl(var(--accent-hue) var(--accent-sat) var(--accent-lit));
+    --clr-accent-hover: hsl(var(--accent-hue) var(--accent-sat) calc(var(--accent-lit) + 5%));
+    --clr-accent-dark: hsl(var(--accent-hue) var(--accent-sat) calc(var(--accent-lit) - 10%));
+
+    /* ============================================
+     HIGHLIGHT COLOR SYSTEM
+     ============================================ */
+    --highlight-hue: 45deg;
+    --highlight-sat: 100%;
+    --highlight-lit: 50%;
+
+    --clr-highlight: hsl(var(--highlight-hue) var(--highlight-sat) var(--highlight-lit));
+    --clr-highlight-hover: hsl(var(--highlight-hue) var(--highlight-sat) calc(var(--highlight-lit) + 10%));
+    --clr-highlight-dark: hsl(var(--highlight-hue) calc(var(--highlight-sat) - 8%) calc(var(--highlight-lit) - 2%));
+
+    /* ============================================
+     TEXT COLOR SYSTEM
+     ============================================ */
+    --text-main-hue: 30deg;
+    --text-main-sat: 4%;
+    --text-main-lit: 11%;
+
+    --clr-text-main: hsl(var(--text-main-hue) var(--text-main-sat) var(--text-main-lit));
+
+    --clr-text-secondary: hsl(0deg 0% 100%);
+
+    /* ============================================
+     BACKGROUND COLOR SYSTEM
+     ============================================ */
+    --background-hue: 0deg;
+    --background-sat: 0%;
+    --background-lit: 96%;
+
+    --clr-background-light: hsl(var(--background-hue) var(--background-sat) var(--background-lit));
+
+    /* ============================================
+     BORDER COLOR SYSTEM
+     ============================================ */
+    --border-hue: 10deg;
+    --border-sat: 5%;
+    --border-lit: 15%;
+
+    --clr-border: hsl(var(--border-hue) var(--border-sat) var(--border-lit));
+
+    /* ============================================
+     UTILITY COLORS
+     ============================================ */
+    --clr-white: hsl(0deg 0% 100%);
+    --clr-black: hsl(0deg 0% 0%);
+    --clr-transparent: transparent;
+    --clr-current: currentColor;
+}

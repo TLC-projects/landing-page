@@ -6,9 +6,29 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "cz": "cz"
   },
   "dependencies": {
-    "astro": "^5.17.1"
+    "@astrojs/react": "4.4.2",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "astro": "5.17.1",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "20.4.1",
+    "@commitlint/config-conventional": "20.4.1",
+    "@unocss/astro": "^66.6.0",
+    "@unocss/reset": "^66.6.0",
+    "commitizen": "4.3.1",
+    "husky": "9.1.7",
+    "unocss": "66.6.0"
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
+    }
   }
 }

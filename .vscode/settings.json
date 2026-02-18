@@ -1,0 +1,30 @@
+{
+  "files.exclude": {
+    "**/.github": true,
+    "**.husky": true,
+    "**src/vite-env.d.ts": true,
+    "**src/books-ui.d.ts": true,
+    "**src/theme": false,
+    "**.eslintrc.cjs": true,
+    "**.gitmodules": true,
+    "**.prettierignore": true,
+    "**.prettierrc": true,
+    "**.lintstagedrc.json": true,
+    "**commitlint.config.js": true,
+    "**package-lock.json": true,
+    "**uno.config.ts": true,
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "css.lint.validProperties": ["composes"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
+}
