@@ -1,22 +1,54 @@
 import { useRef, useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
+import { cva, type VariantProps } from 'class-variance-authority';
 import { useCleanup } from '@hooks/use-cleanup';
 
 import css from './button.module.css';
 
-const FADE_DURATION = 400;
-const RIPPLE_DURATION = 300;
-const RIPPLE_DELAY = 50;
-const MAX_RIPPLE_AGE = FADE_DURATION + RIPPLE_DURATION + RIPPLE_DELAY;
+export const FADE_DURATION = 400;
+export const RIPPLE_DURATION = 300;
+export const RIPPLE_DELAY = 50;
+export const MAX_RIPPLE_AGE = FADE_DURATION + RIPPLE_DURATION + RIPPLE_DELAY;
 
-interface Ripple {
+export interface Ripple {
   id: number;
   axisX: number;
   axisY: number;
   timestamp: number;
 }
 
-export const Button = ({ className, onClick, ...props }: React.ComponentProps<'button'>) => {
+export const buttonVariants = cva(
+  'relative overflow-hidden text-sm font-medium rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2',
+  {
+    variants: {
+      variant: {
+        default: 'bg-accent-600 hover:bg-accent-700 text-white focus:ring-accent-500',
+        outline: 'bg-transparent border border-gray-300 hover:bg-gray-100 text-gray-700 focus:ring-gray-500',
+        ghost: 'bg-transparent hover:bg-gray-100 text-gray-700 focus:ring-gray-500',
+        secondary: 'bg-secondary-600 hover:bg-secondary-700 text-white focus:ring-secondary-500'
+      },
+      size: {
+        default: 'px-6 py-2',
+        xs: 'px-2 py-1',
+        sm: 'px-4 py-1.5',
+        lg: 'px-8 py-3',
+        icon: 'p-2'
+      }
+    },
+    defaultVariants: {
+      variant: 'default',
+      size: 'default'
+    }
+  }
+);
+
+export const Button = ({
+  className,
+  onClick,
+  variant = 'default',
+  size = 'default',
+  ...props
+}: React.ComponentProps<'button'> & VariantProps<typeof buttonVariants>) => {
   const [ripples, setRipples] = useState<Ripple[]>([]);
   const [interactionCount, setInteractionCount] = useState(0);
 
@@ -74,11 +106,7 @@ export const Button = ({ className, onClick, ...props }: React.ComponentProps<'b
   return (
     <button
       ref={buttonRef}
-      className={cn(
-        'px-6 py-2 relative overflow-hidden bg-accent-600 hover:bg-accent-700 text-white text-sm font-medium rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2',
-        css.button,
-        className
-      )}
+      className={cn(buttonVariants({ variant, size }), className)}
       onClick={handleClick}
       data-ripple
       {...props}>
