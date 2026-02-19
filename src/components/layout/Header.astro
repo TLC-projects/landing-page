@@ -1,3 +1,52 @@
-<header>
-  <h1>Header</h1>
+---
+import DropdownMenu from '@components/ui/DropdownMenu';
+---
+
+<header class="sticky top-0 z-50 w-full bg-background shadow-sm" role="banner">
+  <div class="u-wrapper mx-auto px-4">
+    <div class="flex items-center justify-between h-20">
+      <div class="shrink-0">
+        <a href="/" aria-label="Ir al inicio">
+          <img
+            src="/assets/logo.png"
+            alt="Logo del centro de entrenamiento & aprendizaje de idiomas tlc"
+            class="h-10 md:h-12 w-auto"
+          />
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-1" role="navigation" aria-label="Navegación principal">
+        <a
+          href="/"
+          class="px-4 py-2 rounded-full text-sm font-medium text-gray-700 hover:bg-secondary-100 transition-colors focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+        >
+          Inicio
+        </a>
+
+        <DropdownMenu client:load />
+
+        <a
+          href="/quienes-somos"
+          class="px-4 py-2 rounded-full text-sm font-medium text-gray-700 hover:bg-secondary-100 transition-colors focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+        >
+          Quiénes somos
+        </a>
+
+        <a
+          href="/contactanos"
+          class="px-4 py-2 rounded-full text-sm font-medium text-gray-700 hover:bg-secondary-100 transition-colors focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+        >
+          Contáctanos
+        </a>
+
+        <a
+          href="/campus-virtual"
+          class="ml-2 px-6 py-2 bg-accent-600 hover:bg-accent-700 text-white text-sm font-medium rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+        >
+          Campus virtual
+        </a>
+      </nav>
+    </div>
+  </div>
 </header>
