@@ -11,20 +11,23 @@
   },
   "dependencies": {
     "@astrojs/react": "4.4.2",
+    "@tailwindcss/vite": "^4.2.0",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "astro": "5.17.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.575.0",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^4.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "20.4.1",
     "@commitlint/config-conventional": "20.4.1",
-    "@unocss/astro": "^66.6.0",
-    "@unocss/reset": "^66.6.0",
     "commitizen": "4.3.1",
-    "husky": "9.1.7",
-    "unocss": "66.6.0"
+    "husky": "9.1.7"
   },
   "husky": {
     "hooks": {
