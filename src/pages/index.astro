@@ -1,11 +1,14 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import FormulatioContacto from '@sections/FormularioContacto.astro';
+import { Button } from '@components/ui';
 ---
 
 <Layout>
   <p>
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni quibusdam quae sequi voluptatem quis explicabo quia dolore debitis. Repellat quaerat in libero corrupti nesciunt autem alias eos voluptatem recusandae itaque.
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni quibusdam quae sequi voluptatem quis explicabo quia
+    dolore debitis. Repellat quaerat in libero corrupti nesciunt autem alias eos voluptatem recusandae itaque.
   </p>
   <FormulatioContacto />
+  <Button client:load>Ladrón</Button>
 </Layout>

@@ -1,0 +1,28 @@
+.ripple {
+    --size: 100px;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: var(--size);
+    height: var(--size);
+    background-color: hsl(0deg 0% 100%);
+    border-radius: 50%;
+    opacity: 0.25;
+    pointer-events: none;
+    transform: translate(var(--axisX), var(--axisY));
+    animation:
+        fromShrunken var(--pop-ripple-duration) cubic-bezier(0.61, 0.01, 0.25, 1.00),
+        fadeToTransparent var(--fade-duration) var(--fade-delay) forwards;
+}
+
+@keyframes fadeToTransparent {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fromShrunken {
+    from {
+        transform: translate(var(--axisX), var(--axisY)) scale(0);
+    }
+}
