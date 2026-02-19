@@ -1,5 +1,111 @@
+---
+import { Facebook, Twitter, Instagram, MessageCircle } from 'lucide-react';
+---
 
+<footer class="bg-primary-900 text-white py-12">
+  <div class="u-wrapper mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="flex items-center gap-3 mb-4">
+        <img src="/assets/logo.png" alt="Logo TLC" class="h-12 w-12" />
+      </div>
 
-<footer>
-    <p>Footer</p>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Enlaces rápidos</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="/inscripciones" class="text-gray-300 hover:text-white transition-colors text-sm">
+              Inscripciones
+            </a>
+          </li>
+          <li>
+            <a href="/bienestar-academico" class="text-gray-300 hover:text-white transition-colors text-sm">
+              Bienestar académico
+            </a>
+          </li>
+          <li>
+            <a href="/politicas-institucionales" class="text-gray-300 hover:text-white transition-colors text-sm">
+              Políticas institucionales
+            </a>
+          </li>
+          <li>
+            <a href="/estructura-organizacional" class="text-gray-300 hover:text-white transition-colors text-sm">
+              Estructura organizacional TLC
+            </a>
+          </li>
+          <li>
+            <a href="/campus-virtual" class="text-gray-300 hover:text-white transition-colors text-sm">
+              Campues virtual
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Contáctanos</h3>
+        <div class="space-y-3 text-sm">
+          <div>
+            <div class="font-medium text-gray-200">Servicio al cliente:</div>
+            <div class="text-gray-300">(601) 000 00 00 EXT 0</div>
+            <a href="mailto:servicliente@ceaitlc.com.co" class="text-gray-300 hover:text-white transition-colors">
+              servicliente@ceaitlc.com.co
+            </a>
+          </div>
+          <div>
+            <div class="font-medium text-gray-200">Sugerencias quejas o reclamos</div>
+            <a href="mailto:servicliente@ceaitlc.com.co" class="text-gray-300 hover:text-white transition-colors">
+              servicliente@ceaitlc.com.co
+            </a>
+          </div>
+          <div>
+            <div class="font-medium text-gray-200">Ayuda</div>
+            <a href="mailto:servicliente@ceaitlc.com.co" class="text-gray-300 hover:text-white transition-colors">
+              servicliente@ceaitlc.com.co
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Síguenos</h3>
+        <div class="flex gap-4">
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-300 hover:text-white transition-colors"
+            aria-label="Facebook"
+          >
+            <Facebook client:load size={24} />
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-300 hover:text-white transition-colors"
+            aria-label="Twitter"
+          >
+            <Twitter client:load size={24} />
+          </a>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-300 hover:text-white transition-colors"
+            aria-label="Instagram"
+          >
+            <Instagram client:load size={24} />
+          </a>
+          <a
+            href="https://wa.me/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-300 hover:text-white transition-colors"
+            aria-label="WhatsApp"
+          >
+            <MessageCircle client:load size={24} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
