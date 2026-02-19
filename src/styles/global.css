@@ -1,78 +1,190 @@
+@import "tailwindcss";
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body.debug * {
+    outline: 1px solid hsl(0, 100%, 51%) !important;
+}
+
+/* Screen reader only - Hidden visually but accessible to screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.focus\:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* High contrast mode */
+.high-contrast {
+    --color-primary: hsl(217, 100%, 25%);
+    --color-secondary: hsl(220, 100%, 35%);
+    --color-accent: hsl(225, 100%, 45%);
+}
+
+.high-contrast body {
+    background: #fff;
+    color: #000;
+}
+
+.high-contrast a {
+    text-decoration: underline;
+}
+
+.high-contrast button {
+    border: 2px solid #000;
+}
+
+[class*="u-wrapper"] {
+    width: min(100% - var(--wrapper-padding, 2rem), var(--wrapper-width, 140ch));
+}
+
+.u-flow>*+* {
+    margin-block-start: var(--flow-space, 1em);
+}
+
 :root {
+    /* https://www.joshwcomeau.com/css/color-formats/#hsl-4 */
+    --background: hsl(0 0% 100%);
+    --card: hsl(0 0% 100%);
+    --popover: hsl(0 0% 100%);
 
-    /* 
-      Utilizamos HSL para definir los colores, lo que nos permite crear sistemas de color dinámicos y fácilmente ajustables.
-      https://www.joshwcomeau.com/css/color-formats/#superpowered-design-tokens-9 
-    */
+    /* Base colors - HSL fallback for older browsers */
+    --primary: hsl(217, 91%, 20%);
+    --secondary: hsl(220, 50%, 32%);
+    --accent: hsl(225, 73%, 57%);
 
-    /* ============================================
-     BRAND COLOR SYSTEM
-     ============================================ */
-    --brand-hue: 207deg;
-    --brand-sat: 100%;
-    --brand-lit: 15%;
+    /* Static color scales for HSL fallback */
+    --primary-100: hsl(217, 91%, 70%);
+    --primary-200: hsl(217, 91%, 60%);
+    --primary-300: hsl(217, 91%, 45%);
+    --primary-400: hsl(217, 91%, 30%);
+    --primary-500: hsl(217, 91%, 18%);
+    --primary-600: hsl(217, 91%, 15%);
+    --primary-700: hsl(217, 91%, 12%);
+    --primary-800: hsl(217, 91%, 9%);
+    --primary-900: hsl(217, 91%, 6%);
 
-    --clr-brand: hsl(var(--brand-hue) var(--brand-sat) var(--brand-lit));
-    --clr-brand-light: hsl(var(--brand-hue) var(--brand-sat) calc(var(--brand-lit) + 3%));
-    --clr-brand-dark: hsl(var(--brand-hue) var(--brand-sat) calc(var(--brand-lit) - 10%));
-    --clr-brand-hover: hsl(var(--brand-hue) var(--brand-sat) calc(var(--brand-lit) + 5%));
+    --secondary-100: hsl(220, 50%, 70%);
+    --secondary-200: hsl(220, 50%, 60%);
+    --secondary-300: hsl(220, 50%, 48%);
+    --secondary-400: hsl(220, 50%, 38%);
+    --secondary-500: hsl(220, 50%, 32%);
+    --secondary-600: hsl(220, 50%, 25%);
+    --secondary-700: hsl(220, 50%, 20%);
+    --secondary-800: hsl(220, 50%, 15%);
+    --secondary-900: hsl(220, 50%, 10%);
 
-    /* ============================================
-     ACCENT COLOR SYSTEM
-     ============================================ */
-    --accent-hue: 20deg;
-    --accent-sat: 95%;
-    --accent-lit: 60%;
+    --accent-100: hsl(225, 73%, 85%);
+    --accent-200: hsl(225, 73%, 75%);
+    --accent-300: hsl(225, 73%, 67%);
+    --accent-400: hsl(225, 73%, 62%);
+    --accent-500: hsl(225, 73%, 52%);
+    --accent-600: hsl(225, 73%, 47%);
+    --accent-700: hsl(225, 73%, 42%);
+    --accent-800: hsl(225, 73%, 35%);
+    --accent-900: hsl(225, 73%, 27%);
+}
 
-    --clr-accent: hsl(var(--accent-hue) var(--accent-sat) var(--accent-lit));
-    --clr-accent-hover: hsl(var(--accent-hue) var(--accent-sat) calc(var(--accent-lit) + 5%));
-    --clr-accent-dark: hsl(var(--accent-hue) var(--accent-sat) calc(var(--accent-lit) - 10%));
+/* Modern browsers with oklch support get dynamic color calculations */
+@supports (color: oklch(0% 0 0)) {
+    :root {
+        /* https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl#oklch-vs-oklab--lch-vs-lab/ */
+        /* Override with oklch base colors */
+        --primary: oklch(41.368% 0.0884 249.118);
+        --secondary: oklch(70.5% 0.015 286.067);
+        --accent: oklch(61.789% 0.16686 250.892);
 
-    /* ============================================
-     HIGHLIGHT COLOR SYSTEM
-     ============================================ */
-    --highlight-hue: 45deg;
-    --highlight-sat: 100%;
-    --highlight-lit: 50%;
+        /* Dynamic primary scale - automatically calculated */
+        --primary-100: oklch(from var(--primary) calc(l + 0.30) c h);
+        --primary-200: oklch(from var(--primary) calc(l + 0.25) c h);
+        --primary-300: oklch(from var(--primary) calc(l + 0.15) c h);
+        --primary-400: oklch(from var(--primary) calc(l + 0.08) c h);
+        --primary-500: oklch(from var(--primary) calc(l - 0.03) c h);
+        --primary-600: oklch(from var(--primary) calc(l - 0.08) c h);
+        --primary-700: oklch(from var(--primary) calc(l - 0.15) c h);
+        --primary-800: oklch(from var(--primary) calc(l - 0.22) c h);
+        --primary-900: oklch(from var(--primary) calc(l - 0.30) c h);
 
-    --clr-highlight: hsl(var(--highlight-hue) var(--highlight-sat) var(--highlight-lit));
-    --clr-highlight-hover: hsl(var(--highlight-hue) var(--highlight-sat) calc(var(--highlight-lit) + 10%));
-    --clr-highlight-dark: hsl(var(--highlight-hue) calc(var(--highlight-sat) - 8%) calc(var(--highlight-lit) - 2%));
+        /* Dynamic secondary scale */
+        --secondary-100: oklch(from var(--secondary) calc(l + 0.22) calc(c * 0.5) h);
+        --secondary-200: oklch(from var(--secondary) calc(l + 0.18) calc(c * 0.6) h);
+        --secondary-300: oklch(from var(--secondary) calc(l + 0.10) calc(c * 0.7) h);
+        --secondary-400: oklch(from var(--secondary) calc(l + 0.05) calc(c * 0.85) h);
+        --secondary-500: var(--secondary);
+        --secondary-600: oklch(from var(--secondary) calc(l - 0.08) c h);
+        --secondary-700: oklch(from var(--secondary) calc(l - 0.15) c h);
+        --secondary-800: oklch(from var(--secondary) calc(l - 0.22) c h);
+        --secondary-900: oklch(from var(--secondary) calc(l - 0.30) c h);
 
-    /* ============================================
-     TEXT COLOR SYSTEM
-     ============================================ */
-    --text-main-hue: 30deg;
-    --text-main-sat: 4%;
-    --text-main-lit: 11%;
+        /* Dynamic accent scale */
+        --accent-100: oklch(from var(--accent) calc(l + 0.25) calc(c * 0.6) h);
+        --accent-200: oklch(from var(--accent) calc(l + 0.20) calc(c * 0.7) h);
+        --accent-300: oklch(from var(--accent) calc(l + 0.12) calc(c * 0.85) h);
+        --accent-400: oklch(from var(--accent) calc(l + 0.05) calc(c * 0.95) h);
+        --accent-500: oklch(from var(--accent) calc(l - 0.05) c h);
+        --accent-600: oklch(from var(--accent) calc(l - 0.10) c h);
+        --accent-700: oklch(from var(--accent) calc(l - 0.15) c h);
+        --accent-800: oklch(from var(--accent) calc(l - 0.22) c h);
+        --accent-900: oklch(from var(--accent) calc(l - 0.30) c h);
+    }
+}
 
-    --clr-text-main: hsl(var(--text-main-hue) var(--text-main-sat) var(--text-main-lit));
 
-    --clr-text-secondary: hsl(0deg 0% 100%);
+@theme {
+    --color-background: var(--background);
+    --color-card: var(--card);
+    --color-popover: var(--popover);
 
-    /* ============================================
-     BACKGROUND COLOR SYSTEM
-     ============================================ */
-    --background-hue: 0deg;
-    --background-sat: 0%;
-    --background-lit: 96%;
+    --color-primary: var(--primary);
+    --color-primary-100: var(--primary-100);
+    --color-primary-200: var(--primary-200);
+    --color-primary-300: var(--primary-300);
+    --color-primary-400: var(--primary-400);
+    --color-primary-500: var(--primary-500);
+    --color-primary-600: var(--primary-600);
+    --color-primary-700: var(--primary-700);
+    --color-primary-800: var(--primary-800);
+    --color-primary-900: var(--primary-900);
 
-    --clr-background-light: hsl(var(--background-hue) var(--background-sat) var(--background-lit));
+    --color-accent: var(--accent);
+    --color-accent-100: var(--accent-100);
+    --color-accent-200: var(--accent-200);
+    --color-accent-300: var(--accent-300);
+    --color-accent-400: var(--accent-400);
+    --color-accent-500: var(--accent-500);
+    --color-accent-600: var(--accent-600);
+    --color-accent-700: var(--accent-700);
+    --color-accent-800: var(--accent-800);
+    --color-accent-900: var(--accent-900);
 
-    /* ============================================
-     BORDER COLOR SYSTEM
-     ============================================ */
-    --border-hue: 10deg;
-    --border-sat: 5%;
-    --border-lit: 15%;
-
-    --clr-border: hsl(var(--border-hue) var(--border-sat) var(--border-lit));
-
-    /* ============================================
-     UTILITY COLORS
-     ============================================ */
-    --clr-white: hsl(0deg 0% 100%);
-    --clr-black: hsl(0deg 0% 0%);
-    --clr-transparent: transparent;
-    --clr-current: currentColor;
+    --color-secondary: var(--secondary);
+    --color-secondary-100: var(--secondary-100);
+    --color-secondary-200: var(--secondary-200);
+    --color-secondary-300: var(--secondary-300);
+    --color-secondary-400: var(--secondary-400);
+    --color-secondary-500: var(--secondary-500);
+    --color-secondary-600: var(--secondary-600);
+    --color-secondary-700: var(--secondary-700);
+    --color-secondary-800: var(--secondary-800);
+    --color-secondary-900: var(--secondary-900);
 }
