@@ -64,6 +64,29 @@ const programas = [
     link: '/programas/fundamentos'
   }
 ];
+
+const eventos = [
+  {
+    dia: '02',
+    mes: 'febrero',
+    titulo: 'Programa Inglés en el Mundo'
+  },
+  {
+    dia: '02',
+    mes: 'febrero',
+    titulo: 'Programa Francés'
+  },
+  {
+    dia: '02',
+    mes: 'febrero',
+    titulo: 'Cursos Capacitación docente'
+  },
+  {
+    dia: '02',
+    mes: 'febrero',
+    titulo: 'Cursos de Fundamentos de la Enseñanza del Inglés en Colombia'
+  }
+];
 ---
 
 <Layout>
@@ -80,4 +103,53 @@ const programas = [
       </div>
     </div>
   </section>
+  <section id="calendario" class="py-16 bg-primary-100/15">
+    <div class="u-wrapper mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 text-center mb-4">Calendario académico</h2>
+      <p class="text-center mb-12 max-w-3xl mx-auto">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam euismod tincidunt ut laoreet.
+      </p>
+
+      <div class="calendar grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 bg-background rounded-xl">
+        {
+          eventos.map((evento) => (
+            <div class="p-6 text-center calendar__event">
+              <div class="text-5xl md:text-6xl font-bold text-secondary-900 mb-2">{evento.dia}</div>
+              <div class="text-secondary-500 text-sm uppercase tracking-wide mb-6">{evento.mes}</div>
+              <div class="text-secondary-700 font-medium text-sm leading-snug">{evento.titulo}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .calendar__event {
+    position: relative;
+  }
+  .calendar__event:not(:nth-child(1))::after {
+    --size: 100%;
+    --padding: 20%;
+    --position: 50%;
+
+    content: '';
+    position: absolute;
+    top: var(--position);
+    left: var(--position);
+    width: calc(var(--size) - var(--padding));
+    height: var(--size);
+    border-top: 1px solid var(--color-secondary-200);
+    transform: translate(calc(var(--position) * -1), calc(var(--position) * -1));
+  }
+
+  @media (width >= 48rem) {
+    .calendar__event:not(:nth-child(1))::after {
+      width: var(--size);
+      height: calc(var(--size) - var(--padding));
+      border-top: none;
+      border-left: 1px solid var(--color-secondary-200);
+    }
+  }
+</style>
