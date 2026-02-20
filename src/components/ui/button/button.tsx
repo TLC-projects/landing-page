@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useImperativeHandle } from 'react';
 import { cn } from '@/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { useCleanup } from '@hooks/use-cleanup';
@@ -28,9 +28,9 @@ export const buttonVariants = cva(
         secondary: 'bg-secondary-600 hover:bg-secondary-700 text-white focus:ring-secondary-500'
       },
       size: {
-        default: 'px-6 py-2',
+        default: 'px-4 py-2',
         xs: 'px-2 py-1',
-        sm: 'px-4 py-1.5',
+        sm: 'px-3 py-1.5',
         lg: 'px-8 py-3',
         icon: 'p-2'
       }
@@ -47,6 +47,7 @@ export const Button = ({
   onClick,
   variant = 'default',
   size = 'default',
+  ref,
   ...props
 }: React.ComponentProps<'button'> & VariantProps<typeof buttonVariants>) => {
   const [ripples, setRipples] = useState<Ripple[]>([]);
@@ -54,6 +55,9 @@ export const Button = ({
 
   const buttonRef = useRef<HTMLButtonElement>(null);
   const rippleIdRef = useRef(0);
+
+  // Expose the button element through ref
+  useImperativeHandle(ref, () => buttonRef.current as HTMLButtonElement, []);
 
   // Use cleanup hook to remove old ripples
   useCleanup<Ripple>(interactionCount, setRipples, MAX_RIPPLE_AGE);
@@ -109,12 +113,14 @@ export const Button = ({
       className={cn(buttonVariants({ variant, size }), className)}
       onClick={handleClick}
       data-ripple
+      data-variant={variant}
       {...props}>
       {props.children}
       {ripples.map((ripple) => (
         <span
           key={ripple.id}
           className={css.ripple}
+           data-variant={variant}
           style={
             {
               '--axisX': `${ripple.axisX}px`,

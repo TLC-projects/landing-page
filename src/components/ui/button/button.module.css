@@ -5,7 +5,7 @@
     margin: auto;
     width: var(--size);
     height: var(--size);
-    background-color: hsl(0deg 0% 100%);
+    background-color: var(--riple-color, var(--accent-100));
     border-radius: 50%;
     opacity: 0.25;
     pointer-events: none;
@@ -13,6 +13,18 @@
     animation:
         fromShrunken var(--pop-ripple-duration) cubic-bezier(0.61, 0.01, 0.25, 1.00),
         fadeToTransparent var(--fade-duration) var(--fade-delay) forwards;
+}
+
+.ripple[data-variant='ghost'] {
+    --riple-color: var(--accent-200);
+}
+
+.ripple[data-variant='outline'] {
+    --riple-color: hsl(0, 0%, 100%);
+}
+
+.ripple[data-variant='secondary'] {
+    --riple-color: hsl(0, 0%, 100%);
 }
 
 @keyframes fadeToTransparent {
