@@ -1,0 +1,99 @@
+---
+import HeroProgram from '@/components/sections/HeroProgram.astro';
+import ProgramFeatures from '@/components/sections/ProgramFeatures.astro';
+import Layout from '@/layouts/Layout.astro';
+import { Check } from 'lucide-react';
+---
+
+<Layout>
+  <HeroProgram
+    programa="Programa"
+    titulo="Programa Francés"
+    descripcion="Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh"
+    imagen="/assets/images/Banner_2.webp"
+    reverse
+  />
+
+  <ProgramFeatures
+    title="Puntos Clave del Programa"
+    features={[
+      {
+        title: 'Duración Total:',
+        description: 'El programa tiene una duración total de <strong>960</strong> horas.'
+      },
+      {
+        title: 'Flexibilidad de Tiempo:',
+        description:
+          'Se puede completar en un periodo de uno (1) a dos (2) años, dependiendo de tu punto de inicio y continuidad.'
+      },
+      {
+        title: 'Ingreso Personalizado:',
+        description:
+          'Inicias con un examen de clasificación que determina tu nivel de ingreso (A1 a C1), lo que puede reducir la duración total si ya tienes conocimientos previos.'
+      }
+    ]}
+  />
+
+  <section class="bg-gray-200 overflow-visible relative" id="objetivos-aprendizaje">
+    <div class="u-wrapper md:pb-6 py-6 mx-auto">
+      <div class="relative grid md:grid-cols-2 gap-10 items-center justify-items-center">
+        <img
+          src="/assets/images/img_objetivos (MCER).webp"
+          alt="Imagen de información del programa"
+          class="w-md relative md:-mt-24 md:-mb-16 z-10"
+        />
+        <div class="flex flex-col gap-4">
+          <h2 class="text-3xl font-bold">Objetivos del Aprendizaje (MCER)</h2>
+          <p>Te preparamos para alcanzar los niveles del Marco Común Europeo de Referencia para las Lenguas (MCER):</p>
+          <ul class="space-y-5">
+            <li class="flex items-start gap-4">
+              <span
+                class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent-600 text-white shrink-0"
+              >
+                <Check size={14} />
+              </span>
+              <p>
+                <strong>A1 y A2:</strong> Desarrolla competencias básicas para la comunicación en situaciones cotidianas y
+                rutinarias.
+              </p>
+            </li>
+
+            <li class="flex items-start gap-4">
+              <span
+                class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent-600 text-white shrink-0"
+              >
+                <Check size={14} />
+              </span>
+              <p>
+                <strong>B1 y B2:</strong> Adquiere fluidez para comprender textos complejos e interactuar de manera efectiva
+                en contextos variados y profesionales.
+              </p>
+            </li>
+
+            <li class="flex items-start gap-4">
+              <span
+                class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent-600 text-white shrink-0"
+              >
+                <Check size={14} />
+              </span>
+              <p>
+                <strong>C1:</strong> Logra un dominio avanzado, expresándote de manera espontánea, fluida y coherente en cualquier
+                situación.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-gray-100 py-16" id="enfoque-pedagogico">
+    <div class="u-wrapper px-6 mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-primary-700">Enfoque Pedagógico Integral</h2>
+      <p class="mt-3 text-lg">
+        NOS enfocamos en cuatro pilares fundamentales:
+      </p>
+      <div class="mt-12 grid md:grid-cols-4 gap-10"></div>
+    </div>
+  </section>
+</Layout>
