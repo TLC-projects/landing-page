@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import { HeroCarousel } from '@components/ui';
+import { Card, HeroCarousel } from '@components/ui';
+import { ArrowRight } from 'lucide-react';
 
 const slides = [
   {
@@ -8,36 +9,75 @@ const slides = [
     title: 'Programa Inglés en el Mundo',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.',
     image: '/assets/images/Banner_1.webp',
-    url: '/programas/ingles-mundo',
+    url: '/programas/ingles-mundo'
   },
   {
     id: 2,
     title: 'Programa Francés',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.',
     image: '/assets/images/Banner_2.webp',
-    url: '/programas/frances',
+    url: '/programas/frances'
   },
   {
     id: 3,
     title: 'Cursos de Capacitación Docente',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.',
     image: '/assets/images/Banner_3.webp',
-    url: '/programas/capacitacion-docente',
+    url: '/programas/capacitacion-docente'
   },
   {
     id: 4,
     title: 'Cursos de Fundamentos de la Enseñanza del Inglés en Colombia',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.',
     image: '/assets/images/Banner_4.webp',
-    url: '/programas/fundamentos',
+    url: '/programas/fundamentos'
   }
 ];
 
-
+const programas = [
+  {
+    id: 1,
+    title: 'Programa Inglés en el Mundo',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.',
+    link: '/programas/ingles-mundo'
+  },
+  {
+    id: 2,
+    title: 'Programa Francés',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.',
+    link: '/programas/frances'
+  },
+  {
+    id: 3,
+    title: 'Cursos capacitación docente',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.',
+    link: '/programas/capacitacion-docente'
+  },
+  {
+    id: 4,
+    title: 'Cursos de Fundamentos de la Enseñanza del Inglés en Colombia',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.',
+    link: '/programas/fundamentos'
+  }
+];
 ---
 
-<Layout>    
-
-    <HeroCarousel slides={slides} client:idle />
-    
+<Layout>
+  <HeroCarousel slides={slides} client:idle />
+  <section id="oferta" class="py-16">
+    <div class="u-wrapper mx-auto px-4">
+      <h2 class="text-3xl text-center md:text-4xl font-bold text-secondary-900">Oferta Académica</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        {
+          programas.map((programa) => (
+            <Card title={programa.title} description={programa.description} url={programa.link} label="Conoce más" />
+          ))
+        }
+      </div>
+    </div>
+  </section>
 </Layout>
