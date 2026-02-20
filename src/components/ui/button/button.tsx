@@ -18,7 +18,7 @@ export interface Ripple {
 }
 
 export const buttonVariants = cva(
-  'relative overflow-hidden text-sm font-medium rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2',
+  'relative overflow-hidden text-sm text-center font-medium rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2',
   {
     variants: {
       variant: {
@@ -31,7 +31,7 @@ export const buttonVariants = cva(
         default: 'px-4 py-2',
         xs: 'px-2 py-1',
         sm: 'px-3 py-1.5',
-        lg: 'px-8 py-3',
+        lg: 'px-8 py-3 text-md',
         icon: 'p-2'
       }
     },
