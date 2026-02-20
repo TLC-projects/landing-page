@@ -1,7 +1,43 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import { HeroCarousel } from '@components/ui';
+
+const slides = [
+  {
+    id: 1,
+    title: 'Programa Inglés en el Mundo',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.',
+    image: '/assets/images/Banner_1.webp',
+    url: '/programas/ingles-mundo',
+  },
+  {
+    id: 2,
+    title: 'Programa Francés',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.',
+    image: '/assets/images/Banner_2.webp',
+    url: '/programas/frances',
+  },
+  {
+    id: 3,
+    title: 'Cursos de Capacitación Docente',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.',
+    image: '/assets/images/Banner_3.webp',
+    url: '/programas/capacitacion-docente',
+  },
+  {
+    id: 4,
+    title: 'Cursos de Fundamentos de la Enseñanza del Inglés en Colombia',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.',
+    image: '/assets/images/Banner_4.webp',
+    url: '/programas/fundamentos',
+  }
+];
+
+
 ---
 
-<Layout>
+<Layout>    
 
+    <HeroCarousel slides={slides} client:idle />
+    
 </Layout>
