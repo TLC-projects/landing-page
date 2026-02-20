@@ -23,8 +23,8 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         default: 'bg-accent-600 hover:bg-accent-700 text-white focus:ring-accent-500',
-        outline: 'bg-transparent border border-gray-300 hover:bg-gray-100 text-gray-700 focus:ring-gray-500',
-        ghost: 'bg-transparent hover:bg-gray-100 text-gray-700 focus:ring-gray-500',
+        outline: 'bg-transparent border border-gray-300 hover:bg-secondary-100 text-gray-700 focus:ring-gray-500',
+        ghost: 'bg-transparent hover:bg-accent-100/20 hover:text-accent-600 focus:ring-accent-500',
         secondary: 'bg-secondary-600 hover:bg-secondary-700 text-white focus:ring-secondary-500'
       },
       size: {
