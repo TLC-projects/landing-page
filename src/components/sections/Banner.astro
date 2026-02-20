@@ -1,0 +1,34 @@
+---
+interface Props {
+    title: string;
+    subtitle: string;
+    description: string;
+    img: string;
+    side: 'left' | 'right';
+};
+
+const { title, subtitle, description, img, side}  = Astro.props;
+const isLeft = side === 'left';
+---
+<section class="relative md:h-120 h-auto flex flex-col items-center justify-between overflow-hidden text-white py-6 gap-4">
+    <img src={img} alt={title} class="absolute inset-0 w-full h-full object-cover" />
+       <div class="absolute inset-0 bg-primary-900/20"></div>
+  <div
+    class={`grid md:grid-cols-2 z-10 items-center mx-auto h-full md:px-12 px-4 ${isLeft ? 'md:[&>*:first-child]:order-2' : ''}`}
+  >
+    <div class={`px-4 u-wrapper flex flex-col gap-4 max-w-2xl ${isLeft ? 'md:order-2' : 'md:order-1'}`}>
+      <p class="text-xl">
+        {subtitle}
+      </p>
+
+      <h1 class="text-3xl md:text-4xl font-bold">
+        {title}
+      </h1>
+
+      <p class="text-2xl max-w-xl">
+        {description}
+      </p>
+    </div>
+    <div class={`px-4 u-wrapper flex flex-col gap-4 max-w-2xl ${isLeft ? 'md:order-1' : 'md:order-2'}`}></div>
+  </div>
+</section>

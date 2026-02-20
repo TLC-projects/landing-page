@@ -1,0 +1,36 @@
+---
+import { CourseCard } from '@components/ui/course-card';
+
+interface Course {
+    title: string;
+    duration: string;
+    img: string;
+    buttonText?: string;
+    buttonLink?: string;
+}
+
+interface Props {
+    title: string;
+    courses: Course[];
+    bgColor?: string;
+    numberOfCourses?: number;
+}
+
+const { title, courses, bgColor = 'bg-gray-50', numberOfCourses = 6 } = Astro.props;
+---
+
+<section class={`py-16 ${bgColor}`}>
+    <div class="container mx-auto px-4 md:px-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12">
+            {title}
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {courses.slice(0, numberOfCourses).map((course) => (
+                <CourseCard {...course} />
+            ))}
+        </div>
+        
+        <slot />
+    </div>
+</section>

@@ -1,0 +1,61 @@
+---
+import { Check } from 'lucide-react';
+
+interface ListItem {
+  subtitle: string;
+  description: string;
+}
+
+interface Props {
+  title: string;
+  items: ListItem[];
+  img: string;
+  side: 'left' | 'right';
+  footerText?: string;
+  bgColor?: string;
+}
+
+const { title, items, img, side, footerText, bgColor = 'bg-white' } = Astro.props;
+const isLeft = side === 'left';
+---
+
+<section class={`relative md:h-auto h-auto flex flex-col items-center justify-center overflow-hidden ${bgColor} py-12`}>
+  <div
+    class={`container mx-auto grid md:grid-cols-2 gap-8 items-center md:px-12 px-4 ${
+      isLeft ? '' : 'md:[&>*:first-child]:order-2'
+    }`}
+  >
+    <!-- Imagen -->
+    <div class={`flex justify-center items-center ${isLeft ? 'md:order-1' : 'md:order-2'}`}>
+      <img src={img} alt={title} class="w-full max-w-md h-auto object-contain" />
+    </div>
+
+    <!-- Contenido de texto -->
+    <div class={`flex flex-col gap-6 ${isLeft ? 'md:order-2' : 'md:order-1'}`}>
+      <h2 class="text-3xl md:text-4xl font-bold text-primary-900">
+        {title}
+      </h2>
+
+      <ul class="flex flex-col gap-4">
+        {
+          items.map((item) => (
+            <li class="flex gap-3 items-start">
+              <div class="shrink-0 w-6 h-6 rounded-full text-white bg-accent-600 flex items-center justify-center mt-1">
+                <Check size={14} />
+              </div>
+
+              <div class="flex-1">
+                <p class="text-md">
+                  <span class="font-bold text-gray-900">{item.subtitle}:</span>{' '}
+                  <span class="text-gray-700">{item.description}</span>
+                </p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+
+      {footerText && <p class="text-gray-600 text-base mt-2">{footerText}</p>}
+    </div>
+  </div>
+</section>
