@@ -1,1 +1,1 @@
-export * from './linka'
+export * from './link'
