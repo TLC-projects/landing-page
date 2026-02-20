@@ -1,0 +1,65 @@
+---
+import { Check, GraduationCap, Lightbulb } from 'lucide-react';
+import { MessageCard } from '@/components/ui';
+
+interface Feature {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  title: string;
+  features: Feature[];
+}
+
+const { title, features } = Astro.props;
+---
+
+<section class="relative py-20 w-full">
+  <div class="u-wrapper px-6 mx-auto">
+    <!-- Título -->
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-primary-600 mb-16">
+      {title}
+    </h2>
+
+    <!-- Timeline wrapper -->
+    <div class="relative">
+      <!-- Línea vertical -->
+      <div class="hidden md:block absolute left-1/2 top-20 -translate-x-1/2 h-[calc(100%-5rem)] border-l border-dashed border-gray-300"></div>
+
+      <div>
+        {
+          features.map((feature, index) => {
+            const isLeft = index % 2 === 0;
+
+            return (
+              <div class={`relative grid md:grid-cols-2 items-center gap-18 ${index !== 0 ? 'mt-2 md:-mt-16' : ''}`}>
+                {/* Card izquierda */}
+
+                <div class={`${isLeft ? '' : 'md:col-start-2'}`}>
+                  <MessageCard side={isLeft ? 'right' : 'left'}>
+                    {index > 0 ? (
+                      <GraduationCap size={40} className="text-accent-600" />
+                    ) : (
+                      <Lightbulb size={40} className="text-accent-600 " />
+                    )}
+                    <h3 class="font-semibold text-lg mb-2">{feature.title}</h3>
+                    <p class=" text-sm leading-relaxed">{feature.description}</p>
+                  </MessageCard>
+                </div>
+
+                {/* Punto central */}
+                <div class="hidden md:flex absolute left-1/2 -translate-x-1/2">
+                  <div
+                    class={`w-8 h-8 rounded-full ${index > 0 ? 'bg-gray-100 text-gray-500' : 'bg-accent-600 text-white'} flex items-center  justify-center shadow`}>
+                    <Check size={18} />
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+</section>
