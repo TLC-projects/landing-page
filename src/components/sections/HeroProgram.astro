@@ -1,0 +1,21 @@
+---
+interface Props {
+  programa: string;
+  titulo: string;
+  descripcion: string;
+  imagen: string;
+}
+
+const { programa, titulo, descripcion, imagen } = Astro.props;
+---
+
+<section class="relative h-p6 accent-red-600 flex items-center overflow-hidden">
+
+  <!-- Imagen de fondo -->
+  <img
+    src={imagen}
+    alt={titulo}
+    class="absolute inset-0 w-full h-full object-cover"
+  />
+
+</section>
