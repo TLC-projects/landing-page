@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import HeroCarousel from '@components/sections/HeroCarousel';
+import Communication from '@components/sections/Communication';
 import { Card } from '@components/ui';
 
 const slides = [
@@ -87,6 +88,31 @@ const eventos = [
     titulo: 'Cursos de Fundamentos de la Enseñanza del Inglés en Colombia'
   }
 ];
+
+const services = [
+  {
+    id: 1,
+    title: 'Asesorías',
+    description:
+      'Acompañamiento a instituciones educativas y entidades públicas y privadas en procesos y planes de mejoramiento de la enseñanza de idiomas.',
+    image: '/assets/images/Img_Asesorias.webp',
+    url: '/programas/ingles-mundo'
+  },
+  {
+    id: 2,
+    title: 'Talleres y Capacitaciones',
+    description: 'Formación especializada para docentes y profesionales en el área de idiomas.',
+    image: '/assets/images/Img_Asesorias.webp',
+    url: '/programas/ingles-mundo'
+  },
+  {
+    id: 3,
+    title: 'Consultoría Educativa',
+    description: 'Servicios de consultoría para mejorar procesos educativos en la enseñanza de lenguas.',
+    image: '/assets/images/Img_Asesorias.webp',
+    url: '/programas/ingles-mundo'
+  }
+];
 ---
 
 <Layout>
@@ -144,13 +170,16 @@ const eventos = [
         </div>
 
         <div class="w-80 h-80 md:w-96 md:h-96 mx-auto">
-          <img
-            src="/assets/images/Img_quienes_somos.webp"
-            alt="Estudiante sonriente de TLC"
-            class="w-full h-full"
-          />
+          <img src="/assets/images/Img_quienes_somos.webp" alt="Estudiante sonriente de TLC" class="w-full h-full" />
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="quienes-somos" class="py-16">
+    <div class="u-wrapper mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 text-center mb-12">Comunicaciones institucionales</h2>
+      <Communication slides={services} client:idle />
     </div>
   </section>
 </Layout>
