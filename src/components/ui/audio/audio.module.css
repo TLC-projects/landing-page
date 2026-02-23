@@ -1,0 +1,183 @@
+:where(.c-audio:not([hidden])) {
+    margin: 0 auto;
+    width: 20%;
+    min-width: 250px;
+    max-width: 13.625rem;
+    height: 2.5rem;
+    display: block;
+}
+
+.c-audio::-webkit-media-controls-panel {
+    border-radius: 1rem;
+    background-color: rgb(225, 225, 230);
+}
+
+:where(.c-audio--small) {
+    max-width: 12.5rem;
+    height: 2rem;
+}
+
+.c-audio--small::-webkit-media-controls-time-remaining-display,
+.c-audio--small::-webkit-media-controls-current-time-display {
+    font-size: 0.625rem;
+}
+
+:where(.c-audio[data-a11y="true"]) {
+    display: none;
+}
+
+.c-audio--hidden {
+    display: none;
+}
+
+:where(.c-audio__button) {
+    --audio-btn-background: var(--secondary-500);
+    --audio-btn-icon-color: var(--secondary-200);
+    --audio-btn-background-hover: var(--secondary-600);
+
+    position: relative;
+    width: var(--audio-btn-size, 3rem);
+    height: var(--audio-btn-size, 3rem);
+    transition: background-color 0.25s ease, transform 0.25s ease;
+    border-radius: 100%;
+}
+
+:where(.c-audio__button--small) {
+    --audio-btn-size: 2rem;
+}
+
+.c-audio__button {
+    --button-border-color: transparent;
+    --button-bg-color: var(--audio-btn-background);
+}
+
+:where(.c-audio__button:hover) {
+    background-color: var(--audio-btn-background-hover);
+}
+
+.c-audio__button::before,
+.c-audio__button::after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1.0625rem;
+    height: 1.1875rem;
+    background-color: var(--audio-btn-icon-color);
+    transform-origin: 50% 100%;
+    transition: clip-path 0.5s ease;
+}
+
+.c-audio__button--small::before,
+.c-audio__button--small::after {
+    width: .9rem;
+    height: .9rem;
+}
+
+.is-button-paused::before {
+    clip-path: polygon(0 0, 100% 50%, 100% 50%, 0 100%);
+}
+
+.is-button-paused::after {
+    clip-path: polygon(65% 100%, 100% 100%, 100% 100%, 65% 100%);
+}
+
+.is-button-playing::before {
+    clip-path: polygon(0 0, 35% 0, 35% 100%, 0 100%);
+}
+
+.is-button-playing::after {
+    clip-path: polygon(65% 0, 100% 0, 100% 100%, 65% 100%);
+}
+
+:where(.c-audio__bar) {
+    --audio-background-color: var(--color-neutral-200);
+    --audio-box-shadow: var(--shadow-xs);
+    --audio-icon-color: var(--color-neutral-700);
+    --audio-slider-color: var(--color-neutral-500);
+    --audio-border-radius: .4rem;
+
+    position: relative;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    isolation: isolate;
+    z-index: 1;
+    gap: 0.5em;
+    width: min(100%, var(--audio-size, 18rem));
+    padding: 0.4rem;
+    background-color: var(--audio-background-color);
+    color: var(--audio-icon-color);
+    border-radius: var(--audio-border-radius);
+    box-shadow: var(--audio-box-shadow);
+}
+
+:where(.c-audio__bar--small) {
+    --audio-size: 12.5rem;
+    padding: 0.3rem;
+    gap: 0.2em;
+}
+
+:where(.c-audio__bar small) {
+    font-size: 0.82rem;
+}
+
+:where(.c-audio__bar--small small) {
+    font-size: 0.73rem;
+}
+
+:where(.c-audio__bar[data-a11y="true"]) {
+    display: none;
+}
+
+html[data-audio="true"] .c-audio__bar[data-a11y="true"] {
+    display: grid;
+}
+
+:where(.c-audio__bar input) {
+    --outline-color: var(--audio-icon-color);
+    accent-color: var(--audio-slider-color);
+}
+
+:where(.c-audio__bar button) {
+    aspect-ratio: 1;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    border: 2px solid transparent;
+    background-color: transparent;
+    color: inherit;
+}
+
+:where(.c-audio__bar-volume-control) {
+    position: absolute;
+    top: calc(100% + 2px);
+    right: 0;
+    background-color: var(--audio-background-color);
+}
+
+:where(.c-audio__bar-volume-control input) {
+    --outline-offset: -2px;
+    appearance: slider-vertical;
+    width: 1.875rem;
+    height: 4rem;
+    writing-mode: vertical-lr;
+    direction: rtl;
+}
+
+@supports (-webkit-appearance: slider-vertical) {
+    .c-audio__bar-volume-control input {
+        -webkit-appearance: slider-vertical;
+    }
+}
+
+:where(.c-audio__bar-scrubber) {
+    width: min(100%, 8.0625rem);
+}
+
+@media screen and (any-hover: none) and (any-pointer: coarse) {
+    :where(.c-audio__bar-volume-btn) {
+        display: none;
+    }
+}
