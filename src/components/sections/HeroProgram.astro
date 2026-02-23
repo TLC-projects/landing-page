@@ -1,5 +1,5 @@
 ---
-import { Button, Link } from '@/components/ui';
+import { Audio, Link } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
 interface Props {
@@ -8,14 +8,16 @@ interface Props {
   descripcion: string;
   imagen: string;
   reverse?: boolean;
+  src?: string;
 }
 
-const { programa, titulo, descripcion, imagen, reverse = false } = Astro.props;
+const { programa, titulo, descripcion, imagen, reverse = false, src } = Astro.props;
 ---
 
 <section
   class="relative md:h-120 h-auto flex flex-col items-center justify-between overflow-hidden text-white py-6 gap-4"
 >
+  {src && (<Audio a11y className="mx-auto" src={src} client:only />)}
   <!-- Imagen de fondo -->
   <img src={imagen} alt={titulo} class="absolute inset-0 w-full h-full object-cover" />
 

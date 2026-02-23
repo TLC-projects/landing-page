@@ -1,5 +1,6 @@
 ---
 import ProgramFeatures from '@/components/sections/ProgramFeatures.astro';
+import { Audio } from '@/components/ui';
 import Layout from '@/layouts/Layout.astro';
 import { ArrowDownToLine, Check, Lightbulb, MountainSnow } from 'lucide-react';
 
@@ -15,15 +16,15 @@ const politicas = [
 const downloads = [
   {
     name: 'Adjunto Política de Calidad.',
-    link: '/assets/adjunto-politica-calidad.pdf'
+    link: '/brochures/adjunto-politica-calidad.pdf'
   },
   {
     name: 'Adjunto Manual de convivencia.',
-    link: '/assets/manual-convivencia.pdf'
+    link: '/brochures/manual-convivencia.pdf'
   },
   {
     name: 'Adjunto Política de tratamiento de datos personales.',
-    link: '/assets/politica-tratamiento-datos.pdf'
+    link: '/brochures/politica-tratamiento-datos.pdf'
   }
 ];
 
@@ -88,6 +89,7 @@ const characteristics = [
 
 <Layout>
   <section class="u-wrapper mx-auto py-6" id="quienes-somos">
+    <Audio a11y className="mx-auto" src="/assets/audio/conoce-mas.mp3" client:only />
     <div class="grid px-4 grid-cols-1 md:grid-cols-2 gap-6 items-center justify-center justify-items-center">
       <div>
         <h2 class="text-4xl text-accent-600 mb-4 font-bold">¿Quiénes somos?</h2>
@@ -257,12 +259,12 @@ const characteristics = [
     description="En el Centro de Entrenamiento y Aprendizaje de Idiomas TLC, nuestra filosofía de formación se fundamenta en cuatro pilares que impulsan el crecimiento personal y profesional de nuestra comunidad:"
     bgColor="bg-accent-600"
     highlightColor="bg-[#00CAFF] text-white"
-    titleClass='text-white'
+    titleClass="text-white"
     features={[
       {
         title: 'Aprendizaje Continuo:',
         description:
-          'Evolución sin límites.<br/> Entendemos que aprender es una capacidad permanente del ser humano. Nos retamos a descubrir tu potencial individual mediante procesos estimulantes y significativos que fortalecen tu autoestima y convierten cada nuevo conocimiento en una experiencia de vida.',
+          'Evolución sin límites.<br/> Entendemos que aprender es una capacidad permanente del ser humano. Nos retamos a descubrir tu potencial individual mediante procesos estimulantes y significativos que fortalecen tu autoestima y convierten cada nuevo conocimiento en una experiencia de vida.'
       },
       {
         title: 'Creatividad:',
