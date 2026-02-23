@@ -38,10 +38,8 @@ const { programa, titulo, descripcion, imagen, reverse = false } = Astro.props;
     <div class={cn('flex flex-col gap-4', reverse ? 'md:order-1' : 'md:order-2')}></div>
   </div>
   <div class="flex gap-8 md:flex-row flex-col z-10">
-    <a href="/brochures/ingles-mundo.pdf" download>
-      <Button size="lg"> Ver brochure </Button>
-    </a>
+    <Link href="/brochures/ingles-mundo.pdf" download size="lg"> Ver brochure </Link>
     <Link href="/incripcion" size="lg"> Inscripción </Link>
-    <Link href="/contactanos" size="lg"> Contáctanos </Link>
+    <Link href="/#contacto" size="lg"> Contáctanos </Link>
   </div>
 </section>
