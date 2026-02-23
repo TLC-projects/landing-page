@@ -2,6 +2,7 @@
 import Banner from '@/components/sections/Banner.astro';
 import CoursesSection from '@/components/sections/CoursesSection.astro';
 import ImageListSection from '@/components/sections/ImageListSection.astro';
+import { Audio } from '@/components/ui';
 import { getCoursesByProgram } from '@/lib/courses-service';
 import Layout from '@layouts/Layout.astro';
 
@@ -9,6 +10,7 @@ const courses = await getCoursesByProgram('CAPACITACION_DOCENTE');
 ---
 
 <Layout>
+  <Audio a11y className="mx-auto" src="/assets/audio/conoce-mas.mp3" client:only />
   <!-- Parecido al Hero sin los botones, tambien tiene posicionamiento -->
   <Banner
     subtitle="Cursos"
@@ -51,7 +53,7 @@ const courses = await getCoursesByProgram('CAPACITACION_DOCENTE');
     title="Cursos disponibles"
     courses={courses}
   >
-    <p class="text-center text-lg w-3/4 mx-auto text-gray-600 mt-12">
+    <p class="text-center text-lg w-3/4 mx-auto text-secondary-600 mt-12">
       Para obtener más información detallada, puede ponerse en contacto con nosotros a través de nuestro correo
       electrónico <a class="font-bold" href="mailto:servicliente@ceaitlc.com.co">servicliente@ceaitlc.com.co</a> o llamando
       al teléfono (601) 6333300 EXT 107
