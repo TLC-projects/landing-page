@@ -13,7 +13,7 @@ interface CommunicationProps {
 
 export default function Communication({ slides }: CommunicationProps) {
   return (
-    <Carousel className="h-150 lg:h-115 overflow-visible">
+    <Carousel className="h-150 lg:h-115 overflow-visible" autoPlay={false}>
       <Carousel.Slides>
         {slides.map((slide) => (
           <>

@@ -28,11 +28,11 @@ const CarouselRoot: React.FC<Props> = ({ children, className, autoPlay = true })
   const announceRef = useRef<HTMLDivElement>(null);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides);
+    setCurrentSlide((prev) => (prev + 1) % (slides || 1));
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides) % slides);
+    setCurrentSlide((prev) => (prev - 1 + (slides || 1)) % (slides || 1));
   };
 
   const goToSlide = (index: number) => {
