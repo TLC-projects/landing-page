@@ -43,7 +43,7 @@ export const MobileMenu = () => {
 
       {/* Overlay */}
       {open && (
-        <div className="fixed inset-0 bg-black/40 z-40 md:hidden" onClick={() => setOpen(false)} aria-hidden="true" />
+        <div className="fixed inset-0 bg-primary-900/40 z-40 md:hidden" onClick={() => setOpen(false)} aria-hidden="true" />
       )}
 
       {/* Panel */}
