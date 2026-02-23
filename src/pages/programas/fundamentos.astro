@@ -43,46 +43,55 @@ import { Check } from 'lucide-react';
       }
     ]}
   />
-   <section class="bg-accent-600 text-white lg:h-90" id="beneficios-clave-para-el-estudiante">
-    <div class="u-wrapper md:pb-6 mx-auto">
+ 
+
+  <section class="bg-accent-600 text-gray-50 overflow-visible relative" id="beneficios-clave-para-el-estudiante">
+    <div class="u-wrapper md:pb-6 py-6 mx-auto">
       <div class="relative grid md:grid-cols-2 gap-10 items-center justify-items-center">
         <img
           src="/assets/images/img_objetivos (MCER).webp"
-          alt="Imagen de beneficios clave para el estudiante"
-          class="md:-mt-18 mt-0 w-md"
+          alt="Imagen de información del programa"
+          class="w-md relative md:-mt-24 md:-mb-16 z-10"
         />
-        <div class="flex flex-col gap-4 pb-1">
+        <div class="flex flex-col gap-4">
           <h2 class="text-3xl font-bold">Beneficios clave para el estudiante</h2>
           <ul class="space-y-5">
             <li class="flex items-start gap-4">
-              <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary-600 shrink-0">
+              <span
+                class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 text-primary-600 shrink-0"
+              >
                 <Check size={14} />
               </span>
-              <p> Hablar y comprender el idioma en situaciones reales. </p>
+              <p>Hablar y comprender el idioma en situaciones reales.</p>
             </li>
 
             <li class="flex items-start gap-4">
-              <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary-600 shrink-0">
+              <span
+                class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 text-primary-600 shrink-0"
+              >
                 <Check size={14} />
               </span>
-              <p> Mejorar la pronunciación y fluidez. </p>
+              <p>Mejorar la pronunciación y fluidez.</p>
             </li>
 
             <li class="flex items-start gap-4">
-              <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary-600 shrink-0">
+              <span
+                class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 text-primary-600 shrink-0"
+              >
                 <Check size={14} />
               </span>
-              <p> Leer y escribir textos acordes al nivel adquirido. </p>
+              <p>Leer y escribir textos acordes al nivel adquirido.</p>
             </li>
-
             <li class="flex items-start gap-4">
-              <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary-600 shrink-0">
+              <span
+                class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 text-primary-600 shrink-0"
+              >
                 <Check size={14} />
               </span>
-              <p> Desarrollar competencias de saber hacer y hábitos de estudio eficaces. </p>
+              <p>Desarrollar competencias de saber hacer y hábitos de estudio eficaces.</p>
             </li>
           </ul>
-          <p>
+           <p>
             Para obtener más información detallada, puede ponerse en contacto con nosotros a través de nuestro correo
             electrónico <a class="font-bold" href="mailto:servicliente@ceaitlc.com.co">servicliente@ceaitlc.com.co</a> o llamando
             al teléfono (601) 6333300 EXT 107
@@ -92,7 +101,7 @@ import { Check } from 'lucide-react';
     </div>
   </section>
 
-    <CoursesSection
+  <CoursesSection
     title="Cursos disponibles"
     courses={[
       {
