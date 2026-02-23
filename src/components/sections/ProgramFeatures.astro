@@ -9,26 +9,44 @@ interface Feature {
 
 interface Props {
   title: string;
+  description?: string;
   features: Feature[];
+  bgColor?: string;
+  highlightColor?: string; // 👈 nuevo
+  titleClass?: string;
 }
 
-const { title, features } = Astro.props;
+const {
+  title,
+  description,
+  features,
+  bgColor = '',
+  highlightColor = 'bg-accent-600 text-white',
+  titleClass = ''
+} = Astro.props;
 ---
 
-<section class="relative py-20 w-full">
+<section class={`relative py-20 w-full ${bgColor}`}>
   <div class="u-wrapper px-6 mx-auto">
+
     <!-- Título -->
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-primary-600 mb-16">
+    <h2 class={`text-3xl md:text-4xl font-bold text-center text-primary-600 mb-8 ${titleClass}`}>
       {title}
     </h2>
 
+    {description && (
+      <p class={`text-center mb-8 ${titleClass}`}>
+        {description}
+      </p>
+    )}
+
     <!-- Timeline wrapper -->
     <div class="relative">
+
       <!-- Línea vertical -->
       <div
-        class="hidden md:block absolute left-1/2 top-20 -translate-x-1/2 h-[calc(100%-5rem)] border-l border-dashed border-gray-300"
-      >
-      </div>
+        class="hidden md:block absolute left-1/2 top-[calc(theme(spacing.20)+theme(spacing.4))] -translate-x-1/2 h-[calc(100%-5rem)] border-l border-dashed border-gray-300"
+      />
 
       <div>
         {
@@ -36,25 +54,39 @@ const { title, features } = Astro.props;
             const isLeft = index % 2 === 0;
 
             return (
-              <div class={`relative grid md:grid-cols-2 items-center gap-18 ${index !== 0 ? 'mt-2 md:-mt-16' : ''}`}>
-                {/* Card izquierda */}
-
+              <div
+                class={`relative grid md:grid-cols-2 items-center gap-18 ${
+                  index !== 0 ? 'mt-2 md:-mt-16' : ''
+                }`}
+              >
                 <div class={`${isLeft ? '' : 'md:col-start-2'}`}>
                   <MessageCard side={isLeft ? 'right' : 'left'}>
                     {index > 0 ? (
                       <GraduationCap size={40} className="text-accent-600" />
                     ) : (
-                      <Lightbulb size={40} className="text-accent-600 " />
+                      <Lightbulb size={40} className="text-accent-600" />
                     )}
-                    <h3 class="font-semibold text-lg mb-2">{feature.title}</h3>
-                    <p class="text-sm leading-relaxed" set:html={feature.description} />
+
+                    <h3 class="font-semibold text-lg mb-2">
+                      {feature.title}
+                    </h3>
+
+                    <p
+                      class="text-sm leading-relaxed"
+                      set:html={feature.description}
+                    />
                   </MessageCard>
                 </div>
 
-                {/* Punto central */}
+                <!-- Punto central -->
                 <div class="hidden md:flex absolute left-1/2 -translate-x-1/2">
                   <div
-                    class={`w-8 h-8 rounded-full ${index > 0 ? 'bg-gray-100 text-gray-500' : 'bg-accent-600 text-white'} flex items-center  justify-center shadow`}>
+                    class={`w-8 h-8 rounded-full ${
+                      index > 0
+                        ? 'bg-gray-100 text-gray-500'
+                        : highlightColor
+                    } flex items-center justify-center shadow`}
+                  >
                     <Check size={18} />
                   </div>
                 </div>
