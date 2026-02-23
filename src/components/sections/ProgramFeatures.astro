@@ -25,7 +25,10 @@ const { title, features } = Astro.props;
     <!-- Timeline wrapper -->
     <div class="relative">
       <!-- Línea vertical -->
-      <div class="hidden md:block absolute left-1/2 top-20 -translate-x-1/2 h-[calc(100%-5rem)] border-l border-dashed border-gray-300"></div>
+      <div
+        class="hidden md:block absolute left-1/2 top-20 -translate-x-1/2 h-[calc(100%-5rem)] border-l border-dashed border-gray-300"
+      >
+      </div>
 
       <div>
         {
@@ -44,7 +47,7 @@ const { title, features } = Astro.props;
                       <Lightbulb size={40} className="text-accent-600 " />
                     )}
                     <h3 class="font-semibold text-lg mb-2">{feature.title}</h3>
-                    <p class=" text-sm leading-relaxed">{feature.description}</p>
+                    <p class="text-sm leading-relaxed" set:html={feature.description} />
                   </MessageCard>
                 </div>
 
