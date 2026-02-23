@@ -1,0 +1,118 @@
+---
+import HeroProgram from '@/components/sections/HeroProgram.astro';
+import ImageListSection from '@/components/sections/ImageListSection.astro';
+import CoursesSection from '@/components/sections/CoursesSection.astro';
+import Layout from '@/layouts/Layout.astro';
+import { Check } from 'lucide-react';
+---
+
+<Layout>
+  <HeroProgram
+    programa="Cursos de"
+    titulo="Fundamentos de la Enseñanza del Inglés en Colombia:"
+    descripcion="Estándares, Plan de Estudios y Evaluación."
+    imagen="/assets/images/Banner_4.webp"
+    reverse
+  />
+  <ImageListSection
+    img="/assets/images/img_beneficios.webp"
+    side="right"
+    className="text-secondary-900 bg-secondary-100"
+    items={[
+      {
+        subtitle: 'Programa de Idiomas',
+        description:
+          'Diseñado para desarrollar habilidades comunicativas prácticas y progresivas en contextos cotidianos, académicos y laborales.'
+      },
+      {
+        subtitle: 'Cursos de Formación de Docentes',
+        description: `Incluyen cursos 
+         sobre fundamentos de la enseñanza del inglés en 
+         Colombia, estándares nacionales, planes de estudio y 
+         evaluación, con una duración de <strong>160 horas</strong> (equivalente 
+         a 3 créditos académicos)`
+      },
+      {
+        subtitle: 'Preparación para Exámenes',
+        description:
+          'Cursos enfocados en habilidades y estrategias para presentar exámenes de inglés y de metodología de enseñanza.'
+      },
+      {
+        subtitle: 'Servicios In-House',
+        description: 'Cursos y seminarios para empresas con tendencias innovadoras en formación.'
+      }
+    ]}
+  />
+   <section class="bg-accent-600 text-white lg:h-90" id="beneficios-clave-para-el-estudiante">
+    <div class="u-wrapper md:pb-6 mx-auto">
+      <div class="relative grid md:grid-cols-2 gap-10 items-center justify-items-center">
+        <img
+          src="/assets/images/img_objetivos (MCER).webp"
+          alt="Imagen de beneficios clave para el estudiante"
+          class="md:-mt-18 mt-0 w-md"
+        />
+        <div class="flex flex-col gap-4 pb-1">
+          <h2 class="text-3xl font-bold">Beneficios clave para el estudiante</h2>
+          <ul class="space-y-5">
+            <li class="flex items-start gap-4">
+              <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary-600 shrink-0">
+                <Check size={14} />
+              </span>
+              <p> Hablar y comprender el idioma en situaciones reales. </p>
+            </li>
+
+            <li class="flex items-start gap-4">
+              <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary-600 shrink-0">
+                <Check size={14} />
+              </span>
+              <p> Mejorar la pronunciación y fluidez. </p>
+            </li>
+
+            <li class="flex items-start gap-4">
+              <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary-600 shrink-0">
+                <Check size={14} />
+              </span>
+              <p> Leer y escribir textos acordes al nivel adquirido. </p>
+            </li>
+
+            <li class="flex items-start gap-4">
+              <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary-600 shrink-0">
+                <Check size={14} />
+              </span>
+              <p> Desarrollar competencias de saber hacer y hábitos de estudio eficaces. </p>
+            </li>
+          </ul>
+          <p>
+            Para obtener más información detallada, puede ponerse en contacto con nosotros a través de nuestro correo
+            electrónico <a class="font-bold" href="mailto:servicliente@ceaitlc.com.co">servicliente@ceaitlc.com.co</a> o llamando
+            al teléfono (601) 6333300 EXT 107
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <CoursesSection
+    title="Cursos disponibles"
+    courses={[
+      {
+        title: 'Plan Nacional de Bilingüismo (PNB)',
+        duration: '20 HORAS',
+        img: '/assets/images/Img_curso_3.webp',
+        buttonLink: '/curso/plan-nacional-bilinguismo'
+      },
+      {
+        title: 'Marco Común Europeo de Referencia para las Lenguas (MCER)',
+        duration: '20 HORAS',
+        img: '/assets/images/Img_curso_4.webp',
+        buttonLink: '/curso/marco-comun-europeo'
+      },
+      {
+        title: 'Observación de Clase y Diagnóstico Institucional',
+        duration: '20 HORAS',
+        img: '/assets/images/Img_curso_5.webp',
+        buttonLink: '/curso/observacion-clase-diagnostico-institucional'
+      }
+    ]}
+  />
+</Layout>

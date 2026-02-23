@@ -3,6 +3,13 @@ import HeroProgram from '@/components/sections/HeroProgram.astro';
 import ProgramFeatures from '@/components/sections/ProgramFeatures.astro';
 import Layout from '@layouts/Layout.astro';
 import { Check } from 'lucide-react';
+
+const benefits = [
+  'Hablar y comprender el idioma en situaciones reales.',
+  'Mejorar la pronunciación y fluidez.',
+  'Leer y escribir textos acordes al nivel adquirido.',
+  'Desarrollar competencias de saber hacer y hábitos de estudio eficaces.'
+]
 ---
 
 <Layout>
@@ -52,33 +59,16 @@ import { Check } from 'lucide-react';
         <div class="flex flex-col gap-4">
           <h2 class="text-3xl font-bold">Beneficios clave para el estudiante</h2>
           <ul class="space-y-5">
-            <li class="flex items-start gap-4">
-              <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary-600 shrink-0">
-                <Check size={14} />
-              </span>
-              <p> Hablar y comprender el idioma en situaciones reales. </p>
-            </li>
-
-            <li class="flex items-start gap-4">
-              <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary-600 shrink-0">
-                <Check size={14} />
-              </span>
-              <p> Mejorar la pronunciación y fluidez. </p>
-            </li>
-
-            <li class="flex items-start gap-4">
-              <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary-600 shrink-0">
-                <Check size={14} />
-              </span>
-              <p> Leer y escribir textos acordes al nivel adquirido. </p>
-            </li>
-
-            <li class="flex items-start gap-4">
-              <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary-600 shrink-0">
-                <Check size={14} />
-              </span>
-              <p> Desarrollar competencias de saber hacer y hábitos de estudio eficaces. </p>
-            </li>
+            {
+              benefits.map((benefit) => (
+                <li class="flex items-start gap-4">
+                  <span class="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-primary-600 shrink-0">
+                    <Check size={14} />
+                  </span>
+                  <p>{benefit}</p>
+                </li>
+              ))
+            }
           </ul>
           <p>
             Para obtener más información detallada, puede ponerse en contacto con nosotros a través de nuestro correo
