@@ -2,8 +2,12 @@
 import HeroProgram from '@/components/sections/HeroProgram.astro';
 import ImageListSection from '@/components/sections/ImageListSection.astro';
 import CoursesSection from '@/components/sections/CoursesSection.astro';
-import Layout from '@/layouts/Layout.astro';
+import { getCoursesByProgram } from '@/lib/courses-service';
+import Layout from '@layouts/Layout.astro';
 import { Check } from 'lucide-react';
+
+const courses = await getCoursesByProgram('FUNDAMENTOS');
+
 ---
 
 <Layout>
@@ -103,25 +107,6 @@ import { Check } from 'lucide-react';
 
   <CoursesSection
     title="Cursos disponibles"
-    courses={[
-      {
-        title: 'Plan Nacional de Bilingüismo (PNB)',
-        duration: '20 HORAS',
-        img: '/assets/images/Img_curso_3.webp',
-        buttonLink: '/curso/plan-nacional-bilinguismo'
-      },
-      {
-        title: 'Marco Común Europeo de Referencia para las Lenguas (MCER)',
-        duration: '20 HORAS',
-        img: '/assets/images/Img_curso_4.webp',
-        buttonLink: '/curso/marco-comun-europeo'
-      },
-      {
-        title: 'Observación de Clase y Diagnóstico Institucional',
-        duration: '20 HORAS',
-        img: '/assets/images/Img_curso_5.webp',
-        buttonLink: '/curso/observacion-clase-diagnostico-institucional'
-      }
-    ]}
+    courses={courses}
   />
 </Layout>

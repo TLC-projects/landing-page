@@ -2,7 +2,10 @@
 import Banner from '@/components/sections/Banner.astro';
 import CoursesSection from '@/components/sections/CoursesSection.astro';
 import ImageListSection from '@/components/sections/ImageListSection.astro';
+import { getCoursesByProgram } from '@/lib/courses-service';
 import Layout from '@layouts/Layout.astro';
+
+const courses = await getCoursesByProgram('CAPACITACION_DOCENTE');
 ---
 
 <Layout>
@@ -22,22 +25,22 @@ import Layout from '@layouts/Layout.astro';
     className="text-white bg-accent-600"
     items={[
       {
-        subtitle: 'Programa de Idiomas:',
+        subtitle: 'Programa de Idiomas',
         description:
           'Diseñado para desarrollar habilidades comunicativas prácticas y progresivas en contextos cotidianos, académicos y laborales.'
       },
       {
-        subtitle: 'Cursos Libres de Formación de Docentes:',
+        subtitle: 'Cursos Libres de Formación de Docentes',
         description:
           'Cursos individuales de 20 horas en diversas áreas, como enseñanza de inglés para preescolar, uso de plataformas educativas y estrategias de aprendizaje autónomo.'
       },
       {
-        subtitle: 'Preparación para Exámenes:',
+        subtitle: 'Preparación para Exámenes',
         description:
           'Cursos enfocados en habilidades y estrategias para presentar exámenes de inglés y de metodología de enseñanza.'
       },
       {
-        subtitle: 'Servicios In-House:',
+        subtitle: 'Servicios In-House',
         description: 'Cursos y seminarios para empresas, con tendencias innovadoras en formación.'
       }
     ]}
@@ -46,26 +49,7 @@ import Layout from '@layouts/Layout.astro';
   <!-- Seccion reutilizable de lista de cursos disponibles máx 6 -->
   <CoursesSection
     title="Cursos disponibles"
-    courses={[
-      {
-        title: 'Métodos de Evaluación Formativa',
-        duration: '20 HORAS',
-        img: '/assets/images/Img_curso_1.webp',
-        buttonLink: '/curso/metodos-evaluacion-formativa'
-      },
-      {
-        title: 'Manejo de Clases Grandes y Multinivel',
-        duration: '20 HORAS',
-        img: '/assets/images/Img_curso_2.webp',
-        buttonLink: '/curso/manejo-clases-grandes-multinivel'
-      },
-      {
-        title: 'AI in English Learning: Practical Tools for Modern ClassroomsInglés para Preescolar',
-        duration: '20 HORAS',
-        img: '/assets/images/Img_curso_3.webp',
-        buttonLink: '/curso/ai-english-learning'
-      }
-    ]}
+    courses={courses}
   >
     <p class="text-center text-lg w-3/4 mx-auto text-gray-600 mt-12">
       Para obtener más información detallada, puede ponerse en contacto con nosotros a través de nuestro correo
