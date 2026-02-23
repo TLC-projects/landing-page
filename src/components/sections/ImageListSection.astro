@@ -2,20 +2,21 @@
 import { Check } from 'lucide-react';
 
 interface ListItem {
-  subtitle: string;
+  subtitle?: string;
   description: string;
 }
 
 interface Props {
-  title: string;
+  title?: string;
   items: ListItem[];
   img: string;
   side: 'left' | 'right';
   footerText?: string;
   bgColor?: string;
+  className?: string;
 }
 
-const { title, items, img, side, footerText, bgColor = 'bg-white' } = Astro.props;
+const { title, items, img, side, footerText, bgColor = 'bg-white', className } = Astro.props;
 const isLeft = side === 'left';
 ---
 
@@ -36,18 +37,18 @@ const isLeft = side === 'left';
         {title}
       </h2>
 
-      <ul class="flex flex-col gap-4">
+      <ul class={`flex flex-col gap-4 ${isLeft ? 'pr-20' : 'pl-20'}`}>
         {
           items.map((item) => (
             <li class="flex gap-3 items-start">
-              <div class="shrink-0 w-6 h-6 rounded-full text-white bg-accent-600 flex items-center justify-center mt-1">
+              <div class={`shrink-0 w-6 h-6 rounded-full ${className || ''}  flex items-center justify-center mt-1`}>
                 <Check size={14} />
               </div>
 
               <div class="flex-1">
                 <p class="text-md">
                   <span class="font-bold text-gray-900">{item.subtitle}:</span>{' '}
-                  <span class="text-gray-700">{item.description}</span>
+                  <span class="text-gray-700" set:html={item.description}></span>
                 </p>
               </div>
             </li>
