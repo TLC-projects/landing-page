@@ -3,6 +3,7 @@ import Layout from '@layouts/Layout.astro';
 import HeroCarousel from '@components/sections/HeroCarousel';
 import Communication from '@components/sections/Communication';
 import { Card } from '@components/ui';
+import FormularioContacto from '@/components/sections/FormularioContacto.astro';
 
 const slides = [
   {
@@ -182,6 +183,8 @@ const services = [
       <Communication slides={services} client:idle />
     </div>
   </section>
+
+  <FormularioContacto />
 </Layout>
 
 <style>
