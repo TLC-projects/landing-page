@@ -34,26 +34,6 @@ body.debug * {
     white-space: normal;
 }
 
-/* High contrast mode */
-.high-contrast {
-    --color-primary: hsl(217, 100%, 25%);
-    --color-secondary: hsl(220, 100%, 35%);
-    --color-accent: hsl(225, 100%, 45%);
-}
-
-.high-contrast body {
-    background: #fff;
-    color: #000;
-}
-
-.high-contrast a {
-    text-decoration: underline;
-}
-
-.high-contrast button {
-    border: 2px solid #000;
-}
-
 [class*="u-wrapper"] {
     width: min(100% - var(--wrapper-padding, 2rem), var(--wrapper-width, 140ch));
 }
