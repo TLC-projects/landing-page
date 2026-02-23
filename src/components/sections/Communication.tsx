@@ -13,7 +13,7 @@ interface CommunicationProps {
 
 export default function Communication({ slides }: CommunicationProps) {
   return (
-    <Carousel className="h-fit md:h-105 overflow-visible">
+    <Carousel className="h-150 lg:h-115 overflow-visible">
       <Carousel.Slides>
         {slides.map((slide) => (
           <>
@@ -33,8 +33,8 @@ export default function Communication({ slides }: CommunicationProps) {
         ))}
       </Carousel.Slides>
 
-      <Carousel.PrevButton className="-left-15 bg-accent-600 hover:bg-accent-700" />
-      <Carousel.NextButton className="-right-15 bg-accent-600 hover:bg-accent-700" />
+      <Carousel.PrevButton className="md:-left-14 bg-accent-600 hover:bg-accent-700" />
+      <Carousel.NextButton className="md:-right-14 bg-accent-600 hover:bg-accent-700" />
       <Carousel.Navigation className="bottom-0 [&>*[aria-current=true]]:bg-accent-600" />
     </Carousel>
   );
