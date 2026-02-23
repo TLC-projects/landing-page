@@ -25,7 +25,7 @@ export const DropdownMobile: React.FC<DropdownMobileProps> = ({ onNavigate }) =>
       <div
         className={`flex flex-col overflow-hidden transition-all duration-300 ${open ? 'max-h-96 mt-2' : 'max-h-0'}`}
         role="menu">
-        <span className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase" role="presentation">
+        <span className="px-4 py-2 text-xs font-semibold text-secondary-500 uppercase" role="presentation">
           Programas
         </span>
 
@@ -47,7 +47,7 @@ export const DropdownMobile: React.FC<DropdownMobileProps> = ({ onNavigate }) =>
           Francés
         </a>
 
-        <span className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase" role="presentation">
+        <span className="px-4 py-2 text-xs font-semibold text-secondary-500 uppercase" role="presentation">
           Cursos
         </span>
 
