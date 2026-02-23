@@ -10,7 +10,7 @@ interface Props {
 }
 
 interface CarouselComponent extends React.FC<Props> {
-  Slides: React.FC<{ children: React.ReactNode }>;
+  Slides: React.FC<{ children: React.ReactNode, className?: string }>;
   PrevButton: React.FC<React.ComponentProps<'button'>>;
   NextButton: React.FC<React.ComponentProps<'button'>>;
   PlayPauseButton: React.FC<React.ComponentProps<'button'>>;
@@ -28,11 +28,11 @@ const CarouselRoot: React.FC<Props> = ({ children, className, autoPlay = true })
   const announceRef = useRef<HTMLDivElement>(null);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides);
+    setCurrentSlide((prev) => (prev + 1) % (slides || 1));
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides) % slides);
+    setCurrentSlide((prev) => (prev - 1 + (slides || 1)) % (slides || 1));
   };
 
   const goToSlide = (index: number) => {
@@ -114,7 +114,7 @@ const CarouselRoot: React.FC<Props> = ({ children, className, autoPlay = true })
 };
 
 // Internal component to render slides with proper accessibility
-const Slides: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const Slides: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => {
   const { currentSlide, setSlidesNumber } = useCarouselContext();
 
   useEffect(() => {
@@ -131,9 +131,12 @@ const Slides: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         aria-label={`${index + 1} de ${Children.count(children)}`}
         aria-hidden={!isActive}
         {...(!isActive && { inert: true })}
-        className={`absolute inset-0 transition-opacity duration-700 ${
-          isActive ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}>
+        className={cn(
+          `absolute inset-0 transition-opacity duration-700 ${
+            isActive ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`,
+          className
+        )}>
         {child}
       </div>
     );
@@ -195,7 +198,7 @@ const PlayPauseButton: React.FC<React.ComponentProps<'button'>> = ({ className, 
 };
 
 // Navigation dots component
-const Navigation: React.FC<{ className?: string; }> = ({ className }) => {
+const Navigation: React.FC<{ className?: string }> = ({ className }) => {
   const { slides, currentSlide, goToSlide } = useCarouselContext();
 
   return (

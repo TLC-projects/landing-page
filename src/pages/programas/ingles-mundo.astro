@@ -16,6 +16,7 @@ const benefits = [
   <HeroProgram
     programa="Programa"
     titulo="Inglés en el Mundo"
+    src='/audios/frances.mp3'
     descripcion="El objetivo principal es que los estudiantes alcancen un nivel C1 en el Marco Común Europeo de Referencia para las lenguas."
     imagen="/assets/images/Banner_1.webp"
   />
@@ -62,7 +63,7 @@ const benefits = [
             {
               benefits.map((benefit) => (
                 <li class="flex items-start gap-4">
-                  <span class="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-primary-600 shrink-0">
+                  <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary-600 shrink-0">
                     <Check size={14} />
                   </span>
                   <p>{benefit}</p>

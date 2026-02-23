@@ -97,27 +97,27 @@ const services = [
     description:
       'Acompañamiento a instituciones educativas y entidades públicas y privadas en procesos y planes de mejoramiento de la enseñanza de idiomas.',
     image: '/assets/images/Img_Asesorias.webp',
-    url: '/programas/ingles-mundo'
+    url: '/conoce-mas'
   },
   {
     id: 2,
     title: 'Talleres y Capacitaciones',
     description: 'Formación especializada para docentes y profesionales en el área de idiomas.',
     image: '/assets/images/Img_Asesorias.webp',
-    url: '/programas/ingles-mundo'
+    url: '/conoce-mas'
   },
   {
     id: 3,
     title: 'Consultoría Educativa',
     description: 'Servicios de consultoría para mejorar procesos educativos en la enseñanza de lenguas.',
     image: '/assets/images/Img_Asesorias.webp',
-    url: '/programas/ingles-mundo'
+    url: '/conoce-mas'
   }
 ];
 ---
 
 <Layout>
-  <HeroCarousel slides={slides} client:idle />
+  <HeroCarousel slides={slides} client:load />
 
   <section id="oferta" class="py-16">
     <div class="u-wrapper mx-auto px-4">
@@ -178,7 +178,7 @@ const services = [
   </section>
 
   <section id="quienes-somos" class="py-16">
-    <div class="u-wrapper mx-auto px-4">
+    <div class="u-wrapper mx-auto px-4 md:px-16">
       <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 text-center mb-12">Comunicaciones institucionales</h2>
       <Communication slides={services} client:idle />
     </div>
