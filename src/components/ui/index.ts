@@ -14,4 +14,5 @@ export * from './link';
 export * from './message-card';
 export * from './course-card';
 export * from './form';
-export * from './audio'
+export * from './audio';
+export * from './menu';

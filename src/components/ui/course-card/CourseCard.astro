@@ -1,5 +1,5 @@
 ---
-import { Button } from '../button';
+import { Link } from '@components/ui';
 
 interface Props {
   title: string;
@@ -26,9 +26,9 @@ const { title, duration, img, buttonText = 'Más información', buttonLink = '#'
       {duration}
     </p>
 
-    <a href={buttonLink} aria-label={`Más información sobre ${title}`}>
-      <Button style={{borderRadius: "20px", fontWeight: "normal"}}> {buttonText} </Button>
-    </a>
+    <Link href={buttonLink} aria-label={`Más información sobre ${title}`}>
+      {buttonText}
+    </Link>
   </div>
 </article>
 
