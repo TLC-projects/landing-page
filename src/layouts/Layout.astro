@@ -1,6 +1,9 @@
 ---
+import { A11yButton } from '@/components/ui';
+
 import Header from '@components/layout/Header.astro';
 import Footer from '@components/layout/Footer.astro';
+
 import '../styles/global.css';
 import '../styles/a11y.css'
 ---
@@ -25,6 +28,7 @@ import '../styles/a11y.css'
         <slot />
       </main>
       <Footer />
+      <A11yButton client:load />
     </div>
   </body>
 

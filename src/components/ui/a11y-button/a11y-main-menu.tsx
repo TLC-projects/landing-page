@@ -1,0 +1,93 @@
+import { Type, AlignLeft, LetterText, Moon, PauseCircle, Eye } from 'lucide-react';
+import { i18n } from './lib/constants';
+import type { ConfigA11y } from './types/types';
+
+interface MainMenuProps {
+  config: ConfigA11y;
+  setConfig: (property: keyof ConfigA11y, value?: string | boolean) => void;
+  setActiveTab: (tab: 'fontSize' | 'lineHeight' | 'letterSpacing' | 'contrast') => void;
+}
+
+export const MainMenu = ({ config, setConfig, setActiveTab }: MainMenuProps) => {
+  return (
+    <div className="space-y-3">
+      {/* Toggle buttons */}
+      <button
+        onClick={() => setConfig('darkMode')}
+        className={`w-full flex items-center justify-between p-3 rounded-lg border transition-all ${
+          config.darkMode
+            ? 'bg-accent-100 border-accent-600 text-accent-700'
+            : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
+        }`}
+        aria-pressed={config.darkMode}
+      >
+        <span className="flex items-center gap-2">
+          <Moon size={20} />
+          <span className="font-medium">{i18n.darkMode}</span>
+        </span>
+        {config.darkMode && <span className="text-accent-600">✓</span>}
+      </button>
+
+      <button
+        onClick={() => setConfig('stopAnimations')}
+        className={`w-full flex items-center justify-between p-3 rounded-lg border transition-all ${
+          config.stopAnimations
+            ? 'bg-accent-100 border-accent-600 text-accent-700'
+            : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
+        }`}
+        aria-pressed={config.stopAnimations}
+      >
+        <span className="flex items-center gap-2">
+          <PauseCircle size={20} />
+          <span className="font-medium">{i18n.stopAnimations}</span>
+        </span>
+        {config.stopAnimations && <span className="text-accent-600">✓</span>}
+      </button>
+
+      {/* Navigation buttons */}
+      <button
+        onClick={() => setActiveTab('fontSize')}
+        className="w-full flex items-center justify-between p-3 rounded-lg border border-gray-200 bg-gray-50 hover:bg-gray-100 transition-all"
+      >
+        <span className="flex items-center gap-2">
+          <Type size={20} />
+          <span className="font-medium">{i18n.fontSize}</span>
+        </span>
+        <span className="text-secondary-400">→</span>
+      </button>
+
+      <button
+        onClick={() => setActiveTab('lineHeight')}
+        className="w-full flex items-center justify-between p-3 rounded-lg border border-gray-200 bg-gray-50 hover:bg-gray-100 transition-all"
+      >
+        <span className="flex items-center gap-2">
+          <AlignLeft size={20} />
+          <span className="font-medium">{i18n.lineHeight}</span>
+        </span>
+        <span className="text-secondary-400">→</span>
+      </button>
+
+      <button
+        onClick={() => setActiveTab('letterSpacing')}
+        className="w-full flex items-center justify-between p-3 rounded-lg border border-gray-200 bg-gray-50 hover:bg-gray-100 transition-all"
+      >
+        <span className="flex items-center gap-2">
+          <LetterText size={20} />
+          <span className="font-medium">{i18n.letterSpacing}</span>
+        </span>
+        <span className="text-secondary-400">→</span>
+      </button>
+
+      <button
+        onClick={() => setActiveTab('contrast')}
+        className="w-full flex items-center justify-between p-3 rounded-lg border border-gray-200 bg-gray-50 hover:bg-gray-100 transition-all"
+      >
+        <span className="flex items-center gap-2">
+          <Eye size={20} />
+          <span className="font-medium">{i18n.contrast}</span>
+        </span>
+        <span className="text-secondary-400">→</span>
+      </button>
+    </div>
+  );
+};

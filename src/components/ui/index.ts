@@ -16,3 +16,4 @@ export * from './course-card';
 export * from './form';
 export * from './audio';
 export * from './menu';
+export * from './a11y-button';

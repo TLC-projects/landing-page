@@ -1,8 +1,9 @@
 ---
+import { Card, A11yButton } from '@components/ui';
+
 import Layout from '@layouts/Layout.astro';
 import HeroCarousel from '@components/sections/HeroCarousel';
 import Communication from '@components/sections/Communication';
-import { Card } from '@components/ui';
 import FormularioContacto from '@/components/sections/FormularioContacto.astro';
 
 const slides = [
@@ -179,7 +180,9 @@ const services = [
 
   <section id="quienes-somos" class="py-16">
     <div class="u-wrapper mx-auto px-4 md:px-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 text-center mb-12">Comunicaciones institucionales</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 text-center mb-12">
+        Comunicaciones institucionales
+      </h2>
       <Communication slides={services} client:idle />
     </div>
   </section>
