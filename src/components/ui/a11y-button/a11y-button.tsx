@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
-import { User } from 'lucide-react';
+import { Accessibility } from 'lucide-react';
 
+import { Button } from '@components/ui';
 import { useA11y } from './hooks/use-a11y';
 import { i18n } from './lib/constants';
 import type { BasicValuesType, ContrastType, TabType } from './types/types';
@@ -162,16 +163,17 @@ export const A11yButton = () => {
 
   return (
     <div ref={menuRef} className="fixed bottom-6 right-6 z-50">
-      <button
+      <Button
         ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-accent-600 hover:bg-accent-700 text-white p-4 rounded-full shadow-lg transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+        size="lg"
+        className="p-5 rounded-full"
         aria-label={isOpen ? 'Cerrar opciones de accesibilidad' : 'Abrir opciones de accesibilidad'}
         aria-expanded={isOpen}
         aria-controls="accessibility-menu"
         aria-haspopup="dialog">
-        <User size={28} aria-hidden="true" />
-      </button>
+        <Accessibility size={30} aria-hidden="true"/>
+      </Button>
 
       {isOpen && (
         <div
