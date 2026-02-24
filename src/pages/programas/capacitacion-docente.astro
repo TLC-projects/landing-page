@@ -2,7 +2,6 @@
 import Banner from '@/components/sections/Banner.astro';
 import CoursesSection from '@/components/sections/CoursesSection.astro';
 import ImageListSection from '@/components/sections/ImageListSection.astro';
-import { Audio } from '@/components/ui';
 import { getCoursesByProgram } from '@/lib/courses-service';
 import Layout from '@layouts/Layout.astro';
 
@@ -10,13 +9,12 @@ const courses = await getCoursesByProgram('CAPACITACION_DOCENTE');
 ---
 
 <Layout>
-  <Audio a11y className="mx-auto" src="/assets/audio/conoce-mas.mp3" client:only />
-  <!-- Parecido al Hero sin los botones, tambien tiene posicionamiento -->
   <Banner
     subtitle="Cursos"
     title="Capacitación docente"
     description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, doloremque."
     img="/assets/images/Banner_3.webp"
+    src="/audios/frances.mp3"
     side="right"
   />
   <!-- Seccion reutilizable de lista con imagen, intercambio de lados especificando el side -->
@@ -49,11 +47,7 @@ const courses = await getCoursesByProgram('CAPACITACION_DOCENTE');
   />
 
   <!-- Seccion reutilizable de lista de cursos disponibles máx 6 -->
-  <CoursesSection
-    title="Cursos disponibles"
-    courses={courses}
-    bgColor='bg-secondary-100/10'
-  >
+  <CoursesSection title="Cursos disponibles" courses={courses} bgColor="bg-secondary-100/10">
     <p class="text-center text-lg w-3/4 mx-auto text-secondary-600 mt-12">
       Para obtener más información detallada, puede ponerse en contacto con nosotros a través de nuestro correo
       electrónico <a class="font-bold" href="mailto:servicliente@ceaitlc.com.co">servicliente@ceaitlc.com.co</a> o llamando

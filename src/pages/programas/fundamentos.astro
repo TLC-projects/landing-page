@@ -5,7 +5,6 @@ import CoursesSection from '@/components/sections/CoursesSection.astro';
 import { getCoursesByProgram } from '@/lib/courses-service';
 import Layout from '@layouts/Layout.astro';
 import { Check } from 'lucide-react';
-import { Audio } from '@/components/ui';
 
 const courses = await getCoursesByProgram('FUNDAMENTOS');
 
@@ -18,18 +17,18 @@ const beneficios = [
 ---
 
 <Layout>
-  <Audio a11y className="mx-auto" src="/assets/audio/conoce-mas.mp3" client:only />
   <HeroProgram
     programa="Cursos de"
     titulo="Fundamentos de la Enseñanza del Inglés en Colombia:"
     descripcion="Estándares, Plan de Estudios y Evaluación."
     imagen="/assets/images/Banner_4.webp"
+    src="/audios/frances.mp3"
     reverse
   />
   <ImageListSection
     img="/assets/images/img_beneficios.webp"
     side="right"
-     className="text-white bg-accent-600"
+    className="text-white bg-accent-600"
     items={[
       {
         subtitle: 'Programa de Idiomas',
@@ -55,7 +54,6 @@ const beneficios = [
       }
     ]}
   />
- 
 
   <section class="bg-accent-600 text-white overflow-visible relative" id="beneficios-clave-para-el-estudiante">
     <div class="u-wrapper md:pb-6 py-6 mx-auto">
@@ -68,19 +66,19 @@ const beneficios = [
         <div class="flex flex-col gap-4">
           <h2 class="text-3xl font-bold">Beneficios clave para el estudiante</h2>
           <ul class="space-y-5">
-            {beneficios.map((beneficio) => (
-              <li class="flex items-start gap-4">
-                <span
-                  class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-secondary-100 text-primary shrink-0"
-                >
-                  <Check size={14} />
-                </span>
-                <p>{beneficio}</p>
-              </li>
-            ))}
+            {
+              beneficios.map((beneficio) => (
+                <li class="flex items-start gap-4">
+                  <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-secondary-100 text-primary shrink-0">
+                    <Check size={14} />
+                  </span>
+                  <p>{beneficio}</p>
+                </li>
+              ))
+            }
           </ul>
-           
-           <p>
+
+          <p>
             Para obtener más información detallada, puede ponerse en contacto con nosotros a través de nuestro correo
             electrónico <a class="font-bold" href="mailto:servicliente@ceaitlc.com.co">servicliente@ceaitlc.com.co</a> o llamando
             al teléfono (601) 6333300 EXT 107
@@ -90,8 +88,5 @@ const beneficios = [
     </div>
   </section>
 
-  <CoursesSection
-    title="Cursos disponibles"
-    courses={courses}
-  />
+  <CoursesSection title="Cursos disponibles" courses={courses} />
 </Layout>

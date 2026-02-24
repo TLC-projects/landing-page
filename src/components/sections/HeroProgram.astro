@@ -17,11 +17,8 @@ const { programa, titulo, descripcion, imagen, reverse = false, src } = Astro.pr
 <section
   class="relative md:h-120 h-auto flex flex-col items-center justify-between overflow-hidden text-white py-6 gap-4"
 >
-  {src && (<Audio a11y className="mx-auto" src={src} client:only />)}
-  <!-- Imagen de fondo -->
+  {src && <Audio a11y className="mx-auto" src={src} client:only />}
   <img src={imagen} alt={titulo} class="absolute inset-0 w-full h-full object-cover" />
-
-  <!-- Contenido del héroe -->
   <div class="absolute inset-0 bg-primary-900/20"></div>
   <div class={`grid md:grid-cols-2 items-center h-full u-wrapper z-10 px-6 mx-auto gap-5`}>
     <div class={cn('flex flex-col gap-4', reverse ? 'md:order-2 text-right' : 'md:order-1 text-left')}>
