@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import {Audio} from '@/components/ui';
 import { Check } from 'lucide-react';
+import Breadcrumb from '@/components/sections/Breadcrumb.astro';
 
 const capacitaciones = [
   'Programas de idiomas especialmente diseñados para llevar a los estudiantes a lograr sus objetivos.',
@@ -27,6 +28,12 @@ const desarrolloProfesional = [
 <Layout>
   <section class="u-wrapper mx-auto py-4 flex flex-col gap-2" id="titulo">
     <Audio a11y className="mx-auto" src="/assets/audio/conoce-mas.mp3" client:only />
+    <Breadcrumb
+        items={[
+          { label: 'Inicio', href: `/` },
+          { label: 'Comunicaciones institucionales' }
+        ]}
+      />
     <h2 class="text-4xl text-primary-700 font-bold text-center">Comunicaciones institucionales</h2>
     <p class="text-primary-700 text-center">Nuestras actividades se centran en tres campos de acción.</p>
   </section>
