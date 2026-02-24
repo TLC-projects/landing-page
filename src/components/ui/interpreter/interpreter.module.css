@@ -1,10 +1,11 @@
 :where(.c-interpreter__container) {
-    --interpreter-clr-list: var(--color-primary);
+    --interpreter-clr-list: var(--color-accent-600);
     --interpreter-size-svg: 1.5rem;
-    --interpreter-border-radious: .532rem;
-    --interpreter-bg: #ffffff;
+    --interpreter-border-radious: .3125rem;
+    --interpreter-bg: var(--color-white);
     --interpreter-border-ratio: 1.4;
-    --interpreter-zIndex: 5;
+    --interpreter-border-clr: var(--color-secondary-300);
+    --interpreter-zIndex: 100;
 
     position: fixed;
     top: 20%;
@@ -13,6 +14,11 @@
     flex-direction: column;
     align-items: flex-end;
     z-index: var(--interpreter-zIndex);
+}
+
+html[data-dark-mode="true"] .c-interpreter__container {
+    --interpreter-bg: var(--color-secondary-900);
+    --interpreter-border-clr: var(--color-secondary-800);
 }
 
 
@@ -32,7 +38,7 @@
     padding-inline-start: 0;
     background-color: var(--interpreter-clr-list);
     margin-block: 0;
-    box-shadow: 0 2px 0 2px #c8c7c7;
+    box-shadow: 0 2px 0 2px var(--interpreter-border-clr);
     border-top-left-radius: var(--interpreter-border-radious);
     border-bottom-left-radius: var(--interpreter-border-radious);
     overflow: hidden;
@@ -54,7 +60,7 @@
     position: absolute;
     inset: 0 0 1px 50%;
     width: 90%;
-    border-bottom: 1px solid #c8c7c7;
+    border-bottom: 1px solid var(--interpreter-border-clr);
     transform: translate(-50%);
     pointer-events: none;
 }
@@ -143,7 +149,7 @@
     display: grid;
     grid-template-rows: 1fr auto;
     row-gap: var(--padding);
-    box-shadow: 2px 2px 0 1px #c8c7c7;
+    box-shadow: 2px 2px 0 1px var(--interpreter-border-clr);
     padding: var(--padding);
     background-color: var(--interpreter-bg);
     border-radius: var(--interpreter-border-radious);
@@ -157,7 +163,7 @@
     border-top-left-radius: calc(var(--interpreter-border-radious) * var(--interpreter-border-ratio));
     border-top-right-radius: calc(var(--interpreter-border-radious) * var(--interpreter-border-ratio));
     overflow: hidden;
-    background: #121212;
+    background: var(--color-stone-900);
 }
 
 .c-video__group-video>* {
