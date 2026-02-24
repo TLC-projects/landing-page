@@ -10,6 +10,7 @@ import { FontSizeMenu } from './a11y-font-size-menu';
 import { LineHeightMenu } from './a11y-line-height-menu';
 import { LetterSpacingMenu } from './a11y-letter-spacing-menu';
 import { ContrastMenu } from './a11y-contrast-menu';
+import { EVENT } from '../interpreter/lib/constants';
 
 export const A11yButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -160,6 +161,20 @@ export const A11yButton = () => {
       document.removeEventListener('keydown', handleTabKey);
     };
   }, [isOpen, activeTab]);
+
+  // Listen for interpreter close event from the interpreter component
+  useEffect(() => {
+    // Handler to update state when the interpreter is closed from within the interpreter component
+    const handleInterpreterClosed = () => {
+      setConfig('interpreter', false);
+    };
+
+    document.addEventListener(EVENT.CLOSED, handleInterpreterClosed as EventListener);
+
+    return () => {
+      document.removeEventListener(EVENT.CLOSED, handleInterpreterClosed as EventListener);
+    };
+  }, []);
 
   return (
     <div ref={menuRef} className="fixed bottom-6 right-6 z-50">

@@ -18,7 +18,8 @@ export const INITIAL_STATE: ConfigA11y = {
   lineHeight: 'none',
   letterSpacing: 'none',
   darkMode: false,
-  audio: false
+  audio: false,
+  interpreter: false
 };
 
 export const BASIC_VALUES = {
@@ -34,6 +35,7 @@ export const i18n = {
   title: 'Accesibilidad',
   darkMode: 'Modo oscuro',
   audio: 'Audios descriptivos',
+  interpreter: 'Intérprete de señas',
   contrast: 'Ajuste del contraste',
   contrastTitle: 'Contraste personalizado',
   grayScale: 'Escala de grises',

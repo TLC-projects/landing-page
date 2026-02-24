@@ -18,27 +18,42 @@ export const Interpreter: React.FC<InterpreterProps> = ({ className, ...props })
   });
 
   /**
-   * Function to toggle the "hidden" state and show or hide the video.
+   * Toggle function to change interpreter visibility.
+   * Toggles the hidden state and dispatches a custom event.
    */
   const toggleHidden = () => {
-    // Toggle the "hidden" state
-    const newHidden = !hidden;
-    setHidden(newHidden);
-    eventInterpreterVideoVisibility(!newHidden);
-  };
-
-  /**
-   * Function to dispatch a custom event that reports the interpreter visibility.
-   */
-  const eventInterpreterVideoVisibility = (hidden: boolean): void => {
-    // Create a custom event with the interpreter visibility state
+    const newHiddenState = !hidden;
+    setHidden(newHiddenState);
+    
+    // Dispatch custom event to notify other components
     const event = new CustomEvent(EVENT.VISIBILITY, {
-      detail: { hidden } // Indicates if the interpreter is hidden or visible
+      detail: { hidden: newHiddenState },
+      bubbles: true,
+      cancelable: true
     });
-
-    // Dispatch the event at document level
     document.dispatchEvent(event);
   };
+
+  useEffect(() => {
+    /**
+     * Function to handle interpreter visibility changes from external events.
+     */
+    const handleInterpreterVisibility = ({ detail }: CustomEvent<{ hidden: boolean}>): void => {
+      // Only update if the new state is different from current state
+      // This prevents infinite loops and unnecessary re-renders
+      if (detail.hidden !== hidden) {
+        setHidden(detail.hidden);
+      }
+    };
+
+    // Listen for the custom event from accessibility menu
+    document.addEventListener(EVENT.VISIBILITY, handleInterpreterVisibility as EventListener);
+
+    return () => {
+      // Remove listener when component unmounts
+      document.removeEventListener(EVENT.VISIBILITY, handleInterpreterVisibility as EventListener);
+    };
+  }, [hidden]);
 
   useEffect(() => {
     /**
@@ -61,24 +76,6 @@ export const Interpreter: React.FC<InterpreterProps> = ({ className, ...props })
 
   return (
     <div className={cn(css['c-interpreter__container'], className)} {...props}>
-      <button
-        disabled={!hidden}
-        aria-label="Intérprete de lenguaje de señas"
-        onClick={toggleHidden}
-        className={css['c-interpreter__float-button']}>
-        <svg width="24" height="24" viewBox="0 0 576 512">
-          <path
-            fill="currentColor"
-            d="m544 160l-.1 72.6c-.1 52.2-24 101-64 133.1c.1-1.9.1-3.8.1-5.7v-8c0-71.8-37-138.6-97.9-176.7l-60.2-37.6c-8.6-5.4-17.9-8.4-27.3-9.4l-45.9-79.5c-6.6-11.5-2.7-26.2 8.8-32.8s26.2-2.7 32.8 8.8l78 135.1c3.3 5.7 10.7 7.7 16.4 4.4s7.7-10.7 4.4-16.4l-62-107.4c-6.6-11.5-2.7-26.2 8.8-32.8S362 5 368.6 16.5l68 117.8l43.3 75l.1-49.3c0-17.7 14.4-32 32-32s32 14.4 32 32M243.9 88.5l24.6 42.5c-13.9 4.5-26.4 13.7-34.7 27c-.9 1.4-1.7 2.9-2.5 4.4l-28.9-50c-6.6-11.5-2.7-26.2 8.8-32.8s26.2-2.7 32.8 8.8zm-46.4 63.7l26.8 46.4c.6 6 2.1 11.8 4.3 17.4H179l-23-39.8c-6.6-11.5-2.7-26.2 8.8-32.8s26.2-2.7 32.8 8.8zm63.4 22.8c9.4-15 29.1-19.5 44.1-10.2l60.2 37.6C416.7 234.7 448 291.2 448 352v8c0 83.9-68.1 152-152 152H120c-13.3 0-24-10.7-24-24s10.7-24 24-24h92c6.6 0 12-5.4 12-12s-5.4-12-12-12H88c-13.3 0-24-10.7-24-24s10.7-24 24-24h124c6.6 0 12-5.4 12-12s-5.4-12-12-12H56c-13.3 0-24-10.7-24-24s10.7-24 24-24h156c6.6 0 12-5.4 12-12s-5.4-12-12-12H88c-13.3 0-24-10.7-24-24s10.7-24 24-24h229.2L271 219.1c-15-9.4-19.5-29.1-10.2-44.1z"></path>
-        </svg>
-        <svg width="24" height="24" viewBox="0 -960 960 960">
-          <path
-            fill="currentColor"
-            d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"
-          />
-        </svg>
-      </button>
-
       <Video URLs={URLs} show={hidden} onClose={toggleHidden} />
     </div>
   );
@@ -160,12 +157,21 @@ const Video: React.FC<InterpreterVideoProps> = ({ URLs, show, onClose, ...props 
   /**
    * Function to close the draggable element and hide the video.
    * Resets draggable element position and hides the video.
+   * Dispatches a separate event to notify a11y menu.
    */
   const handleClose = () => {
     onClose();
 
     // Hide video by setting displayVideo to null
     toggleDisplayVideo();
+
+    // Dispatch separate event to notify a11y menu that interpreter was closed
+    const event = new CustomEvent(EVENT.CLOSED, {
+      detail: { hidden: true },
+      bubbles: true,
+      cancelable: true
+    });
+    document.dispatchEvent(event);
   };
 
   useEffect(() => {

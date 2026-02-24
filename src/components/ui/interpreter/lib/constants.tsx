@@ -12,4 +12,5 @@ export const ZOOM_LEVELS = {
 export const EVENT = {
   SOURCES: "changeInterpreteVideoSources",
   VISIBILITY: "changeInterpreteVideoVisibility",
+  CLOSED: "interpreterClosed",
 };

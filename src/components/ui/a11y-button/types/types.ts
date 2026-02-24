@@ -18,6 +18,7 @@ export type ConfigA11y = {
   letterSpacing: BasicValuesType;
   darkMode: boolean;
   audio: boolean;
+  interpreter: boolean;
 };
 
 

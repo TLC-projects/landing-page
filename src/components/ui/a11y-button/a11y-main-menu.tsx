@@ -1,6 +1,8 @@
-import { Type, AlignLeft, LetterText, Moon, PauseCircle, Eye, AudioLines } from 'lucide-react';
+import { Type, AlignLeft, LetterText, Moon, Eye, AudioLines, Languages, Hand } from 'lucide-react';
 import { i18n } from './lib/constants';
 import type { ConfigA11y } from './types/types';
+
+import { A11yInterpreter } from './a11y-interpreter';
 
 interface MainMenuProps {
   config: ConfigA11y;
@@ -9,9 +11,15 @@ interface MainMenuProps {
 }
 
 export const MainMenu = ({ config, setConfig, setActiveTab }: MainMenuProps) => {
+
+  const toggleInterpreter = (value: boolean) => {
+    setConfig('interpreter', value);
+  }
+
   return (
     <div className="space-y-3">
       {/* Toggle buttons */}
+      <A11yInterpreter isVisible={config.interpreter} updateVisibility={toggleInterpreter}  />
       <button
         onClick={() => setConfig('darkMode')}
         className={`w-full flex items-center justify-between p-3 rounded-lg border transition-all ${
