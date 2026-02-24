@@ -20,7 +20,7 @@ const { title, items, img, side, footerText, bgColor = 'bg-white', className } =
 const isLeft = side === 'left';
 ---
 
-<section class={`relative md:h-auto h-auto flex flex-col items-center justify-center overflow-hidden ${bgColor} py-12`}>
+<section class={`relative md:h-auto h-auto flex flex-col items-center justify-center overflow-hidden ${bgColor} dark:bg-background py-12`}>
   <div
     class={`container mx-auto grid md:grid-cols-2 gap-8 items-center md:px-12 px-4 ${
       isLeft ? '' : 'md:[&>*:first-child]:order-2'
