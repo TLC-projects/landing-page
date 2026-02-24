@@ -39,13 +39,13 @@ export const Form = () => {
 
   return (
     <div className="order-1 lg:order-2">
-      <div className="bg-white rounded-lg shadow-xl p-8">
-        <h2 className="text-2xl font-bold text-secondary-900 mb-6">¿Quieres recibir más información?</h2>
+      <div className="bg-white dark:bg-secondary-800 rounded-lg shadow-xl p-8">
+        <h2 className="text-2xl font-bold text-secondary-900 dark:text-white mb-6">¿Quieres recibir más información?</h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="nombre" className="block text-sm font-medium text-secondary-700 mb-1">
+              <label htmlFor="nombre" className="block text-sm font-medium text-secondary-700 dark:text-white mb-1">
                 Nombre<span className="text-red-500">*</span>
               </label>
               <input
@@ -61,7 +61,7 @@ export const Form = () => {
               )}
             </div>
             <div>
-              <label htmlFor="apellido" className="block text-sm font-medium text-secondary-700 mb-1">
+              <label htmlFor="apellido" className="block text-sm font-medium text-secondary-700 dark:text-white mb-1">
                 Apellido<span className="text-red-500">*</span>
               </label>
               <input
@@ -80,7 +80,7 @@ export const Form = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-secondary-700 mb-1">
+              <label htmlFor="email" className="block text-sm font-medium text-secondary-700 dark:text-white mb-1">
                 Email<span className="text-red-500">*</span>
               </label>
               <input
@@ -96,7 +96,7 @@ export const Form = () => {
               )}
             </div>
             <div>
-              <label htmlFor="telefono" className="block text-sm font-medium text-secondary-700 mb-1">
+              <label htmlFor="telefono" className="block text-sm font-medium text-secondary-700 dark:text-white mb-1">
                 Número de contacto<span className="text-red-500">*</span>
               </label>
               <input
@@ -114,7 +114,7 @@ export const Form = () => {
           </div>
 
           <div>
-            <label htmlFor="programa" className="block text-sm font-medium text-secondary-700 mb-1">
+            <label htmlFor="programa" className="block text-sm font-medium text-secondary-700 dark:text-white mb-1">
               Programa / curso<span className="text-red-500">*</span>
             </label>
             <input
@@ -131,7 +131,7 @@ export const Form = () => {
           </div>
 
           <div>
-            <label htmlFor="comentario" className="block text-sm font-medium text-secondary-700 mb-1">
+            <label htmlFor="comentario" className="block text-sm font-medium text-secondary-700 dark:text-white mb-1">
               Comentario
             </label>
             <textarea
@@ -149,7 +149,7 @@ export const Form = () => {
                 {...register('privacidad')}
                 className="mt-1 mr-2"
               />
-              <label htmlFor="privacidad" className="text-xs text-secondary-700">
+              <label htmlFor="privacidad" className="text-xs text-secondary-700 dark:text-white">
                 Si doy autorización expresa para el tratamiento de los datos aquí consignados, según&nbsp;
                 <a href="/politica-privacidad" className="text-accent-600 hover:underline">
                   política de privacidad y tratamiento de datos.

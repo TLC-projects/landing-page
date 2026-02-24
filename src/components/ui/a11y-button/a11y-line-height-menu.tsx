@@ -16,7 +16,7 @@ export const LineHeightMenu = ({ config, setLineHeight, setActiveTab }: LineHeig
       >
         ← Volver
       </button>
-      <h4 className="font-semibold text-secondary-900 mb-3">{i18n.lineHeight}</h4>
+      <h4 className="font-semibold text-secondary-900 dark:text-secondary-500 mb-3">{i18n.lineHeight}</h4>
       <div className="space-y-2">
         {(['1', '2', '3'] as BasicValuesType[]).map((size) => (
           <button
@@ -25,7 +25,7 @@ export const LineHeightMenu = ({ config, setLineHeight, setActiveTab }: LineHeig
             className={`w-full p-3 rounded-lg border transition-all ${
               config.lineHeight === size
                 ? 'bg-accent-100 border-accent-600 text-accent-700 font-medium'
-                : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
+                : 'bg-secondary-50 border-secondary-200 hover:bg-secondary-100 dark:hover:bg-primary-600/20'
             }`}
             aria-pressed={config.lineHeight === size}
           >

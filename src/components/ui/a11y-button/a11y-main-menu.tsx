@@ -17,7 +17,7 @@ export const MainMenu = ({ config, setConfig, setActiveTab }: MainMenuProps) => 
         className={`w-full flex items-center justify-between p-3 rounded-lg border transition-all ${
           config.darkMode
             ? 'bg-accent-100 border-accent-600 text-accent-700'
-            : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
+            : 'bg-secondary-50 border-secondary-200 hover:bg-secondary-100 dark:hover:bg-primary-600/20'
         }`}
         aria-pressed={config.darkMode}
       >
@@ -33,7 +33,7 @@ export const MainMenu = ({ config, setConfig, setActiveTab }: MainMenuProps) => 
         className={`w-full flex items-center justify-between p-3 rounded-lg border transition-all ${
           config.audio
             ? 'bg-accent-100 border-accent-600 text-accent-700'
-            : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
+            : 'bg-secondary-50 border-secondary-200 hover:bg-secondary-100 dark:hover:bg-primary-600/20'
         }`}
         aria-pressed={config.audio}
       >
@@ -47,7 +47,7 @@ export const MainMenu = ({ config, setConfig, setActiveTab }: MainMenuProps) => 
       {/* Navigation buttons */}
       <button
         onClick={() => setActiveTab('fontSize')}
-        className="w-full flex items-center justify-between p-3 rounded-lg border border-gray-200 bg-gray-50 hover:bg-gray-100 transition-all"
+        className="w-full flex items-center justify-between p-3 rounded-lg border border-secondary-200 bg-secondary-50 hover:bg-secondary-100 dark:hover:bg-primary-600/20 transition-all"
       >
         <span className="flex items-center gap-2">
           <Type size={20} />
@@ -58,7 +58,7 @@ export const MainMenu = ({ config, setConfig, setActiveTab }: MainMenuProps) => 
 
       <button
         onClick={() => setActiveTab('lineHeight')}
-        className="w-full flex items-center justify-between p-3 rounded-lg border border-gray-200 bg-gray-50 hover:bg-gray-100 transition-all"
+        className="w-full flex items-center justify-between p-3 rounded-lg border border-secondary-200 bg-secondary-50 hover:bg-secondary-100 dark:hover:bg-primary-600/20 transition-all"
       >
         <span className="flex items-center gap-2">
           <AlignLeft size={20} />
@@ -69,7 +69,7 @@ export const MainMenu = ({ config, setConfig, setActiveTab }: MainMenuProps) => 
 
       <button
         onClick={() => setActiveTab('letterSpacing')}
-        className="w-full flex items-center justify-between p-3 rounded-lg border border-gray-200 bg-gray-50 hover:bg-gray-100 transition-all"
+        className="w-full flex items-center justify-between p-3 rounded-lg border border-secondary-200 bg-secondary-50 hover:bg-secondary-100 dark:hover:bg-primary-600/20 transition-all"
       >
         <span className="flex items-center gap-2">
           <LetterText size={20} />
@@ -80,7 +80,7 @@ export const MainMenu = ({ config, setConfig, setActiveTab }: MainMenuProps) => 
 
       <button
         onClick={() => setActiveTab('contrast')}
-        className="w-full flex items-center justify-between p-3 rounded-lg border border-gray-200 bg-gray-50 hover:bg-gray-100 transition-all"
+        className="w-full flex items-center justify-between p-3 rounded-lg border border-secondary-200 bg-secondary-50 hover:bg-secondary-100 dark:hover:bg-primary-600/20 transition-all"
       >
         <span className="flex items-center gap-2">
           <Eye size={20} />

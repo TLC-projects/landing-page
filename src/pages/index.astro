@@ -122,7 +122,7 @@ const services = [
 
   <section id="oferta" class="py-16">
     <div class="u-wrapper mx-auto px-4">
-      <h2 class="text-3xl text-center md:text-4xl font-bold text-secondary-900">Oferta Académica</h2>
+      <h2 class="text-3xl text-center md:text-4xl font-bold text-secondary-900 dark:text-white">Oferta Académica</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
         {
           programas.map((programa) => (
@@ -135,7 +135,7 @@ const services = [
 
   <section id="calendario" class="py-16 bg-primary-100/15">
     <div class="u-wrapper mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 text-center mb-4">Calendario académico</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 dark:text-white text-center mb-4">Calendario académico</h2>
       <p class="text-center mb-12 max-w-3xl mx-auto">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam euismod tincidunt ut laoreet.
       </p>
@@ -144,9 +144,9 @@ const services = [
         {
           eventos.map((evento) => (
             <div class="p-6 text-center calendar__event">
-              <div class="text-5xl md:text-6xl font-bold text-secondary-900 mb-2">{evento.dia}</div>
-              <div class="text-secondary-500 text-sm uppercase tracking-wide mb-6">{evento.mes}</div>
-              <div class="text-secondary-700 font-medium text-sm leading-snug">{evento.titulo}</div>
+              <div class="text-5xl md:text-6xl font-bold text-secondary-900 dark:text-white mb-2">{evento.dia}</div>
+              <div class="text-secondary-500 dark:text-secondary-400 text-sm uppercase tracking-wide mb-6">{evento.mes}</div>
+              <div class="text-secondary-700 dark:text-secondary-400 font-medium text-sm leading-snug">{evento.titulo}</div>
             </div>
           ))
         }
@@ -158,8 +158,8 @@ const services = [
     <div class="u-wrapper mx-auto px-4">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-6">¿Quiénes somos?</h2>
-          <div class="prose prose-lg text-secondary-700 space-y-4">
+          <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 dark:text-white mb-6">¿Quiénes somos?</h2>
+          <div class="prose prose-lg  space-y-4">
             <p>
               EL CENTRO DE ENTRENAMIENTO Y APRENDIZAJE DE IDIOMAS TLC LTDA., Desde el 2009 es una empresa que ofrece
               programas y servicios de alta calidad para la formación integral en inglés y francés a estudiantes de
@@ -180,7 +180,7 @@ const services = [
 
   <section id="quienes-somos" class="py-16">
     <div class="u-wrapper mx-auto px-4 md:px-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 dark:text-white text-center mb-12">
         Comunicaciones institucionales
       </h2>
       <Communication slides={services} client:idle />

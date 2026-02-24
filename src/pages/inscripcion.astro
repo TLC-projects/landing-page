@@ -27,7 +27,7 @@ const itemsElegirnos = [
 
 <Layout title="Inscripcion">
   <Audio a11y className="mx-auto my-4" src="/assets/audio/conoce-mas.mp3" client:only />
-  <section class="bg-primary-100/20 overflow-visible relative lg:my-16" id="inscripciones mecanismos de admision">
+  <section class="bg-primary-100/20 dark:bg-secondary-900 overflow-visible relative lg:my-16" id="inscripciones mecanismos de admision">
     <div class="u-wrapper md:pb-6 py-6 mx-auto">
       <div class="relative grid md:grid-cols-2 gap-10 items-center justify-items-center">
         <img
@@ -43,7 +43,7 @@ const itemsElegirnos = [
             {
               criterios.map((criterio) => (
                 <li class="flex items-start gap-4">
-                  <span class="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-accent text-white shrink-0">
+                  <span class="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-accent text-white dark:text-primary-800 shrink-0">
                     <Check size={14} />
                   </span>
                   <p>{criterio.text}</p>
@@ -62,7 +62,7 @@ const itemsElegirnos = [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 p-6 md:p-12 lg:p-16 text-center">
       <!-- 1 -->
       <div class="border-2 gap-2 flex flex-col items-center rounded-3xl border-secondary-200 py-6 px-10">
-        <img src="/assets/icons/Paso_1.svg" alt="Imagen de información del programa" class="w-28 h-28" />
+        <img src="/assets/icons/Paso_1.svg" alt="Imagen de información del programa" class="w-28 h-28 dark"/>
         <h3 class="font-bold">Registro de Información y Documentación</h3>
         <ul class="list-disc mt-4 ml-4 text-left">
           <li>
@@ -75,13 +75,13 @@ const itemsElegirnos = [
       </div>
       <!-- 2 -->
       <div class="border-2 gap-2 flex flex-col items-center rounded-3xl border-secondary-200 py-6 px-10">
-        <img src="/assets/icons/Paso_2.svg" alt="Imagen de información del programa" class="w-28 h-28" />
+        <img src="/assets/icons/Paso_2.svg" alt="Imagen de información del programa" class="w-28 h-28  dark" />
         <h3 class="font-bold">Legalización Financiera y Matrícula</h3>
         <p class="text-center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.</p>
       </div>
       <!-- 3 -->
       <div class="border-2 gap-2 flex flex-col items-center rounded-3xl border-secondary-200 py-6 px-10">
-        <img src="/assets/icons/Paso_3.svg" alt="Imagen de información del programa" class="w-28 h-28" />
+        <img src="/assets/icons/Paso_3.svg" alt="Imagen de información del programa" class="w-28 h-28 dark" />
         <h3 class="font-bold">Descubrimos tu nivel:</h3>
         <p class="text-center">Valoración diagnóstica sin costo</p>
       </div>
@@ -89,7 +89,7 @@ const itemsElegirnos = [
       <div
         class="border-2 rounded-3xl flex md:items-start flex-col text-left md:text-left md:flex-row lg:flex-row items-center gap-3 lg:gap-10 border-secondary-200 py-6 px-10 md:px-12 lg:px-40 col-span-1 md:col-span-2 lg:col-span-3"
       >
-        <img src="/assets/icons/Paso_4.svg" alt="Imagen de información del programa" class="w-28 h-28 shrink-0" />
+        <img src="/assets/icons/Paso_4.svg" alt="Imagen de información del programa" class="w-28 h-28 dark shrink-0" />
         <span>
           <h3 class="font-bold">Inducción y Seguimiento Personalizado</h3>
           <ul class="list-disc mt-4 ml-4">
@@ -163,3 +163,9 @@ const itemsElegirnos = [
     </div>
   </section>
 </Layout>
+
+<style>
+  html[data-dark-mode="true"] .dark {
+    filter: invert(1) brightness(9);
+  }
+</style>

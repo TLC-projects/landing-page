@@ -10,14 +10,11 @@ interface ContrastMenuProps {
 export const ContrastMenu = ({ config, setContrast, setActiveTab }: ContrastMenuProps) => {
   return (
     <div className="space-y-3">
-      <button
-        onClick={() => setActiveTab('main')}
-        className="text-accent-600 hover:text-accent-700 font-medium mb-2"
-      >
+      <button onClick={() => setActiveTab('main')} className="text-accent-600 hover:text-accent-700 font-medium mb-2">
         ← Volver
       </button>
-      <h4 className="font-semibold text-secondary-900 mb-3">{i18n.contrastTitle}</h4>
-      <div className="space-y-2 max-h-64 overflow-y-auto">
+      <h4 className="font-semibold text-secondary-900 dark:text-secondary-500 mb-3">{i18n.contrastTitle}</h4>
+      <div className="space-y-2 max-h-64 pr-2 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-secondary-600/20 [&::-webkit-scrollbar-thumb]:bg-secondary-700 [&::-webkit-scrollbar-thumb]:rounded-full">
         {Object.entries(CONTRAST).map(([key, value]) => {
           if (value === 'no-contrast') return null;
           const label = i18n[key as keyof typeof i18n] || key;
@@ -28,10 +25,9 @@ export const ContrastMenu = ({ config, setContrast, setActiveTab }: ContrastMenu
               className={`w-full p-3 rounded-lg border transition-all text-left ${
                 config.contrast === value
                   ? 'bg-accent-100 border-accent-600 text-accent-700 font-medium'
-                  : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
+                  : 'bg-secondary-50 border-secondary-200 hover:bg-secondary-100 dark:hover:bg-primary-600/20'
               }`}
-              aria-pressed={config.contrast === value}
-            >
+              aria-pressed={config.contrast === value}>
               {label}
             </button>
           );
