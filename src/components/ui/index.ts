@@ -18,3 +18,4 @@ export * from './audio';
 export * from './menu';
 export * from './a11y-button';
 export * from './filter'
+export * from './interpreter';
