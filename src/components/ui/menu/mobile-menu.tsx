@@ -50,7 +50,7 @@ export const MobileMenu = () => {
       <div
         ref={panelRef}
         id="mobile-menu"
-        className={`fixed top-0 right-0 h-full w-72 bg-white shadow-xl z-50 transform transition-transform duration-300 md:hidden
+        className={`fixed top-0 right-0 h-full w-72 bg-background shadow-xl z-50 transform transition-transform duration-300 md:hidden
         ${open ? 'translate-x-0' : 'translate-x-full'}`}
         role="dialog"
         aria-modal="true"

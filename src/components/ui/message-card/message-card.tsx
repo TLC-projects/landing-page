@@ -11,7 +11,7 @@ interface MessageCardProps {
 
 export const MessageCard = ({ children, side = 'left', className }: MessageCardProps) => {
   return (
-    <div data-side={side} className={cn(`relative bg-[#EFF7FB] rounded-2xl p-8 ${css['message-card']}`, className)}>
+    <div data-side={side} className={cn(`relative bg-[#EFF7FB] dark:bg-[#0E2030] rounded-2xl p-8 ${css['message-card']}`, className)}>
       {children}
     </div>
   );
