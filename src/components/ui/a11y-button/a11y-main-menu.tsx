@@ -19,7 +19,6 @@ export const MainMenu = ({ config, setConfig, setActiveTab }: MainMenuProps) => 
   return (
     <div className="space-y-3">
       {/* Toggle buttons */}
-      <A11yInterpreter isVisible={config.interpreter} updateVisibility={toggleInterpreter}  />
       <button
         onClick={() => setConfig('darkMode')}
         className={`w-full flex items-center justify-between p-3 rounded-lg border transition-all ${
@@ -36,6 +35,8 @@ export const MainMenu = ({ config, setConfig, setActiveTab }: MainMenuProps) => 
         {config.darkMode && <span className="text-accent-600">✓</span>}
       </button>
 
+      <A11yInterpreter isVisible={config.interpreter} updateVisibility={toggleInterpreter}  />
+      
       <button
         onClick={() => setConfig('audio')}
         className={`w-full flex items-center justify-between p-3 rounded-lg border transition-all ${

@@ -193,7 +193,7 @@ export const A11yButton = () => {
       {isOpen && (
         <div
           id="accessibility-menu"
-          className="absolute bottom-full right-0 mb-4 bg-background rounded-lg shadow-xl p-5 w-80 max-h-128 overflow-y-auto  [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-secondary-600/20 [&::-webkit-scrollbar-thumb]:bg-secondary-700 [&::-webkit-scrollbar-thumb]:rounded-full"
+          className="absolute bottom-full right-0 mb-4 bg-background rounded-lg shadow-xl p-5 w-80 md:w-100 max-h-128 overflow-y-auto  [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-secondary-600/20 [&::-webkit-scrollbar-thumb]:bg-secondary-700 [&::-webkit-scrollbar-thumb]:rounded-full"
           role="dialog"
           aria-modal="true"
           aria-label="Menú de accesibilidad"
