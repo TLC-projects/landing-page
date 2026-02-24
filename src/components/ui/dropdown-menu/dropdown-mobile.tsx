@@ -47,6 +47,8 @@ export const DropdownMobile: React.FC<DropdownMobileProps> = ({ onNavigate }) =>
           Francés
         </a>
 
+        <div className="border-t border-gray-200 my-2" role="presentation"></div>
+
         <span className="px-4 py-2 text-xs font-semibold text-secondary-500 uppercase" role="presentation">
           Cursos
         </span>

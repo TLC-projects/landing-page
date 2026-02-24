@@ -153,3 +153,14 @@ export async function getCoursesByProgram(program: ProgramId): Promise<Course[]>
       buttonLink: `/programas/${programSlug}/cursos/${course.id}`
     }));
 }
+
+export const PROGRAM_LABELS: Record<ProgramId, string> = {
+  INGLES_MUNDO: "Inglés en el Mundo",
+  FRANCES: "Francés",
+  CAPACITACION_DOCENTE: "Capacitación docente",
+  FUNDAMENTOS: "Enseñanza del Inglés en Colombia"
+};
+
+export function getProgramLabel(program: ProgramId) {
+  return PROGRAM_LABELS[program];
+}
