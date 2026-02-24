@@ -22,8 +22,8 @@ export default function Communication({ slides }: CommunicationProps) {
                 <img src={slide.image} alt={slide.title} className="w-full h-full" />
               </div>
               <div className="space-y-5">
-                <h3 className="text-3xl font-bold text-secondary-900">{slide.title}</h3>
-                <div className="prose prose-lg text-secondary-700">
+                <h3 className="text-3xl font-bold text-secondary-900 dark:text-white">{slide.title}</h3>
+                <div className="prose prose-lg text-secondary-700 dark:text-secondary-400">
                   <p>{slide.description}</p>
                 </div>
                 {slide.url && ( <Link href={slide.url}>Conoce más</Link>)}
