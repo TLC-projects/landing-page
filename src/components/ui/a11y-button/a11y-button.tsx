@@ -167,7 +167,7 @@ export const A11yButton = () => {
         ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
         size="lg"
-        className="p-5 rounded-full"
+        className="p-5 rounded-full border-2 border-background"
         aria-label={isOpen ? 'Cerrar opciones de accesibilidad' : 'Abrir opciones de accesibilidad'}
         aria-expanded={isOpen}
         aria-controls="accessibility-menu"
