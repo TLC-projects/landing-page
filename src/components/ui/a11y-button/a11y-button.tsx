@@ -178,13 +178,13 @@ export const A11yButton = () => {
       {isOpen && (
         <div
           id="accessibility-menu"
-          className="absolute bottom-full right-0 mb-4 bg-background rounded-lg shadow-xl p-5 w-80 max-h-128 overflow-y-auto"
+          className="absolute bottom-full right-0 mb-4 bg-background rounded-lg shadow-xl p-5 w-80 max-h-128 overflow-y-auto  [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-secondary-600/20 [&::-webkit-scrollbar-thumb]:bg-secondary-700 [&::-webkit-scrollbar-thumb]:rounded-full"
           role="dialog"
           aria-modal="true"
           aria-label="Menú de accesibilidad"
           aria-describedby="a11y-instructions">
           <div className="flex items-center justify-between mb-4">
-            <h3 id="a11y-dialog-title" className="font-bold text-secondary-900 text-lg">
+            <h3 id="a11y-dialog-title" className="font-bold text-secondary-900 dark:text-secondary-400 text-lg">
               {i18n.title}
             </h3>
             <button
@@ -193,7 +193,7 @@ export const A11yButton = () => {
                 setIsOpen(false);
                 setActiveTab('main');
               }}
-              className="text-secondary-400 hover:text-secondary-600 transition-colors p-2 min-w-11 min-h-11 flex items-center justify-center rounded hover:bg-secondary-100 focus:outline-none focus:ring-2 focus:ring-accent-500"
+              className="text-secondary-400 hover:text-secondary-600 transition-colors p-2 min-w-11 min-h-11 flex items-center justify-center rounded hover:bg-secondary-100 dark:hover:bg-primary-600/20 focus:outline-none focus:ring-2 focus:ring-accent-500"
               aria-label="Cerrar menú de accesibilidad"
               type="button">
               <span aria-hidden="true" className="text-xl leading-none">
