@@ -1,4 +1,4 @@
-import { Type, AlignLeft, LetterText, Moon, PauseCircle, Eye } from 'lucide-react';
+import { Type, AlignLeft, LetterText, Moon, PauseCircle, Eye, AudioLines } from 'lucide-react';
 import { i18n } from './lib/constants';
 import type { ConfigA11y } from './types/types';
 
@@ -29,19 +29,19 @@ export const MainMenu = ({ config, setConfig, setActiveTab }: MainMenuProps) => 
       </button>
 
       <button
-        onClick={() => setConfig('stopAnimations')}
+        onClick={() => setConfig('audio')}
         className={`w-full flex items-center justify-between p-3 rounded-lg border transition-all ${
-          config.stopAnimations
+          config.audio
             ? 'bg-accent-100 border-accent-600 text-accent-700'
             : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
         }`}
-        aria-pressed={config.stopAnimations}
+        aria-pressed={config.audio}
       >
         <span className="flex items-center gap-2">
-          <PauseCircle size={20} />
-          <span className="font-medium">{i18n.stopAnimations}</span>
+          <AudioLines size={20} />
+          <span className="font-medium">{i18n.audio}</span>
         </span>
-        {config.stopAnimations && <span className="text-accent-600">✓</span>}
+        {config.audio && <span className="text-accent-600">✓</span>}
       </button>
 
       {/* Navigation buttons */}

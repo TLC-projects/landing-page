@@ -17,7 +17,7 @@ export type ConfigA11y = {
   lineHeight: BasicValuesType;
   letterSpacing: BasicValuesType;
   darkMode: boolean;
-  stopAnimations: boolean;
+  audio: boolean;
 };
 
 
