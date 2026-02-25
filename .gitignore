@@ -29,4 +29,6 @@ public/*
 !public/assets/fonts
 !public/assets/base
 !public/assets/images
-!public/assets/favicon.png
+!public/assets/favicon.ico
+!public/assets/robots.txt
+!public/assets/sitemap.xml
