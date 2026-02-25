@@ -27,6 +27,7 @@ export const A11yInterpreter: React.FC<A11yInterpreterProps> = ({ isVisible, upd
     <Button
       variant={isVisible ? 'default' : 'outline'}
       onClick={toggleInterpreter}
+      size="lg"
       className="w-full flex items-center justify-between p-3 rounded-lg border transition-all"
       aria-pressed={isVisible}>
       <span className="flex items-center gap-2">
