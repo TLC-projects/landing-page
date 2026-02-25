@@ -1,0 +1,19 @@
+.message-card::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  background: inherit;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* Izquierda */
+.message-card[data-side="left"]::before {
+  left: -9px;
+}
+
+/* Derecha */
+.message-card[data-side="right"]::before {
+  right: -9px;
+}

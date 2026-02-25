@@ -1,5 +1,5 @@
 ---
-import { DropdownMenu, Link } from '@components/ui';
+import { DropdownMenu, Link, MobileMenu } from '@components/ui';
 ---
 
 <header class="sticky top-0 z-50 w-full bg-background shadow-sm" role="banner">
@@ -8,41 +8,22 @@ import { DropdownMenu, Link } from '@components/ui';
       <div class="shrink-0">
         <a href="/" aria-label="Ir al inicio">
           <img
-            src="/assets/logo.png"
+            src="/assets/base/logo.webp"
             alt="Logo del centro de entrenamiento & aprendizaje de idiomas tlc"
-            class="h-10 md:h-12 w-auto"
+            class="h-10 md:h-14 w-auto"
           />
         </a>
       </div>
 
       <nav class="hidden md:flex items-center gap-1" role="navigation" aria-label="Navegación principal">
-        <a
-          href="/"
-          class="px-4 py-2 rounded-xl text-sm font-medium text-gray-700 hover:bg-secondary-100 transition-colors focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
-        >
-          Inicio
-        </a>
-
+        <Link href="/" variant="ghost"> Inicio </Link>
         <DropdownMenu client:load />
-
-        <a
-          href="/quienes-somos"
-          class="px-4 py-2 rounded-xl text-sm font-medium text-gray-700 hover:bg-secondary-100 transition-colors focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
-        >
-          Quiénes somos
-        </a>
-
-        <a
-          href="/contactanos"
-          class="px-4 py-2 rounded-xl text-sm font-medium text-gray-700 hover:bg-secondary-100 transition-colors focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
-        >
-          Contáctanos
-        </a>
-
-        <Link href="/campus-virtual" class="ml-2">
-          Campus virtual
-        </Link>
+        <Link href="/quienes-somos" variant="ghost"> Quiénes somos </Link>
+        <Link href="/#contacto" variant="ghost"> Contáctanos </Link>
+        <Link href="/campus-virtual" className="ml-2"> Campus virtual </Link>
       </nav>
+
+      <MobileMenu client:load />
     </div>
   </div>
 </header>

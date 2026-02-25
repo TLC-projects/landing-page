@@ -1,0 +1,87 @@
+---
+import HeroProgram from '@/components/sections/HeroProgram.astro';
+import ProgramFeatures from '@/components/sections/ProgramFeatures.astro';
+import Layout from '@layouts/Layout.astro';
+import { Check } from 'lucide-react';
+
+const benefits = [
+  'Hablar y comprender el idioma en situaciones reales.',
+  'Mejorar la pronunciación y fluidez.',
+  'Leer y escribir textos acordes al nivel adquirido.',
+  'Desarrollar competencias de saber hacer y hábitos de estudio eficaces.'
+]
+---
+
+<Layout
+  title="Programa Inglés en el Mundo"
+  description="Alcanza nivel C1 en inglés con nuestro programa intensivo. Modalidad presencial, semipresencial y virtual. Metodología comunicativa con profesores certificados."
+  keywords="inglés en el mundo, curso intensivo inglés, inglés C1, aprender inglés Colombia, clases de inglés, programa bilingüe, TLC inglés"
+>
+  <HeroProgram
+    programa="Programa"
+    titulo="Inglés en el Mundo"
+    src='/audios/frances.mp3'
+    descripcion="El objetivo principal es que los estudiantes alcancen un nivel C1 en el Marco Común Europeo de Referencia para las lenguas."
+    imagen="/assets/images/Banner_1.webp"
+  />
+  <ProgramFeatures
+    title="Características principales del programa"
+    features={[
+      {
+        title: 'Modalidad Flexible',
+        description:
+          'Ofrecen cursos presenciales, semipresenciales y virtuales para adaptarse a las necesidades del cliente.'
+      },
+      {
+        title: 'Metodología',
+        description: 'Se utiliza una metodología comunicativa y dinámica, con docentes capacitados.'
+      },
+      {
+        title: 'Duración',
+        description:
+          'La duración total es de aproximadamente dos años (1000 horas), aunque esto puede variar según el nivel de ingreso del estudiante, determinado por un examen de clasificación inicial.'
+      },
+      {
+        title: 'Estructura de Estudio',
+        description:
+          'El programa se divide en niveles desde A1 hasta C1, con un total de horas que varían entre 320 y 360 por cada dos niveles.'
+      },
+      {
+        title: 'Certificación',
+        description: 'Se otorga certificación por cada nivel aprobado.'
+      }
+    ]}
+  />
+
+  <section class="bg-accent-600 dark:bg-accent-700 text-white " id="beneficios">
+    <div class="u-wrapper md:pb-6 py-6 mx-auto">
+      <div class="relative grid md:grid-cols-2 gap-10 items-center justify-items-center">
+        <img
+          src="/assets/images/img_beneficios.webp"
+          alt="Imagen de información del programa"
+          class="md:-mt-18 mt-0 w-md"
+        />
+        <div class="flex flex-col gap-4">
+          <h2 class="text-3xl font-bold">Beneficios clave para el estudiante</h2>
+          <ul class="space-y-5">
+            {
+              benefits.map((benefit) => (
+                <li class="flex items-start gap-4">
+                  <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary-600 shrink-0">
+                    <Check size={14} />
+                  </span>
+                  <p>{benefit}</p>
+                </li>
+              ))
+            }
+          </ul>
+          <p>
+            Para obtener más información detallada, puede ponerse en contacto con nosotros a través de nuestro correo
+            electrónico <a class="font-bold" href="mailto:servicliente@ceaitlc.com.co">servicliente@ceaitlc.com.co</a> o llamando
+            al teléfono (601) 6333300 EXT 107
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

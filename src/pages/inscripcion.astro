@@ -1,0 +1,175 @@
+---
+import { Audio } from '@/components/ui';
+import Layout from '@/layouts/Layout.astro';
+import { Check } from 'lucide-react';
+
+const criterios = [
+  { text: 'Presentación de documento de identidad.' },
+  { text: 'Realizar examen de clasificación de inglés.' },
+  { text: 'Llenar el formato de inscripción.' },
+  { text: 'Asegurar su pago mediante convenio o por pago particular.' }
+];
+
+const itemsFormula = [
+  { title: 'Aprendizaje Continuo:', text: 'Un sistema diseñado para que hables desde el primer día.' },
+  { title: 'Creatividad Aplicada:', text: 'Clases dinámicas donde tú eres el protagonista.' },
+  { title: 'Legalización Financiera y Matrícula', text: 'Te acompañamos hasta que alcances la cima de la fluidez.' }
+];
+
+const itemsElegirnos = [
+  { title: 'Flexibilidad Total:', text: 'Elige tu modalidad entre Virtual o Presencial.' },
+  { title: 'Exclusividad Real:', text: 'Grupos élite de máximo 15 personas para garantizar tu participación.' },
+  { title: 'Experticia Garantizada:', text: 'Profesores certificados con pasión por la enseñanza.' },
+  { title: 'Inmersión Efectiva:', text: 'Sesiones de 1h 40 min, 5 veces por semana, para resultados acelerados.' },
+  { title: 'Acompañamiento VIP:', text: 'Seguimiento personalizado para que nunca detengas tu progreso.' }
+];
+---
+
+<Layout
+  title="Inscripciones y Admisiones"
+  description="Inscríbete en TLC Colombia. Conoce los requisitos de admisión y beneficios de nuestros programas de inglés y francés. Grupos reducidos, horarios flexibles y profesores certificados."
+  keywords="inscripción TLC, admisiones cursos de inglés, inscribirse francés, matrícula idiomas, requisitos admisión, examen clasificación inglés, Colombia"
+>
+  <Audio a11y className="mx-auto my-4" src="/assets/audio/conoce-mas.mp3" client:only />
+  <section class="bg-primary-100/20 dark:bg-secondary-900 overflow-visible relative lg:my-16" id="inscripciones mecanismos de admision">
+    <div class="u-wrapper md:pb-6 py-6 mx-auto">
+      <div class="relative grid md:grid-cols-2 gap-10 items-center justify-items-center">
+        <img
+          src="/assets/images/img_beneficios.webp"
+          alt="Imagen de información del programa"
+          class="w-md relative md:-mt-24 md:-mb-16 z-10"
+        />
+        <div class="flex flex-col gap-4">
+          <h1 class="text-4xl font-bold">Inscripciones</h1>
+          <h2 class="text-3xl font-bold">Mecanismos de admisión:</h2>
+          <p>El aspirante se admite mediante los siguientes criterios:</p>
+          <ul class="space-y-5">
+            {
+              criterios.map((criterio) => (
+                <li class="flex items-start gap-4">
+                  <span class="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-accent text-white dark:text-primary-800 shrink-0">
+                    <Check size={14} />
+                  </span>
+                  <p>{criterio.text}</p>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="u-wrapper mx-auto pt-4 md:py-4 lg:py-2" id="prodecimientos de inscripciones">
+    <h2 class="text-center text-4xl font-bold md:mt-5">Procedimiento de inscripciones:</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 p-6 md:p-12 lg:p-16 text-center">
+      <!-- 1 -->
+      <div class="border-2 gap-2 flex flex-col items-center rounded-3xl border-secondary-200 py-6 px-10">
+        <img src="/assets/icons/Paso_1.svg" alt="Imagen de información del programa" class="w-28 h-28 dark"/>
+        <h3 class="font-bold">Registro de Información y Documentación</h3>
+        <ul class="list-disc mt-4 ml-4 text-left">
+          <li>
+            <span>Documento de Identidad (Cédula, T.I. o Pasaporte)</span>
+          </li>
+          <li>
+            <span>Formulario de Inscripción (Digital o Físico) debidamente diligenciado.</span>
+          </li>
+        </ul>
+      </div>
+      <!-- 2 -->
+      <div class="border-2 gap-2 flex flex-col items-center rounded-3xl border-secondary-200 py-6 px-10">
+        <img src="/assets/icons/Paso_2.svg" alt="Imagen de información del programa" class="w-28 h-28  dark" />
+        <h3 class="font-bold">Legalización Financiera y Matrícula</h3>
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.</p>
+      </div>
+      <!-- 3 -->
+      <div class="border-2 gap-2 flex flex-col items-center rounded-3xl border-secondary-200 py-6 px-10">
+        <img src="/assets/icons/Paso_3.svg" alt="Imagen de información del programa" class="w-28 h-28 dark" />
+        <h3 class="font-bold">Descubrimos tu nivel:</h3>
+        <p class="text-center">Valoración diagnóstica sin costo</p>
+      </div>
+      <!-- 4 -->
+      <div
+        class="border-2 rounded-3xl flex md:items-start flex-col text-left md:text-left md:flex-row lg:flex-row items-center gap-3 lg:gap-10 border-secondary-200 py-6 px-10 md:px-12 lg:px-40 col-span-1 md:col-span-2 lg:col-span-3"
+      >
+        <img src="/assets/icons/Paso_4.svg" alt="Imagen de información del programa" class="w-28 h-28 dark shrink-0" />
+        <span>
+          <h3 class="font-bold">Inducción y Seguimiento Personalizado</h3>
+          <ul class="list-disc mt-4 ml-4">
+            <li>
+              <span
+                ><strong>Acción:</strong> Entrega de credenciales de acceso (si es virtual) o carnetización (si es presencial).</span
+              >
+            </li>
+            <li class="my-4">
+              <span
+                ><strong>Bienvenida:</strong> Charla sobre la Actitud Mental Positiva y la importancia de la Perseverancia
+                para alcanzar la cima (dominio del idioma).</span
+              >
+            </li>
+            <li>
+              <span
+                ><strong>Cargue al SIET:</strong> Registro del estudiante en el Sistema de Información de la Educación para
+                el Trabajo.</span
+              >
+            </li>
+          </ul>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="u-wrapper mx-auto" id="metodologia">
+    <div class="text-center flex flex-col gap-4 px-6 md:px-14 lg:px-16">
+      <h2 class="text-4xl font-bold">Metodología</h2>
+      <p>Domina un Nuevo Idioma con el Método TLC: Donde tu Potencial no tiene Límites</p>
+      <p>
+        En TLC, fusionamos una mentalidad de éxito con la metodología más robusta del mercado. No solo aprendes
+        palabras, desarrollas la confianza para conquistar el mundo.
+      </p>
+    </div>
+    <div class="relative grid md:grid-cols-2 gap-6 lg:gap-20 p-6 md:p-14 lg:p-16">
+      <div id="nuestra-formula-de-exito">
+        <h3 class="font-bold text-3xl mb-4">Nuestra fórmula de éxito:</h3>
+        <ul class="space-y-5">
+          {
+            itemsFormula.map((item) => (
+              <li class="flex items-start gap-4">
+                <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent-600 text-white shrink-0">
+                  <Check size={14} />
+                </span>
+                <p>
+                  <strong>{item.title}</strong> {item.text}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div id="por-que-elegirnos">
+        <h3 class="font-bold text-3xl mb-4">¿Por qué elegirnos?</h3>
+        <ul class="space-y-5">
+          {
+            itemsElegirnos.map((item) => (
+              <li class="flex items-start gap-4">
+                <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent-600 text-white shrink-0">
+                  <Check size={14} />
+                </span>
+                <p>
+                  <strong>{item.title}</strong> {item.text}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  html[data-dark-mode="true"] .dark {
+    filter: invert(1) brightness(9);
+  }
+</style>

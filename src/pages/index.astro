@@ -1,7 +1,224 @@
 ---
+import { Card, A11yButton } from '@components/ui';
+
 import Layout from '@layouts/Layout.astro';
+import HeroCarousel from '@components/sections/HeroCarousel';
+import Communication from '@components/sections/Communication';
+import FormularioContacto from '@/components/sections/FormularioContacto.astro';
+
+const slides = [
+  {
+    id: 1,
+    title: 'Programa Inglés en el Mundo',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.',
+    image: '/assets/images/Banner_1.webp',
+    url: '/programas/ingles-mundo'
+  },
+  {
+    id: 2,
+    title: 'Programa Francés',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.',
+    image: '/assets/images/Banner_2.webp',
+    url: '/programas/frances'
+  },
+  {
+    id: 3,
+    title: 'Cursos de Capacitación Docente',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.',
+    image: '/assets/images/Banner_3.webp',
+    url: '/programas/capacitacion-docente'
+  },
+  {
+    id: 4,
+    title: 'Cursos de Fundamentos de la Enseñanza del Inglés en Colombia',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.',
+    image: '/assets/images/Banner_4.webp',
+    url: '/programas/fundamentos'
+  }
+];
+
+const programas = [
+  {
+    id: 1,
+    title: 'Programa Inglés en el Mundo',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.',
+    link: '/programas/ingles-mundo'
+  },
+  {
+    id: 2,
+    title: 'Programa Francés',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.',
+    link: '/programas/frances'
+  },
+  {
+    id: 3,
+    title: 'Cursos capacitación docente',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.',
+    link: '/programas/capacitacion-docente'
+  },
+  {
+    id: 4,
+    title: 'Cursos de Fundamentos de la Enseñanza del Inglés en Colombia',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.',
+    link: '/programas/fundamentos'
+  }
+];
+
+const eventos = [
+  {
+    dia: '02',
+    mes: 'febrero',
+    titulo: 'Programa Inglés en el Mundo'
+  },
+  {
+    dia: '02',
+    mes: 'febrero',
+    titulo: 'Programa Francés'
+  },
+  {
+    dia: '02',
+    mes: 'febrero',
+    titulo: 'Cursos Capacitación docente'
+  },
+  {
+    dia: '02',
+    mes: 'febrero',
+    titulo: 'Cursos de Fundamentos de la Enseñanza del Inglés en Colombia'
+  }
+];
+
+const services = [
+  {
+    id: 1,
+    title: 'Asesorías',
+    description:
+      'Acompañamiento a instituciones educativas y entidades públicas y privadas en procesos y planes de mejoramiento de la enseñanza de idiomas.',
+    image: '/assets/images/Img_Asesorias.webp',
+    url: '/comunicaciones-institucionales'
+  },
+  {
+    id: 2,
+    title: 'Talleres y Capacitaciones',
+    description: 'Formación especializada para docentes y profesionales en el área de idiomas.',
+    image: '/assets/images/Img_Asesorias.webp',
+    url: '/comunicaciones-institucionales'
+  },
+  {
+    id: 3,
+    title: 'Consultoría Educativa',
+    description: 'Servicios de consultoría para mejorar procesos educativos en la enseñanza de lenguas.',
+    image: '/assets/images/Img_Asesorias.webp',
+    url: '/comunicaciones-institucionales'
+  }
+];
 ---
 
-<Layout>
+<Layout
+  title="Centro de Entrenamiento & Aprendizaje de Idiomas TLC"
+  description="Aprende inglés y francés con los mejores programas de TLC. Ofrecemos cursos de idiomas, capacitación docente y programas especializados para instituciones educativas en Colombia."
+  keywords="TLC Colombia, cursos de inglés, cursos de francés, capacitación docente, aprendizaje de idiomas, centro de idiomas Colombia, inglés en el mundo, bilingüismo Colombia"
+>
+  <HeroCarousel slides={slides} client:load />
 
+  <section id="oferta" class="py-16">
+    <div class="u-wrapper mx-auto px-4">
+      <h2 class="text-3xl text-center md:text-4xl font-bold text-secondary-900 dark:text-white">Oferta Académica</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        {
+          programas.map((programa) => (
+            <Card title={programa.title} description={programa.description} url={programa.link} label="Conoce más" />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="calendario" class="py-16 bg-primary-100/15">
+    <div class="u-wrapper mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 dark:text-white text-center mb-4">Calendario académico</h2>
+      <p class="text-center mb-12 max-w-3xl mx-auto">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam euismod tincidunt ut laoreet.
+      </p>
+
+      <div class="calendar grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 bg-background rounded-xl">
+        {
+          eventos.map((evento) => (
+            <div class="p-6 text-center calendar__event">
+              <div class="text-5xl md:text-6xl font-bold text-secondary-900 dark:text-white mb-2">{evento.dia}</div>
+              <div class="text-secondary-500 dark:text-secondary-400 text-sm uppercase tracking-wide mb-6">{evento.mes}</div>
+              <div class="text-secondary-700 dark:text-secondary-400 font-medium text-sm leading-snug">{evento.titulo}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="quienes-somos" class="py-16">
+    <div class="u-wrapper mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 dark:text-white mb-6">¿Quiénes somos?</h2>
+          <div class="prose prose-lg  space-y-4">
+            <p>
+              EL CENTRO DE ENTRENAMIENTO Y APRENDIZAJE DE IDIOMAS TLC LTDA., Desde el 2009 es una empresa que ofrece
+              programas y servicios de alta calidad para la formación integral en inglés y francés a estudiantes de
+              educación básica, media y superior, a docentes en la enseñanza de inglés y francés, a instituciones
+              educativas y entidades públicas y privadas, enfocada en capacitación comportamental, asesoría y desarrollo
+              profesional, orientadas al fortalecimiento de las competencias comunicativas y pedagógicas y culturales en
+              la enseñanza de idiomas y los procesos de bilingüismo en Colombia.
+            </p>
+          </div>
+        </div>
+
+        <div class="w-80 h-80 md:w-96 md:h-96 mx-auto">
+          <img src="/assets/images/Img_quienes_somos.webp" alt="Estudiante sonriente de TLC" class="w-full h-full" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quienes-somos" class="py-16">
+    <div class="u-wrapper mx-auto px-4 md:px-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 dark:text-white text-center mb-12">
+        Comunicaciones institucionales
+      </h2>
+      <Communication slides={services} client:idle />
+    </div>
+  </section>
+
+  <FormularioContacto />
 </Layout>
+
+<style>
+  .calendar__event {
+    position: relative;
+  }
+  .calendar__event:not(:nth-child(1))::after {
+    --size: 100%;
+    --padding: 20%;
+    --position: 50%;
+
+    content: '';
+    position: absolute;
+    top: var(--position);
+    left: var(--position);
+    width: calc(var(--size) - var(--padding));
+    height: var(--size);
+    border-top: 1px solid var(--color-secondary-200);
+    transform: translate(calc(var(--position) * -1), calc(var(--position) * -1));
+  }
+
+  @media (width >= 48rem) {
+    .calendar__event:not(:nth-child(1))::after {
+      width: var(--size);
+      height: calc(var(--size) - var(--padding));
+      border-top: none;
+      border-left: 1px solid var(--color-secondary-200);
+    }
+  }
+</style>

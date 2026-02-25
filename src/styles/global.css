@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-dark-mode=true], [data-dark-mode=true] *));
+
 *,
 *::before,
 *::after {
@@ -10,56 +12,31 @@ body.debug * {
     outline: 1px solid hsl(0, 100%, 51%) !important;
 }
 
-/* Screen reader only - Hidden visually but accessible to screen readers */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-}
-
-.focus\:not-sr-only:focus {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: inherit;
-    margin: inherit;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-}
-
-/* High contrast mode */
-.high-contrast {
-    --color-primary: hsl(217, 100%, 25%);
-    --color-secondary: hsl(220, 100%, 35%);
-    --color-accent: hsl(225, 100%, 45%);
-}
-
-.high-contrast body {
-    background: #fff;
-    color: #000;
-}
-
-.high-contrast a {
-    text-decoration: underline;
-}
-
-.high-contrast button {
-    border: 2px solid #000;
-}
-
 [class*="u-wrapper"] {
     width: min(100% - var(--wrapper-padding, 2rem), var(--wrapper-width, 140ch));
 }
 
 .u-flow>*+* {
     margin-block-start: var(--flow-space, 1em);
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src:
+        url('/assets/fonts/OpenSans.woff2') format('woff2'),
+        url('/assets/fonts/OpenSans.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src:
+        url('/assets/fonts/OpenSans-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
 }
 
 :root {
@@ -151,6 +128,8 @@ body.debug * {
 
 
 @theme {
+    --font-sans: "Open Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
     --color-background: var(--background);
     --color-card: var(--card);
     --color-popover: var(--popover);
@@ -187,4 +166,93 @@ body.debug * {
     --color-secondary-700: var(--secondary-700);
     --color-secondary-800: var(--secondary-800);
     --color-secondary-900: var(--secondary-900);
+}
+
+[data-dark-mode=true] {
+    /* Backgrounds oscuros */
+    --background: hsl(220, 15%, 10%);
+    --card: hsl(220, 15%, 15%);
+    --popover: hsl(220, 15%, 12%);
+
+    /* Primary colors invertidos para modo oscuro */
+    --primary: hsl(217, 91%, 75%);
+    --primary-100: hsl(217, 91%, 95%);
+    --primary-200: hsl(217, 91%, 85%);
+    --primary-300: hsl(217, 91%, 75%);
+    --primary-400: hsl(217, 91%, 65%);
+    --primary-500: hsl(217, 91%, 55%);
+    --primary-600: hsl(217, 91%, 45%);
+    --primary-700: hsl(217, 91%, 35%);
+    --primary-800: hsl(217, 91%, 25%);
+    --primary-900: hsl(217, 91%, 15%);
+
+    /* Secondary colors ajustados */
+    --secondary: hsl(220, 50%, 70%);
+    --secondary-100: hsl(220, 50%, 90%);
+    --secondary-200: hsl(220, 50%, 80%);
+    --secondary-300: hsl(220, 50%, 70%);
+    --secondary-400: hsl(220, 50%, 60%);
+    --secondary-500: hsl(220, 50%, 50%);
+    --secondary-600: hsl(220, 50%, 40%);
+    --secondary-700: hsl(220, 50%, 30%);
+    --secondary-800: hsl(220, 50%, 22%);
+    --secondary-900: hsl(220, 50%, 15%);
+
+    /* Accent colors más brillantes para contraste */
+    --accent: hsl(225, 73%, 65%);
+    --accent-100: hsl(225, 73%, 95%);
+    --accent-200: hsl(225, 73%, 85%);
+    --accent-300: hsl(225, 73%, 75%);
+    --accent-400: hsl(225, 73%, 65%);
+    --accent-500: hsl(225, 73%, 57%);
+    --accent-600: hsl(225, 73%, 47%);
+    --accent-700: hsl(225, 73%, 37%);
+    --accent-800: hsl(225, 73%, 27%);
+    --accent-900: hsl(225, 73%, 20%);
+}
+
+/* Soporte OKLCH para modo oscuro en navegadores modernos */
+@supports (color: oklch(0% 0 0)) {
+    [data-dark-mode=true] {
+        /* Backgrounds oscuros en OKLCH */
+        --background: oklch(20% 0.02 250);
+        --card: oklch(25% 0.02 250);
+        --popover: oklch(22% 0.02 250);
+
+        /* Primary colors en OKLCH - más claros para modo oscuro */
+        --primary: oklch(75% 0.0884 249.118);
+        --primary-100: oklch(from var(--primary) calc(l + 0.20) c h);
+        --primary-200: oklch(from var(--primary) calc(l + 0.15) c h);
+        --primary-300: oklch(from var(--primary) calc(l + 0.08) c h);
+        --primary-400: oklch(from var(--primary) calc(l - 0.05) c h);
+        --primary-500: oklch(from var(--primary) calc(l - 0.12) c h);
+        --primary-600: oklch(from var(--primary) calc(l - 0.20) c h);
+        --primary-700: oklch(from var(--primary) calc(l - 0.30) c h);
+        --primary-800: oklch(from var(--primary) calc(l - 0.40) c h);
+        --primary-900: oklch(from var(--primary) calc(l - 0.50) c h);
+
+        /* Secondary colors en OKLCH */
+        --secondary: oklch(78% 0.015 286.067);
+        --secondary-100: oklch(from var(--secondary) calc(l + 0.15) calc(c * 0.5) h);
+        --secondary-200: oklch(from var(--secondary) calc(l + 0.10) calc(c * 0.6) h);
+        --secondary-300: oklch(from var(--secondary) calc(l + 0.05) calc(c * 0.7) h);
+        --secondary-400: oklch(from var(--secondary) calc(l - 0.05) calc(c * 0.85) h);
+        --secondary-500: oklch(from var(--secondary) calc(l - 0.12) c h);
+        --secondary-600: oklch(from var(--secondary) calc(l - 0.20) c h);
+        --secondary-700: oklch(from var(--secondary) calc(l - 0.30) c h);
+        --secondary-800: oklch(from var(--secondary) calc(l - 0.40) c h);
+        --secondary-900: oklch(from var(--secondary) calc(l - 0.50) c h);
+
+        /* Accent colors en OKLCH - más brillantes */
+        --accent: oklch(70% 0.16686 250.892);
+        --accent-100: oklch(from var(--accent) calc(l + 0.25) calc(c * 0.6) h);
+        --accent-200: oklch(from var(--accent) calc(l + 0.18) calc(c * 0.7) h);
+        --accent-300: oklch(from var(--accent) calc(l + 0.10) calc(c * 0.85) h);
+        --accent-400: oklch(from var(--accent) calc(l + 0.02) calc(c * 0.95) h);
+        --accent-500: oklch(from var(--accent) calc(l - 0.08) c h);
+        --accent-600: oklch(from var(--accent) calc(l - 0.15) c h);
+        --accent-700: oklch(from var(--accent) calc(l - 0.25) c h);
+        --accent-800: oklch(from var(--accent) calc(l - 0.35) c h);
+        --accent-900: oklch(from var(--accent) calc(l - 0.45) c h);
+    }
 }

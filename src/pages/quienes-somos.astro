@@ -1,0 +1,290 @@
+---
+import ProgramFeatures from '@/components/sections/ProgramFeatures.astro';
+import { Audio } from '@/components/ui';
+import Layout from '@/layouts/Layout.astro';
+import { ArrowDownToLine, Check, Lightbulb, MountainSnow } from 'lucide-react';
+
+const politicas = [
+  'Promovemos una cultura de mejora continua en todos nuestros procesos.',
+  'Asegurando el cumplimiento de los requisitos del cliente, los legales y reglamentarios.',
+  'El ambiente laboral, la competencia y compromiso del personal.',
+  'La mejora continua de los procesos.',
+  'La adaptabilidad a las instalaciones para el cliente.',
+  'Con programas académicos de calidad y valor formativo.'
+];
+
+const downloads = [
+  {
+    name: 'Adjunto Política de Calidad.',
+    link: '/brochures/adjunto-politica-calidad.pdf'
+  },
+  {
+    name: 'Adjunto Manual de convivencia.',
+    link: '/brochures/manual-convivencia.pdf'
+  },
+  {
+    name: 'Adjunto Política de tratamiento de datos personales.',
+    link: '/brochures/politica-tratamiento-datos.pdf'
+  }
+];
+
+const items = [
+  'Aprendizaje continuo.',
+  'Creatividad.',
+  'Actitud mental positiva.',
+  'Perseveranciaos hasta que alcances la cima de la fluidez.'
+];
+
+const people = [
+  {
+    name: 'Rafael Ortega',
+    role: 'Gerente Academico',
+    image: '/assets/images/img_nuestros_progrmas.webp'
+  },
+  {
+    name: 'Luis Alejandro ',
+    role: 'Coordinador académico',
+    image: '/assets/images/img_objetivos (MCER).webp'
+  }
+];
+
+const characteristics = [
+  {
+    title: 'Calidad',
+    description:
+      'Garantizamos la excelencia en todos los procesos formativos, asegurando la mejora continua y el cumplimiento de los estándares educativos nacionales e internacionales.'
+  },
+  {
+    title: 'Compromiso',
+    description:
+      'Actuamos con responsabilidad y dedicación en la formación de docentes, contribuyendo al desarrollo profesional y al progreso del sector educativo.'
+  },
+  {
+    title: 'Innovación',
+    description:
+      'Promovemos el uso de metodologías y recursos pedagógicos actualizados que fortalezcan el aprendizaje de idiomas y la práctica docente.'
+  },
+  {
+    title: 'Interculturalidad',
+    description:
+      'Fomentamos el respeto y la valoración de la diversidad lingüística y cultural como base del entendimiento global.'
+  },
+  {
+    title: 'Ética',
+    description:
+      'Desarrollamos nuestras actividades con honestidad, respeto y transparencia, orientando nuestro actuar hacia el bien común y la formación integral.'
+  },
+  {
+    title: 'Trabajo en equipo',
+    description:
+      'Impulsamos la colaboración, el aprendizaje colectivo y la construcción conjunta del conocimiento entre docentes y estudiantes.'
+  },
+  {
+    title: 'Desarrollo humano',
+    description:
+      'Promovemos el crecimiento personal, social y profesional de cada miembro de la comunidad educativa, reconociendo su potencial y dignidad.'
+  }
+];
+---
+
+<Layout
+  title="Quiénes Somos"
+  description="Centro de Entrenamiento y Aprendizaje de Idiomas TLC - Desde 2009 ofreciendo programas de calidad en inglés y francés para estudiantes, docentes e instituciones en Colombia."
+  keywords="quiénes somos TLC, historia TLC, misión visión, centro de idiomas Colombia, formación integral idiomas, bilingüismo Colombia, valores institucionales"
+>
+  <section class="u-wrapper mx-auto py-6" id="quienes-somos">
+    <Audio a11y className="mx-auto" src="/assets/audio/conoce-mas.mp3" client:only />
+    <div class="grid px-4 grid-cols-1 md:grid-cols-2 gap-6 items-center justify-center justify-items-center">
+      <div>
+        <h2 class="text-4xl text-accent-600 mb-4 font-bold">¿Quiénes somos?</h2>
+        <p>
+          EL CENTRO DE ENTRENAMIENTO Y APRENDIZAJE DE IDIOMAS TLC LTDA., Desde el 2009 es una empresa que ofrece
+          programas y servicios de alta calidad para la formación integral de inglés y francés a estudiantes de
+          educación básica, media y superior, a docentes en la enseñanza de inglés y francés, a instituciones educativas
+          y a entidades públicas y privadas, enfocadas en capacitación y entrenamiento, asesorías y desarrollo
+          profesional, orientados al fortalecimiento de las competencias comunicativas y pedagógicas y culturales en la
+          enseñanza de idiomas y los procesos de bilingüismo en Colombia.
+        </p>
+      </div>
+      <img
+        src="/assets/images/Img_quienes_somos.webp"
+        alt="Imagen de quienes somos"
+        class="w-full max-w-md h-80 object-contain"
+      />
+    </div>
+  </section>
+
+  <section class="u-wrapper mx-auto py-12" id="mision-vision">
+    <div class="grid px-4 grid-cols-1 md:grid-cols-2 md:gap-28 gap-12 items-center justify-center justify-items-center">
+      <div class="bg-accent-600/10 py-8 px-6 md:px-12 rounded-lg flex flex-col gap-4 h-full">
+        <MountainSnow size={40} className="text-accent-600 " />
+        <h3 class="font-bold text-xl">Misión</h3>
+        <p>
+          Brindar formación integral de inglés y francés a estudiantes de educación básica, media y superior y de
+          docentes en la enseñanza de inglés y francés, fomentando y fortaleciendo las competencias pedagógicas,
+          comunicativas y culturales, con enfoque en la calidad, excelencia, ética, innovación y el desarrollo humano,
+          para contribuir al mejoramiento continuo del proceso educativo en la enseñanza de inglés y francés en los
+          procesos de bilingüismo en Colombia.
+        </p>
+      </div>
+      <div class="bg-accent-600/10 py-8 px-6 md:px-12 rounded-lg flex flex-col gap-4 h-full">
+        <Lightbulb size={40} className="text-accent-600" />
+        <h3 class="font-bold text-xl">Visión</h3>
+        <p>
+          Nuestra Visión es ser una institución líder en la formación en inglés y francés a estudiantes de educación
+          básica, media y superior y de docentes en la enseñanza de idiomas en inglés y francés a nivel nacional e
+          internacional, reconocida por su eficacia académica, innovación pedagógica y compromiso con el desarrollo
+          humano, ofreciendo programas y servicios innovadores y de alta calidad que transformen la manera de abordar el
+          aprendizaje, contribuyendo a la excelencia educativa y al fortalecimiento del bilingüismo en Colombia.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-accent-600 dark:bg-accent-700 text-white" id="politicas">
+    <div class="u-wrapper md:pb-6 py-6 mx-auto">
+      <div class="relative grid md:grid-cols-2 gap-10 items-center justify-items-center">
+        <img
+          src="/assets/images/img_beneficios.webp"
+          alt="Imagen de información del programa"
+          class="w-md object-contain"
+        />
+        <div class="flex flex-col gap-4">
+          <h2 class="text-3xl font-bold">Política de Gestión de Calidad</h2>
+          <p>
+            Nuestra política de calidad se manifiesta mediante nuestro f irme compromiso con la satisfacción de nuestros
+            CLIENTES y aliados estratégicos, para satisfacer plenamente sus requerimientos y expectativas, a través de:
+          </p>
+          <ul class="space-y-5">
+            {
+              politicas.map((politic) => (
+                <li class="flex items-start gap-4">
+                  <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary-600 shrink-0">
+                    <Check size={14} />
+                  </span>
+                  <p>{politic}</p>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="u-wrapper mx-auto py-12" id="download">
+    <div class="relative grid md:grid-cols-2 gap-10">
+      <div>
+        <h3 class="font-bold text-3xl mb-4">Principios:</h3>
+        <ul class="space-y-5">
+          {
+            items.map((item) => (
+              <li class="flex items-start gap-4">
+                <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent-600 text-white shrink-0">
+                  <Check size={14} />
+                </span>
+                <p>{item}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div id="politicas-institucionales">
+        <h3 class="font-bold text-3xl mb-4">Políticas institucionales</h3>
+        <ul class="space-y-5">
+          {
+            downloads.map((download) => (
+              <li class="flex items-start gap-4">
+                <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent-600 text-white shrink-0">
+                  <ArrowDownToLine size={14} />
+                </span>
+                <a href={download.link} download class="underline">
+                  {download.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-6 bg-accent-600/10" id="estructura-organizacional">
+    <div class="u-wrapper mx-auto flex flex-col gap-12">
+      <h3 class="font-bold text-3xl text-center">Estructura Organizacional</h3>
+      <div class="grid [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))] justify-items-center gap-12">
+        {
+          people.map((person) => (
+            <div class="flex gap-2 items-center">
+              <img src={person.image} alt={`Foto de ${person.name}`} class="w-32 h-32 object-cover" />
+              <div>
+                <p class="font-bold">{person.name}</p>
+                <p class="text-sm text-secondary-600">{person.role}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <div>
+        <p class="text-center">
+          Correo: <a href="mailto:servicliente@ceaitlc.com.co" class="font-bold">servicliente@ceaitlc.com.co</a>
+        </p>
+        <p class="text-center">Cel: <strong>+57 (321) 000 00 00</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="u-wrapper mx-auto py-12" id="characteristics">
+    <div
+      class="grid
+        [grid-template-columns:repeat(auto-fit,minmax(250px,1fr))]
+        gap-y-18
+        divide-y
+        sm:divide-y-0
+        sm:divide-x
+        divide-secondary-200"
+    >
+      {
+        characteristics.map((item) => (
+          <div class="p-8 text-center flex flex-col items-center gap-4">
+            <img src="/assets/icons/icon_enfoques.svg" alt="Icono de gramática" class="w-12 h-12" />
+
+            <h3 class="font-bold text-lg">{item.title}</h3>
+
+            <p class="text-secondary-600 leading-relaxed">{item.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <ProgramFeatures
+    title="Principios"
+    description="En el Centro de Entrenamiento y Aprendizaje de Idiomas TLC, nuestra filosofía de formación se fundamenta en cuatro pilares que impulsan el crecimiento personal y profesional de nuestra comunidad:"
+    bgColor="bg-accent-600"
+    highlightColor="bg-[#00CAFF] text-white"
+    titleClass="text-white"
+    features={[
+      {
+        title: 'Aprendizaje Continuo:',
+        description:
+          'Evolución sin límites.<br/> Entendemos que aprender es una capacidad permanente del ser humano. Nos retamos a descubrir tu potencial individual mediante procesos estimulantes y significativos que fortalecen tu autoestima y convierten cada nuevo conocimiento en una experiencia de vida.'
+      },
+      {
+        title: 'Creatividad:',
+        description:
+          'El arte de generar soluciones.<br/> Fomentamos la libertad mental y la innovación. En TLC, formamos personas creadoras que no temen al cambio y que utilizan su imaginación para forjar realidades, inventar soluciones y mirar el mundo a través de múltiples lentes.'
+      },
+      {
+        title: 'Actitud Mental Positiva:',
+        description:
+          'Confianza en la acción.<br/> Sustituimos el temor por la convicción. Promovemos una visión interna de éxito que te permite interactuar con el entorno de forma flexible y entusiasta. En nuestra institución, si lo puedes proyectar mentalmente, lo puedes alcanzar materialmente.'
+      },
+      {
+        title: 'Perseverancia:',
+        description:
+          'Constancia hacia la cima.<br/> La maestría en un idioma es una carrera de fondo. Te inspiramos a mantener la firmeza en tus propósitos con la filosofía del alpinista: disfrutando el ascenso, pero con la mirada fija en la cima. En TLC, la constancia es la garantía de tu victoria.'
+      }
+    ]}
+  />
+</Layout>

@@ -1,6 +1,29 @@
 ---
+import { Form } from '@components/ui';
+import { Image } from 'astro:assets';
 ---
 
-<section class="py-16 bg-linear-to-br from-accent-600 to-accent-700 relative overflow-hidden">
+<section 
+  id="contacto" 
+  class="py-16 overflow-hidden bg-accent-600 dark:bg-accent-700 bg-cover bg-center"
+  style="background-image: url('/assets/images/Background_formas.webp')"
+>
+  <div class="u-wrapper mx-auto px-4 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Image -->
+      <div class="order-2 lg:order-1">
+        <div class="max-w-240 mx-auto">
+          <Image
+            src="/assets/images/Img_contactenos.webp"
+            alt="Persona sonriente trabajando en laptop"
+            class="w-full h-full "
+            width={300}
+            height={300}
+          />
+        </div>
+      </div>
 
+      <Form client:load />
+    </div>
+  </div>
 </section>

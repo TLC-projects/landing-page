@@ -1,0 +1,111 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import {Audio} from '@/components/ui';
+import { Check } from 'lucide-react';
+import Breadcrumb from '@/components/sections/Breadcrumb.astro';
+
+const capacitaciones = [
+  'Programas de idiomas especialmente diseñados para llevar a los estudiantes a lograr sus objetivos.',
+  'Cursos y talleres de actualización en la metodología de la enseñanza de idiomas.'
+];
+
+const asesorias = [
+  'Diagnóstico del nivel de idiomas.',
+  'Revisión curricular.',
+  'Observación de clase.'
+];
+
+const desarrolloProfesional = [
+  'Fortalecimiento pedagógico y didáctico, realizando talleres de actualización metodológica en la enseñanza de idiomas (enfoque comunicativo, aprendizaje basado en tareas, gamificación, etc.).',
+  'Desarrollar seminarios sobre evaluación del aprendizaje en contextos bilingües.',
+  'Implementar comunidades de práctica docente para compartir experiencias pedagógicas.',
+  'Fomentar proyectos de innovación educativa, donde los docentes diseñen materiales o recursos digitales propios.',
+  'Mejorar el nivel de competencia comunicativa en el idioma extranjero, fortaleciendo las habilidades de comprensión, producción oral y escrita de los docentes.',
+  'Entrenamiento, diseño e implementación de pruebas internacionales.'
+]
+---
+
+<Layout
+  title="Comunicaciones Institucionales"
+  description="Servicios de capacitación, asesoría y desarrollo profesional para instituciones educativas. Fortalecimiento en competencias comunicativas y pedagógicas en la enseñanza de idiomas en Colombia."
+  keywords="comunicaciones institucionales, asesoría educativa, capacitación docente, desarrollo profesional, formación docentes, bilingüismo institucional, TLC Colombia"
+>
+  <section class="u-wrapper mx-auto py-4 flex flex-col gap-2" id="titulo">
+    <Audio a11y className="mx-auto" src="/assets/audio/conoce-mas.mp3" client:only />
+    <Breadcrumb
+        items={[
+          { label: 'Inicio', href: `/` },
+          { label: 'Comunicaciones institucionales' }
+        ]}
+      />
+    <h2 class="text-4xl text-primary-700 font-bold text-center">Comunicaciones institucionales</h2>
+    <p class="text-primary-700 text-center">Nuestras actividades se centran en tres campos de acción.</p>
+  </section>
+
+  <section class="u-wrapper mx-auto py-4" id="capacitaciones">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 p-4">
+      <img src="/assets/images/Img_Asesorias.webp" alt="Asesorías" class="w-auto md:w-3/4 h-auto object-cover" />
+      <div class="flex flex-col gap-3">
+        <h3 class="text-3xl text-accent-600 font-bold">Capacitación y Entrenamiento</h3>
+        <ul class="space-y-5">
+          {
+            capacitaciones.map((capacitacion) => (
+              <li class="flex items-start gap-4">
+                <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent-600 text-white shrink-0">
+                  <Check size={14} />
+                </span>
+                <p>{capacitacion}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-4 bg-accent-600/10" id="asesorias">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 p-4 u-wrapper mx-auto">
+      <img src="/assets/images/Img_Asesorias.webp" alt="Asesorías" class="w-auto md:w-3/4 h-auto object-cover" />
+      <div class="flex flex-col gap-3">
+        <h3 class="text-3xl text-accent-600 font-bold">Asesorías</h3>
+        <p>
+          Acompañamiento a instituciones educativas y entidades públicas y privadas en procesos y planes de mejoramiento
+          de la enseñanza de idiomas, las cuales incluyen:
+        </p>
+        <ul class="space-y-5">
+          {
+            asesorias.map((asesoria) => (
+              <li class="flex items-start gap-4">
+                <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent-600 text-white shrink-0">
+                  <Check size={14} />
+                </span>
+                <p>{asesoria}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="u-wrapper mx-auto py-4" id="desarrollo-profesional">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 p-4">
+      <img src="/assets/images/Img_Asesorias.webp" alt="Asesorías" class="w-auto md:w-3/4 h-auto object-cover" />
+      <div class="flex flex-col gap-3">
+        <h3 class="text-3xl text-primary-700 font-bold">Desarrollo Profesional para docentes</h3>
+        <ul class="space-y-5">
+          {
+            desarrolloProfesional.map((desarrollo) => (
+              <li class="flex items-start gap-4">
+                <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent-600 text-white shrink-0">
+                  <Check size={14} />
+                </span>
+                <p>{desarrollo}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+</Layout>

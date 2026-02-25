@@ -1,0 +1,44 @@
+---
+import { Audio, Link } from '@/components/ui';
+import { cn } from '@/lib/utils';
+
+interface Props {
+  programa: string;
+  titulo: string;
+  descripcion: string;
+  imagen: string;
+  reverse?: boolean;
+  src?: string;
+}
+
+const { programa, titulo, descripcion, imagen, reverse = false, src } = Astro.props;
+---
+
+<section
+  class="relative md:h-120 h-auto flex flex-col items-center justify-between overflow-hidden text-white py-6 gap-4"
+>
+  {src && <Audio a11y className="mx-auto" src={src} client:only />}
+  <img src={imagen} alt={titulo} class="absolute inset-0 w-full h-full object-cover" />
+  <div class="absolute inset-0 bg-primary-900/20"></div>
+  <div class={`grid md:grid-cols-2 items-center h-full u-wrapper z-10 px-6 mx-auto gap-5`}>
+    <div class={cn('flex flex-col gap-4', reverse ? 'md:order-2 text-right' : 'md:order-1 text-left')}>
+      <p class="text-xl">
+        {programa}
+      </p>
+
+      <h1 class="text-3xl md:text-4xl font-bold">
+        {titulo}
+      </h1>
+
+      <p class="text-2xl max-w-xl">
+        {descripcion}
+      </p>
+    </div>
+    <div class={cn('flex flex-col gap-4', reverse ? 'md:order-1' : 'md:order-2')}></div>
+  </div>
+  <div class="flex gap-8 md:flex-row flex-col z-10">
+    <Link href="/brochures/ingles-mundo.pdf" download size="lg"> Ver brochure </Link>
+    <Link href="/inscripcion" size="lg"> Inscripción </Link>
+    <Link href="/#contacto" size="lg"> Contáctanos </Link>
+  </div>
+</section>

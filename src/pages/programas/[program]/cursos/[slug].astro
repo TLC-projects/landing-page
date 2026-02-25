@@ -1,0 +1,77 @@
+---
+import Breadcrumb from '@/components/sections/Breadcrumb.astro';
+import { Audio, Link } from '@/components/ui';
+import Layout from '@/layouts/Layout.astro';
+import { getCourses, getCourseBySlug, getProgramLabel, getProgramSlug, type ProgramId } from '@/lib/courses-service';
+
+// Genera rutas dinámicas para cada programa y curso
+export async function getStaticPaths() {
+  const courses = await getCourses();
+
+  // Para cada curso, crea una ruta combinando programa + slug
+  return courses.map((course) => {
+    const programSlug = getProgramSlug(course.program as ProgramId);
+
+    return {
+      params: {
+        program: programSlug, // /programas/capacitacion-docente/...
+        slug: course.id // .../cursos/metodos-evaluacion-formativa
+      },
+      props: { course }
+    };
+  });
+}
+
+const { slug, program } = Astro.params;
+
+const course = await getCourseBySlug(slug as string);
+if (!course) {
+  return Astro.redirect('/404');
+}
+
+// Validar que el curso pertenezca al programa del slug
+const expectedProgramSlug = getProgramSlug(course.program as ProgramId);
+if (expectedProgramSlug !== program) {
+  return Astro.redirect('/404');
+}
+
+const programLabel = getProgramLabel(course.program as ProgramId);
+---
+
+<Layout
+  title={course.title}
+  description={`${course.description} - Curso de ${programLabel} en TLC Colombia. Duración: ${course.duration}.`}
+  keywords={`${course.title}, ${programLabel}, curso ${course.id}, TLC Colombia, capacitación idiomas`}
+>
+  <Audio a11y className="mx-auto" src="/assets/audio/conoce-mas.mp3" client:only />
+  <section class={` md:h-auto h-auto flex flex-col items-center justify-center overflow-hidden py-12`}>
+    <div class="u-wrapper mx-auto mb-6">
+      <Breadcrumb
+        items={[
+          { label: programLabel, href: `/programas/${program}` },
+          { label: course.title }
+        ]}
+      />
+    </div>
+    <div class={`container mx-auto grid md:grid-cols-2 gap-4 lg:gap-4 items-center md:px-12 px-4`}>
+      <div class={`flex justify-center items-center md:order-1`}>
+        <img src={course.img} alt={course.title} class="w-full max-w-lg h-auto object-contain" />
+      </div>
+
+      <div class={`flex flex-col gap-2 md:order-2`}>
+        <p class="text-lg font-bold">Curso</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-accent">
+          {course.title}
+        </h2>
+
+        <p class="text-lg mt-4 lg:mr-25">
+          {course.description}
+        </p>
+        <div class="flex gap-8 md:flex-row flex-col mt-6">
+          <Link href="/inscripcion" size="lg"> Inscripción </Link>
+          <Link href="/#contacto" size="lg"> Contáctanos </Link>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

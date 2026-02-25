@@ -22,3 +22,11 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+public/*
+!public/assets/
+!public/assets/icons
+!public/assets/fonts
+!public/assets/base
+!public/assets/images
+!public/assets/favicon.png
