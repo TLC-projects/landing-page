@@ -20,6 +20,25 @@ body.debug * {
     margin-block-start: var(--flow-space, 1em);
 }
 
+@font-face {
+    font-family: 'Open Sans';
+    src:
+        url('/assets/fonts/OpenSans.woff2') format('woff2'),
+        url('/assets/fonts/OpenSans.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src:
+        url('/assets/fonts/OpenSans-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
 :root {
     /* https://www.joshwcomeau.com/css/color-formats/#hsl-4 */
     --background: hsl(0 0% 100%);
@@ -109,6 +128,8 @@ body.debug * {
 
 
 @theme {
+    --font-sans: "Open Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
     --color-background: var(--background);
     --color-card: var(--card);
     --color-popover: var(--popover);
