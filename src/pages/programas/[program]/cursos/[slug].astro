@@ -38,7 +38,11 @@ if (expectedProgramSlug !== program) {
 const programLabel = getProgramLabel(course.program as ProgramId);
 ---
 
-<Layout>
+<Layout
+  title={course.title}
+  description={`${course.description} - Curso de ${programLabel} en TLC Colombia. Duración: ${course.duration}.`}
+  keywords={`${course.title}, ${programLabel}, curso ${course.id}, TLC Colombia, capacitación idiomas`}
+>
   <Audio a11y className="mx-auto" src="/assets/audio/conoce-mas.mp3" client:only />
   <section class={` md:h-auto h-auto flex flex-col items-center justify-center overflow-hidden py-12`}>
     <div class="u-wrapper mx-auto mb-6">

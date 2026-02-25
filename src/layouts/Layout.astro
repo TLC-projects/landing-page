@@ -6,20 +6,86 @@ import Footer from '@components/layout/Footer.astro';
 
 import '../styles/global.css';
 import '../styles/a11y.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  keywords?: string;
+  noindex?: boolean;
+  canonicalURL?: string;
+}
+
+const {
+  title = 'Centro de Entrenamiento & Aprendizaje de Idiomas TLC',
+  description = 'Centro de Entrenamiento y Aprendizaje de Idiomas TLC - Programas de inglés, francés y capacitación docente de excelencia',
+  image = '/assets/images/og-image.jpg',
+  keywords = 'TLC, idiomas, inglés, francés, capacitación docente, cursos de idiomas, aprendizaje de idiomas',
+  noindex = false,
+  canonicalURL = new URL(Astro.url.pathname, Astro.site).toString(),
+} = Astro.props;
+
+const fullTitle = title.includes('TLC') ? title : `${title} | TLC`;
+const siteUrl = Astro.site?.toString() || 'https://ceaitlc.edu.co/';
+const fullImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
+
+// Structured Data para SEO
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  name: 'Centro de Entrenamiento & Aprendizaje de Idiomas TLC',
+  description: description,
+  url: siteUrl,
+  logo: `${siteUrl}/assets/images/logo.png`,
+  sameAs: [
+    // Agregar redes sociales aquí
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'CO',
+  },
+};
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/assets/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
-    <meta
-      name="description"
-      content="Centro de Entrenamiento y Aprendizaje de Idiomas TLC - Programas de inglés, francés y capacitación docente"
-    />
-    <title>Centro de entrenamiento & Aprendizaje de idiomas tlc</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>{fullTitle}</title>
+    <meta name="title" content={fullTitle} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="TLC Centro de Idiomas" />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullImageUrl} />
+    <meta property="og:site_name" content="TLC Centro de Idiomas" />
+    <meta property="og:locale" content="es_CO" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullImageUrl} />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body class="bg-background text-secondary-800 dark:text-white font-sans">
     <div id="root" class="flex flex-col">
