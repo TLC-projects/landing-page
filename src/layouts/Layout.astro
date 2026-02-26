@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import { A11yButton, Filter, Interpreter } from '@/components/ui';
 
 import Header from '@components/layout/Header.astro';
@@ -86,6 +87,9 @@ const structuredData = {
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- View Transitions -->
+    <ClientRouter />
   </head>
   <body class="bg-background text-secondary-800 dark:text-white font-sans [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-secondary-600/20 [&::-webkit-scrollbar-thumb]:bg-secondary-700 [&::-webkit-scrollbar-thumb]:rounded-full">
     <div id="root" class="flex flex-col">
