@@ -1,3 +1,5 @@
+import { Button } from '@components/ui';
+
 import { CONTRAST, i18n } from './lib/constants';
 import type { ContrastType, ConfigA11y } from './types/types';
 
@@ -19,17 +21,15 @@ export const ContrastMenu = ({ config, setContrast, setActiveTab }: ContrastMenu
           if (value === 'no-contrast') return null;
           const label = i18n[key as keyof typeof i18n] || key;
           return (
-            <button
+            <Button
+              variant={config.contrast === value ? 'default' : 'outline'}
               key={value}
               onClick={() => setContrast(value as ContrastType)}
-              className={`w-full p-3 rounded-lg border transition-all text-left ${
-                config.contrast === value
-                  ? 'bg-accent-100 border-accent-600 text-accent-700 font-medium'
-                  : 'bg-secondary-50 border-secondary-200 hover:bg-secondary-100 dark:hover:bg-primary-600/20'
-              }`}
+              className="w-full flex items-center justify-between p-3 rounded-lg border transition-all"
               aria-pressed={config.contrast === value}>
               {label}
-            </button>
+              {config.contrast === value && <span className="text-current">✓</span>}
+            </Button>
           );
         })}
       </div>

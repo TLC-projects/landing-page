@@ -199,7 +199,7 @@ export const A11yButton = () => {
           aria-label="Menú de accesibilidad"
           aria-describedby="a11y-instructions">
           <div className="flex items-center justify-between mb-4">
-            <h3 id="a11y-dialog-title" className="font-bold text-secondary-900 dark:text-secondary-400 text-lg">
+            <h3 id="a11y-dialog-title" className="font-bold text-secondary-900 dark:text-white text-lg">
               {i18n.title}
             </h3>
             <button
@@ -241,7 +241,7 @@ export const A11yButton = () => {
 
           {activeTab === 'main' && (
             <div className="pt-4 mt-4 border-t border-secondary-200" role="region" aria-label="Consejos de accesibilidad">
-              <p className="text-xs text-secondary-600">
+              <p className="text-xs text-secondary-600 dark:text-secondary-200">
                 <strong>Consejo:</strong> Usa Tab para navegar con teclado y Enter para activar elementos.
               </p>
             </div>

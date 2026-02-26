@@ -1,7 +1,8 @@
+import { Button } from '@components/ui';
 import { Hand } from 'lucide-react';
+
 import { EVENT } from '../interpreter/lib/constants';
 import { i18n } from './lib/constants';
-import { useEffect } from 'react';
 
 interface A11yInterpreterProps {
   isVisible: boolean;
@@ -23,19 +24,17 @@ export const A11yInterpreter: React.FC<A11yInterpreterProps> = ({ isVisible, upd
   };
 
   return (
-    <button
+    <Button
+      variant={isVisible ? 'default' : 'outline'}
       onClick={toggleInterpreter}
-      className={`w-full flex items-center justify-between p-3 rounded-lg border transition-all ${
-        isVisible
-          ? 'bg-accent-100 border-accent-600 text-accent-700'
-          : 'bg-secondary-50 border-secondary-200 hover:bg-secondary-100 dark:hover:bg-primary-600/20'
-      }`}
+      size="lg"
+      className="w-full flex items-center justify-between p-3 rounded-lg border transition-all"
       aria-pressed={isVisible}>
       <span className="flex items-center gap-2">
         <Hand size={20} />
         <span className="font-medium">{i18n.interpreter}</span>
       </span>
-      {isVisible && <span className="text-accent-600">✓</span>}
-    </button>
+      {isVisible && <span className="text-current">✓</span>}
+    </Button>
   );
 };
