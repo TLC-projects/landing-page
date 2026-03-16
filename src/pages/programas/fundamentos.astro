@@ -24,73 +24,11 @@ const beneficios = [
   <HeroProgram
     programa="Cursos de"
     titulo="Fundamentos de la Enseñanza del Inglés en Colombia:"
-    descripcion="Estándares, Plan de Estudios y Evaluación."
+    descripcion="Programas de formación docente enfocado en el análisis de políticas educativas, estándares internacionales y estrategias de evaluación y acompañamiento pedagógico para fortalecer la enseñanza y la gestión educativa."
     imagen="/assets/images/Banner_4.webp"
     src="/audios/frances.mp3"
     reverse
   />
-  <ImageListSection
-    img="/assets/images/img_beneficios.webp"
-    side="right"
-    className="text-white bg-accent-600"
-    items={[
-      {
-        subtitle: 'Programa de Idiomas',
-        description:
-          'Diseñado para desarrollar habilidades comunicativas prácticas y progresivas en contextos cotidianos, académicos y laborales.'
-      },
-      {
-        subtitle: 'Cursos de Formación de Docentes',
-        description: `Incluyen cursos 
-         sobre fundamentos de la enseñanza del inglés en 
-         Colombia, estándares nacionales, planes de estudio y 
-         evaluación, con una duración de <strong>160 horas</strong> (equivalente 
-         a 3 créditos académicos).`
-      },
-      {
-        subtitle: 'Preparación para Exámenes',
-        description:
-          'Cursos enfocados en habilidades y estrategias para presentar exámenes de inglés y de metodología de enseñanza.'
-      },
-      {
-        subtitle: 'Servicios In-House',
-        description: 'Cursos y seminarios para empresas con tendencias innovadoras en formación.'
-      }
-    ]}
-  />
-
-  <section class="bg-accent-600 dark:bg-accent-700  text-white overflow-visible relative" id="beneficios-clave-para-el-estudiante">
-    <div class="u-wrapper md:pb-6 py-6 mx-auto">
-      <div class="relative grid md:grid-cols-2 gap-10 items-center justify-items-center">
-        <img
-          src="/assets/images/img_objetivos (MCER).webp"
-          alt="Imagen de información del programa"
-          class="w-md relative md:-mt-24 md:-mb-16 z-10"
-        />
-        <div class="flex flex-col gap-4">
-          <h2 class="text-3xl font-bold">Beneficios clave para el estudiante</h2>
-          <ul class="space-y-5">
-            {
-              beneficios.map((beneficio) => (
-                <li class="flex items-start gap-4">
-                  <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-secondary-100 text-primary dark:text-primary-800 shrink-0">
-                    <Check size={14} />
-                  </span>
-                  <p>{beneficio}</p>
-                </li>
-              ))
-            }
-          </ul>
-
-          <p>
-            Para obtener más información detallada, puede ponerse en contacto con nosotros a través de nuestro correo
-            electrónico <a class="font-bold" href="mailto:servicliente@ceaitlc.com.co">servicliente@ceaitlc.com.co</a> o llamando
-            al teléfono (601) 6333300 EXT 107
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <CoursesSection title="Cursos disponibles" courses={courses} />
 </Layout>

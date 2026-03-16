@@ -3,6 +3,7 @@ import Breadcrumb from '@/components/sections/Breadcrumb.astro';
 import { Audio, Link } from '@/components/ui';
 import Layout from '@/layouts/Layout.astro';
 import { getCourses, getCourseBySlug, getProgramLabel, getProgramSlug, type ProgramId } from '@/lib/courses-service';
+import { Check, GraduationCap } from 'lucide-react';
 
 // Genera rutas dinámicas para cada programa y curso
 export async function getStaticPaths() {
@@ -46,16 +47,11 @@ const programLabel = getProgramLabel(course.program as ProgramId);
   <Audio a11y className="mx-auto" src="/assets/audio/conoce-mas.mp3" client:only />
   <section class={` md:h-auto h-auto flex flex-col items-center justify-center overflow-hidden py-12`}>
     <div class="u-wrapper mx-auto mb-6">
-      <Breadcrumb
-        items={[
-          { label: programLabel, href: `/programas/${program}` },
-          { label: course.title }
-        ]}
-      />
+      <Breadcrumb items={[{ label: programLabel, href: `/programas/${program}` }, { label: course.title }]} />
     </div>
     <div class={`container mx-auto grid md:grid-cols-2 gap-4 lg:gap-4 items-center md:px-12 px-4`}>
       <div class={`flex justify-center items-center md:order-1`}>
-        <img src={course.img} alt={course.title} class="w-full max-w-lg h-auto object-contain" />
+        {course.img && <img src={course.img} alt={course.title} class="w-full max-w-lg h-auto object-contain" />}
       </div>
 
       <div class={`flex flex-col gap-2 md:order-2`}>
@@ -67,11 +63,54 @@ const programLabel = getProgramLabel(course.program as ProgramId);
         <p class="text-lg mt-4 lg:mr-25">
           {course.description}
         </p>
-        <div class="flex gap-8 md:flex-row flex-col mt-6">
-          <Link href="/inscripcion" size="lg"> Inscripción </Link>
-          <Link href="/#contacto" size="lg"> Contáctanos </Link>
+        {
+          course.objective && (
+            <div class="flex gap-3 items-start  mt-4 lg:mr-25">
+              <span class="shrink-0 mt-1 text-accent-600">
+                <GraduationCap size={50} client:load />
+              </span>
+              <div class="space-y-3">
+                <h3 class="font-bold text-primary-900 dark:text-white">Objetivo:</h3>
+                <p>{course.objective}</p>
+              </div>
+            </div>
+          )
+        }
+        <div class="flex gap-8 md:flex-row flex-col mt-6 lg:ml-16">
+          <Link href="/inscripcion"> Inscripción </Link>
+          <Link href="/#contacto"> Contáctanos </Link>
         </div>
       </div>
     </div>
   </section>
+
+  {
+    course.performances && (
+      <section class="bg-accent-600 dark:bg-accent-700 text-white" id="beneficios">
+        <div class="u-wrapper md:pb-6 py-6 mx-auto">
+          <div class="relative grid md:grid-cols-2 gap-10 items-center justify-items-center">
+            <img
+              src="/assets/images/img_beneficios.webp"
+              alt="Imagen de información del programa"
+              class="md:-mt-18 mt-0 w-md"
+            />
+            <div class="flex flex-col gap-4">
+              <h2 class="text-3xl font-bold">Desempeños</h2>
+              <p>{course.performances?.description}</p>
+              <ul class="space-y-5">
+                {course.performances?.items.map((item) => (
+                  <li class="flex items-start gap-4">
+                    <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary-600 shrink-0">
+                      <Check size={14} />
+                    </span>
+                    <p>{item}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
 </Layout>

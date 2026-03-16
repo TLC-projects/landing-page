@@ -1,6 +1,7 @@
 ---
 import Banner from '@/components/sections/Banner.astro';
 import CoursesSection from '@/components/sections/CoursesSection.astro';
+import HeroProgram from '@/components/sections/HeroProgram.astro';
 import ImageListSection from '@/components/sections/ImageListSection.astro';
 import { getCoursesByProgram } from '@/lib/courses-service';
 import Layout from '@layouts/Layout.astro';
@@ -13,41 +14,12 @@ const courses = await getCoursesByProgram('CAPACITACION_DOCENTE');
   description="Cursos de capacitación y actualización para docentes de idiomas. Fortalece tus competencias pedagógicas y metodológicas en la enseñanza de inglés y francés."
   keywords="capacitación docente, formación profesores inglés, cursos docentes idiomas, actualización metodológica, desarrollo profesional docente, TLC Colombia"
 >
-  <Banner
-    subtitle="Cursos"
-    title="Capacitación docente"
-    description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, doloremque."
-    img="/assets/images/Banner_3.webp"
+  <HeroProgram
+    programa="Cursos"
+    titulo="Capacitación docente"
+    descripcion="Programas de formación docente enfocado en estrategias pedagógicas innovadoras, evaluación formativa, uso de inteligencia artificial y gestión de aula para fortalecer la enseñanza y el aprendizaje del inglés."
+    imagen="/assets/images/Banner_3.webp"
     src="/audios/frances.mp3"
-    side="right"
-  />
-  <!-- Seccion reutilizable de lista con imagen, intercambio de lados especificando el side -->
-  <ImageListSection
-    title="Nuestros Programas"
-    img="/assets/images/img_nuestros_progrmas.webp"
-    side="left"
-    className="text-white bg-accent-600 dark:bg-accent-700"
-    items={[
-      {
-        subtitle: 'Programa de Idiomas',
-        description:
-          'Diseñado para desarrollar habilidades comunicativas prácticas y progresivas en contextos cotidianos, académicos y laborales.'
-      },
-      {
-        subtitle: 'Cursos Libres de Formación de Docentes',
-        description:
-          'Cursos individuales de 20 horas en diversas áreas, como enseñanza de inglés para preescolar, uso de plataformas educativas y estrategias de aprendizaje autónomo.'
-      },
-      {
-        subtitle: 'Preparación para Exámenes',
-        description:
-          'Cursos enfocados en habilidades y estrategias para presentar exámenes de inglés y de metodología de enseñanza.'
-      },
-      {
-        subtitle: 'Servicios In-House',
-        description: 'Cursos y seminarios para empresas, con tendencias innovadoras en formación.'
-      }
-    ]}
   />
 
   <!-- Seccion reutilizable de lista de cursos disponibles máx 6 -->

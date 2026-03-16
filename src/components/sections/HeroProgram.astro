@@ -21,7 +21,7 @@ const { programa, titulo, descripcion, imagen, reverse = false, src } = Astro.pr
   <img src={imagen} alt={titulo} class="absolute inset-0 w-full h-full object-cover" />
   <div class="absolute inset-0 bg-primary-900/20"></div>
   <div class={`grid md:grid-cols-2 items-center h-full u-wrapper z-10 px-6 mx-auto gap-5`}>
-    <div class={cn('flex flex-col gap-4', reverse ? 'md:order-2 text-right' : 'md:order-1 text-left')}>
+    <div class={cn('flex flex-col gap-4 text-left', reverse ? 'md:order-2' : 'md:order-1')}>
       <p class="text-xl">
         {programa}
       </p>

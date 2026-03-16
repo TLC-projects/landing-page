@@ -10,28 +10,29 @@ const slides = [
   {
     id: 1,
     title: 'Programa Inglés en el Mundo',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.',
+    description:
+      'Programa de formación docente que fortalece las competencias básicas en inglés de los docentes, promoviendo el uso del idioma como herramienta para la interacción académica y pedagógica.',
     image: '/assets/images/Banner_1.webp',
     url: '/programas/ingles-mundo'
   },
   {
     id: 2,
     title: 'Programa Francés',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.',
+    description: 'Programa de formación docente que introduce a los participantes en el aprendizaje académico del francés, fortaleciendo habilidades lingüísticas básicas para la comprensión y producción de mensajes en contextos educativos.',
     image: '/assets/images/Banner_2.webp',
     url: '/programas/frances'
   },
   {
     id: 3,
     title: 'Cursos de Capacitación Docente',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.',
+    description: 'Programas de formación docente enfocado en estrategias pedagógicas innovadoras, evaluación formativa, uso de inteligencia artificial y gestión de aula para fortalecer la enseñanza y el aprendizaje del inglés.',
     image: '/assets/images/Banner_3.webp',
     url: '/programas/capacitacion-docente'
   },
   {
     id: 4,
     title: 'Cursos de Fundamentos de la Enseñanza del Inglés en Colombia',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.',
+    description: 'Programas de formación docente enfocado en el análisis de políticas educativas, estándares internacionales y estrategias de evaluación y acompañamiento pedagógico para fortalecer la enseñanza y la gestión educativa.',
     image: '/assets/images/Banner_4.webp',
     url: '/programas/fundamentos'
   }
@@ -42,28 +43,28 @@ const programas = [
     id: 1,
     title: 'Programa Inglés en el Mundo',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.',
+      'Programa de formación docente que fortalece las competencias básicas en inglés de los docentes, promoviendo el uso del idioma como herramienta para la interacción académica y pedagógica.',
     link: '/programas/ingles-mundo'
   },
   {
     id: 2,
     title: 'Programa Francés',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.',
+      'Programa de formación docente que introduce a los participantes en el aprendizaje académico del francés, fortaleciendo habilidades lingüísticas básicas para la comprensión y producción de mensajes en contextos educativos.',
     link: '/programas/frances'
   },
   {
     id: 3,
     title: 'Cursos capacitación docente',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.',
+      'Programas de formación docente enfocado en estrategias pedagógicas innovadoras, evaluación formativa, uso de inteligencia artificial y gestión de aula para fortalecer la enseñanza y el aprendizaje del inglés.',
     link: '/programas/capacitacion-docente'
   },
   {
     id: 4,
     title: 'Cursos de Fundamentos de la Enseñanza del Inglés en Colombia',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.',
+      'Programas de formación docente enfocado en el análisis de políticas educativas, estándares internacionales y estrategias de evaluación y acompañamiento pedagógico para fortalecer la enseñanza y la gestión educativa.',
     link: '/programas/fundamentos'
   }
 ];
@@ -130,7 +131,13 @@ const services = [
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
         {
           programas.map((programa) => (
-            <Card title={programa.title} description={programa.description} url={programa.link} label="Conoce más" />
+            <Card
+              title={programa.title}
+              description={programa.description}
+              url={programa.link}
+              label="Conoce más"
+              class="text-center items-center"
+            />
           ))
         }
       </div>
@@ -139,7 +146,9 @@ const services = [
 
   <section id="calendario" class="py-16 bg-primary-100/15">
     <div class="u-wrapper mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 dark:text-white text-center mb-4">Calendario académico</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 dark:text-white text-center mb-4">
+        Calendario académico
+      </h2>
       <p class="text-center mb-12 max-w-3xl mx-auto">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam euismod tincidunt ut laoreet.
       </p>
@@ -149,8 +158,12 @@ const services = [
           eventos.map((evento) => (
             <div class="p-6 text-center calendar__event">
               <div class="text-5xl md:text-6xl font-bold text-secondary-900 dark:text-white mb-2">{evento.dia}</div>
-              <div class="text-secondary-500 dark:text-secondary-400 text-sm uppercase tracking-wide mb-6">{evento.mes}</div>
-              <div class="text-secondary-700 dark:text-secondary-400 font-medium text-sm leading-snug">{evento.titulo}</div>
+              <div class="text-secondary-500 dark:text-secondary-400 text-sm uppercase tracking-wide mb-6">
+                {evento.mes}
+              </div>
+              <div class="text-secondary-700 dark:text-secondary-400 font-medium text-sm leading-snug">
+                {evento.titulo}
+              </div>
             </div>
           ))
         }
@@ -163,14 +176,14 @@ const services = [
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
           <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 dark:text-white mb-6">¿Quiénes somos?</h2>
-          <div class="prose prose-lg  space-y-4">
+          <div class="prose prose-lg space-y-4">
             <p>
-              EL CENTRO DE ENTRENAMIENTO Y APRENDIZAJE DE IDIOMAS TLC LTDA., Desde el 2009 es una empresa que ofrece
-              programas y servicios de alta calidad para la formación integral en inglés y francés a estudiantes de
-              educación básica, media y superior, a docentes en la enseñanza de inglés y francés, a instituciones
-              educativas y entidades públicas y privadas, enfocada en capacitación comportamental, asesoría y desarrollo
-              profesional, orientadas al fortalecimiento de las competencias comunicativas y pedagógicas y culturales en
-              la enseñanza de idiomas y los procesos de bilingüismo en Colombia.
+              El Centro de Entrenamiento y Aprendizaje de Idiomas TLC Ltda., desde el año 2009, es una empresa que
+              ofrece programas y servicios de alta calidad para la formación integral de inglés y francés a estudiantes
+              de educación básica, media y superior, a docentes en la enseñanza de inglés y francés, a instituciones
+              educativas y a entidades públicas y privadas enfocadas en capacitación y entrenamiento, asesorías y
+              desarrollo profesional, orientados al fortalecimiento de las competencias comunicativas y pedagógicas y
+              culturales en la enseñanza de idiomas y los procesos de bilingüismo en Colombia.
             </p>
           </div>
         </div>
