@@ -18,21 +18,24 @@ const slides = [
   {
     id: 2,
     title: 'Programa Francés',
-    description: 'Programa de formación docente que introduce a los participantes en el aprendizaje académico del francés, fortaleciendo habilidades lingüísticas básicas para la comprensión y producción de mensajes en contextos educativos.',
+    description:
+      'Programa de formación docente que introduce a los participantes en el aprendizaje académico del francés, fortaleciendo habilidades lingüísticas básicas para la comprensión y producción de mensajes en contextos educativos.',
     image: '/assets/images/Banner_2.webp',
     url: '/programas/frances'
   },
   {
     id: 3,
     title: 'Cursos de Capacitación Docente',
-    description: 'Programas de formación docente enfocado en estrategias pedagógicas innovadoras, evaluación formativa, uso de inteligencia artificial y gestión de aula para fortalecer la enseñanza y el aprendizaje del inglés.',
+    description:
+      'Programas de formación docente enfocado en estrategias pedagógicas innovadoras, evaluación formativa, uso de inteligencia artificial y gestión de aula para fortalecer la enseñanza y el aprendizaje del inglés.',
     image: '/assets/images/Banner_3.webp',
     url: '/programas/capacitacion-docente'
   },
   {
     id: 4,
     title: 'Cursos de Fundamentos de la Enseñanza del Inglés en Colombia',
-    description: 'Programas de formación docente enfocado en el análisis de políticas educativas, estándares internacionales y estrategias de evaluación y acompañamiento pedagógico para fortalecer la enseñanza y la gestión educativa.',
+    description:
+      'Programas de formación docente enfocado en el análisis de políticas educativas, estándares internacionales y estrategias de evaluación y acompañamiento pedagógico para fortalecer la enseñanza y la gestión educativa.',
     image: '/assets/images/Banner_4.webp',
     url: '/programas/fundamentos'
   }
@@ -131,13 +134,7 @@ const services = [
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
         {
           programas.map((programa) => (
-            <Card
-              title={programa.title}
-              description={programa.description}
-              url={programa.link}
-              label="Conoce más"
-              class="text-center items-center"
-            />
+            <Card title={programa.title} description={programa.description} url={programa.link} label="Conoce más" />
           ))
         }
       </div>
