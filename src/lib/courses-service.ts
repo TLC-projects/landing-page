@@ -1,8 +1,3 @@
-export interface Perfomance {
-  description?: string;
-  items: string[];
-}
-
 export interface Course {
   id: string;
   program: string;
@@ -10,7 +5,7 @@ export interface Course {
   title: string;
   description: string;
   objective?: string;
-  performances?: Perfomance;
+  performances?: string[];
   img: string;
   buttonLink?: string;
 }
@@ -53,16 +48,13 @@ export const localCourses: Course[] = [
     objective: `Fortalecer las competencias docentes para diseñar e 
     implementar estrategias de evaluación formativa que 
     promuevan el aprendizaje y la mejora continua.`,
-    performances: {
-      description: 'Al finalizar el curso, el docente puede:',
-      items: [
-        'Diferenciar la evaluación formativa de otros enfoques evaluativos.',
-        'Diseñar instrumentos de evaluación alineados con los objetivos de aprendizaje.',
-        'Utilizar la retroalimentación como herramienta pedagógica.',
-        'Analizar evidencias de aprendizaje para ajustar su práctica docente.',
-        'Promover procesos de autoevaluación y coevaluación en el aula.'
-      ]
-    }
+    performances: [
+      'Diferenciar la evaluación formativa de otros enfoques evaluativos.',
+      'Diseñar instrumentos de evaluación alineados con los objetivos de aprendizaje.',
+      'Utilizar la retroalimentación como herramienta pedagógica.',
+      'Analizar evidencias de aprendizaje para ajustar su práctica docente.',
+      'Promover procesos de autoevaluación y coevaluación en el aula.'
+    ]
   },
   {
     id: 'manejo-clases-grandes-multinivel',
@@ -84,16 +76,13 @@ export const localCourses: Course[] = [
     objective: `Desarrollar estrategias pedagógicas y de gestión de aula 
     que permitan atender de manera efectiva la diversidad 
     presente en clases grandes y multinivel.`,
-    performances: {
-      description: 'Al finalizar el curso, el docente puede:',
-      items: [
-        'Organizar el aula para favorecer la participación en grupos numerosos.',
-        'Implementar estrategias de enseñanza diferenciada.',
-        'Gestionar el tiempo y los recursos de manera eficiente.',
-        'Fomentar un ambiente de aula inclusivo y participativo.',
-        'Adaptar actividades a distintos ritmos y niveles de aprendizaje.'
-      ]
-    }
+    performances: [
+      'Organizar el aula para favorecer la participación en grupos numerosos.',
+      'Implementar estrategias de enseñanza diferenciada.',
+      'Gestionar el tiempo y los recursos de manera eficiente.',
+      'Fomentar un ambiente de aula inclusivo y participativo.',
+      'Adaptar actividades a distintos ritmos y niveles de aprendizaje.'
+    ]
   },
   {
     id: 'ai-english-learning',
@@ -118,16 +107,13 @@ export const localCourses: Course[] = [
     manera pedagógica, ética y responsable herramientas 
     de inteligencia artificial en los procesos de enseñanza y 
     aprendizaje del inglés.`,
-    performances: {
-      description: 'Al finalizar el curso, el docente puede:',
-      items: [
-        'Reconocer el potencial de la inteligencia artificial como herramienta de apoyo para la enseñanza del inglés.',
-        'Diseñar actividades y recursos didácticos utilizando herramientas de IA para atender diferentes necesidades de aprendizaje.',
-        'Utilizar la inteligencia artificial para apoyar la planeación de clases y la creación de materiales educativos.',
-        'Incorporar herramientas de IA para fortalecer habilidades de comprensión lectora y oral en inglés.',
-        'Aplicar criterios éticos y estrategias de uso responsable de la inteligencia artificial en contextos educativos.'
-      ]
-    }
+    performances: [
+      'Reconocer el potencial de la inteligencia artificial como herramienta de apoyo para la enseñanza del inglés.',
+      'Diseñar actividades y recursos didácticos utilizando herramientas de IA para atender diferentes necesidades de aprendizaje.',
+      'Utilizar la inteligencia artificial para apoyar la planeación de clases y la creación de materiales educativos.',
+      'Incorporar herramientas de IA para fortalecer habilidades de comprensión lectora y oral en inglés.',
+      'Aplicar criterios éticos y estrategias de uso responsable de la inteligencia artificial en contextos educativos.'
+    ]
   },
   {
     id: 'plan-nacional-bilinguismo',
@@ -151,16 +137,13 @@ export const localCourses: Course[] = [
     pública educativa y su impacto en los procesos de 
     enseñanza de lenguas extranjeras en el contexto 
     colombiano.`,
-    performances: {
-      description: 'Al finalizar el curso, el docente puede:',
-      items: [
-        'Identificar los fundamentos y objetivos del Plan Nacional de Bilingüismo.',
-        'Reconocer los lineamientos del PNB en relación con la enseñanza de lenguas extranjeras.',
-        'Analizar el impacto del PNB en la planeación curricular institucional.',
-        'Relacionar el PNB con los procesos de mejoramiento de la calidad educativa.',
-        'Tomar decisiones pedagógicas alineadas con las políticas nacionales de bilingüismo.'
-      ]
-    }
+    performances: [
+      'Identificar los fundamentos y objetivos del Plan Nacional de Bilingüismo.',
+      'Reconocer los lineamientos del PNB en relación con la enseñanza de lenguas extranjeras.',
+      'Analizar el impacto del PNB en la planeación curricular institucional.',
+      'Relacionar el PNB con los procesos de mejoramiento de la calidad educativa.',
+      'Tomar decisiones pedagógicas alineadas con las políticas nacionales de bilingüismo.'
+    ]
   },
   {
     id: 'marco-comun-europeo',
@@ -183,16 +166,13 @@ export const localCourses: Course[] = [
     Europeo de Referencia para las Lenguas en los 
     procesos de planeación, enseñanza y evaluación de 
     lenguas extranjeras.`,
-    performances: {
-      description: 'Al finalizar el curso, el docente puede:',
-      items: [
-        'Identificar los niveles y descriptores del MCER.',
-        'Analizar el enfoque del MCER como marco de referencia para la enseñanza de lenguas.',
-        'Formular objetivos de aprendizaje alineados con los niveles del MCER.',
-        'Diseñar actividades y procesos de evaluación coherentes con el MCER.',
-        'Utilizar el MCER como herramienta para la toma de decisiones pedagógicas.'
-      ]
-    }
+    performances: [
+      'Identificar los niveles y descriptores del MCER.',
+      'Analizar el enfoque del MCER como marco de referencia para la enseñanza de lenguas.',
+      'Formular objetivos de aprendizaje alineados con los niveles del MCER.',
+      'Diseñar actividades y procesos de evaluación coherentes con el MCER.',
+      'Utilizar el MCER como herramienta para la toma de decisiones pedagógicas.'
+    ]
   },
   {
     id: 'observacion-clase-diagnostico-institucional',
@@ -219,16 +199,13 @@ export const localCourses: Course[] = [
     de la práctica pedagógica, con el fin de estructurar un 
     equipo institucional de observación de clase.
     `,
-    performances: {
-      description: 'Al finalizar el curso, el docente puede:',
-      items: [
-        'Explicar el sentido formativo de la observación de clase y su propósito institucional.',
-        'Preparar una planeación pedagógica lista para ser observada, considerando criterios claros y el contexto del grupo.',
-        'Registrar evidencias de aula utilizando un lenguaje claro, objetivo y neutro, evitando juicios de valor.',
-        'Diferenciar y utilizar adecuadamente los instrumentos de observación de clase.',
-        'Guiar una conversación de retroalimentación basada en la clarificación, la valoración, la expresión de inquietudes y la formulación de sugerencias.'
-      ]
-    }
+    performances: [
+      'Explicar el sentido formativo de la observación de clase y su propósito institucional.',
+      'Preparar una planeación pedagógica lista para ser observada, considerando criterios claros y el contexto del grupo.',
+      'Registrar evidencias de aula utilizando un lenguaje claro, objetivo y neutro, evitando juicios de valor.',
+      'Diferenciar y utilizar adecuadamente los instrumentos de observación de clase.',
+      'Guiar una conversación de retroalimentación basada en la clarificación, la valoración, la expresión de inquietudes y la formulación de sugerencias.'
+    ]
   }
 ];
 
