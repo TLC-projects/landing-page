@@ -1,9 +1,7 @@
 ---
-import Banner from '@/components/sections/Banner.astro';
 import CoursesSection from '@/components/sections/CoursesSection.astro';
 import HeroProgram from '@/components/sections/HeroProgram.astro';
-import ImageListSection from '@/components/sections/ImageListSection.astro';
-import { getCoursesByProgram } from '@/lib/courses-service';
+import { getCoursesByProgram } from '@/lib/courses';
 import Layout from '@layouts/Layout.astro';
 
 const courses = await getCoursesByProgram('CAPACITACION_DOCENTE');

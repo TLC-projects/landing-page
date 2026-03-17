@@ -1,19 +1,11 @@
 ---
 import HeroProgram from '@/components/sections/HeroProgram.astro';
-import ImageListSection from '@/components/sections/ImageListSection.astro';
 import CoursesSection from '@/components/sections/CoursesSection.astro';
-import { getCoursesByProgram } from '@/lib/courses-service';
 import Layout from '@layouts/Layout.astro';
-import { Check } from 'lucide-react';
+import { getCoursesByProgram } from '@/lib/courses';
 
 const courses = await getCoursesByProgram('FUNDAMENTOS');
 
-const beneficios = [
-  'Hablar y comprender el idioma en situaciones reales.',
-  'Mejorar la pronunciación y fluidez.',
-  'Leer y escribir textos acordes al nivel adquirido.',
-  'Desarrollar competencias de saber hacer y hábitos de estudio eficaces.'
-];
 ---
 
 <Layout

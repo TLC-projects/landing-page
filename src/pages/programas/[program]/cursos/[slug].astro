@@ -2,36 +2,21 @@
 import Breadcrumb from '@/components/sections/Breadcrumb.astro';
 import { Audio, Link } from '@/components/ui';
 import Layout from '@/layouts/Layout.astro';
-import { getCourses, getCourseBySlug, getProgramLabel, getProgramSlug, type ProgramId } from '@/lib/courses-service';
+import { getCourseBySlug, getProgramLabel, getProgramSlug, type ProgramId } from '@/lib/courses';
 import { Check, GraduationCap } from 'lucide-react';
-
-// Genera rutas dinámicas para cada programa y curso
-export async function getStaticPaths() {
-  const courses = await getCourses();
-
-  // Para cada curso, crea una ruta combinando programa + slug
-  return courses.map((course) => {
-    const programSlug = getProgramSlug(course.program as ProgramId);
-
-    return {
-      params: {
-        program: programSlug, // /programas/capacitacion-docente/...
-        slug: course.id // .../cursos/metodos-evaluacion-formativa
-      },
-      props: { course }
-    };
-  });
-}
 
 const { slug, program } = Astro.params;
 
 const course = await getCourseBySlug(slug as string);
+
+// Validar que el curso exista
 if (!course) {
   return Astro.redirect('/404');
 }
 
-// Validar que el curso pertenezca al programa del slug
 const expectedProgramSlug = getProgramSlug(course.program as ProgramId);
+
+// Validar que el curso pertenezca al programa del slug
 if (expectedProgramSlug !== program) {
   return Astro.redirect('/404');
 }
@@ -85,7 +70,7 @@ const programLabel = getProgramLabel(course.program as ProgramId);
   </section>
 
   {
-    course.performances && (
+    course.performances && course.performances?.length > 0 && (
       <section class="bg-accent-600 dark:bg-accent-700 text-white" id="beneficios">
         <div class="u-wrapper md:pb-6 py-6 mx-auto">
           <div class="relative grid md:grid-cols-2 gap-10 items-center justify-items-center">
