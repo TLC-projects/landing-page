@@ -1,4 +1,5 @@
 ---
+export const prerender = false;
 import Breadcrumb from '@/components/sections/Breadcrumb.astro';
 import { Audio, Link } from '@/components/ui';
 import Layout from '@/layouts/Layout.astro';
@@ -6,8 +7,10 @@ import { getCourseBySlug, getProgramLabel, getProgramSlug, type ProgramId } from
 import { Check, GraduationCap } from 'lucide-react';
 
 const { slug, program } = Astro.params;
+console.log(`[SSR] Renderizando /programas/${program}/cursos/${slug}`);
 
 const course = await getCourseBySlug(slug as string);
+console.log(`[SSR] Curso obtenido: ${course?.title ?? 'no encontrado'}`);
 
 // Validar que el curso exista
 if (!course) {

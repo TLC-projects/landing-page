@@ -1,8 +1,11 @@
 ---
+export const prerender = false;
 import HeroProgram from '@/components/sections/HeroProgram.astro';
 import ProgramFeatures from '@/components/sections/ProgramFeatures.astro';
 import Layout from '@/layouts/Layout.astro';
 import { Check } from 'lucide-react';
+
+console.log('[SSR] Renderizando /programas/frances');
 
 const benefits = [
   'Reconocer y utilizar vocabulario básico del francés académico.',
