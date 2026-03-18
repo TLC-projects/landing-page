@@ -4,8 +4,8 @@ import { sectionNameToProgramId } from './programs';
 import { mapContentToCourse } from './mappers';
 
 // Variables de entorno
-const API_BASE_URL =  'https://demos.booksandbooksdigital.com.co/content-manager/back';
-const PROJECT_ID =  1;
+const API_BASE_URL = import.meta.env.PUBLIC_API_URL ?? 'https://demos.booksandbooksdigital.com.co/content-manager/back';
+const PROJECT_ID = import.meta.env.PUBLIC_PROJECT_ID ?? 1;
 
 /**
  * Obtiene todas las secciones del proyecto y las mapea a su ProgramId correspondiente.
@@ -14,7 +14,7 @@ const PROJECT_ID =  1;
 export async function fetchSections(): Promise<Array<{ id: number; program: ProgramId }>> {
   try {
     const res = await fetch(`${API_BASE_URL}/api/section/project/${PROJECT_ID}`);
-    console.log('Fetch sections response:', res); 
+    console.log('Fetching sections from API:', res.url);
     if (!res.ok) return [];
 
     const json: ApiPaginatedResponse<ApiSection> = await res.json();
