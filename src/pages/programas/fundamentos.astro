@@ -1,10 +1,13 @@
 ---
+export const prerender = false;
 import HeroProgram from '@/components/sections/HeroProgram.astro';
 import CoursesSection from '@/components/sections/CoursesSection.astro';
 import Layout from '@layouts/Layout.astro';
 import { getCoursesByProgram } from '@/lib/courses';
 
+console.log('[SSR] Renderizando /programas/fundamentos');
 const courses = await getCoursesByProgram('FUNDAMENTOS');
+console.log(`[SSR] Cursos obtenidos: ${courses.length}`);
 
 ---
 
