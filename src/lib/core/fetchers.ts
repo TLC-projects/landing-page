@@ -1,11 +1,10 @@
-import type { ApiContent, ApiPaginatedResponse, ApiSection, Course } from './types';
+import type { ApiCalendar, ApiContent, ApiPaginatedResponse, ApiSection, Course } from './types';
 import type { ProgramId } from './programs';
 import { sectionNameToProgramId } from './programs';
 import { mapContentToCourse } from './mappers';
 
 // Variables de entorno
 const API_BASE_URL = import.meta.env.PUBLIC_API_URL ?? 'https://demos.booksandbooksdigital.com.co';
-const PROJECT_ID = import.meta.env.PUBLIC_PROJECT_ID ?? 1;
 
 /**
  * Obtiene todas las secciones del proyecto y las mapea a su ProgramId correspondiente.
@@ -13,7 +12,7 @@ const PROJECT_ID = import.meta.env.PUBLIC_PROJECT_ID ?? 1;
  */
 export async function fetchSections(): Promise<Array<{ id: number; program: ProgramId }>> {
   try {
-    const res = await fetch(`${API_BASE_URL}/api/section/project/${PROJECT_ID}`);
+    const res = await fetch(`${API_BASE_URL}/section`);
     if (!res.ok) return [];
 
     const json: ApiPaginatedResponse<ApiSection> = await res.json();
@@ -31,12 +30,12 @@ export async function fetchSections(): Promise<Array<{ id: number; program: Prog
 
 /**
  * Obtiene todos los contenidos (cursos) de una sección específica.
- * Solo trae contenidos no bloqueados, con un límite de 100 por página.
+ * Solo trae contenidos no bloqueados.
  */
 export async function fetchContentBySection(sectionId: number, program: ProgramId): Promise<Course[]> {
   try {
     const res = await fetch(
-      `${API_BASE_URL}/api/content/section/${sectionId}?page=1&limit=100&blocked=false`
+      `${API_BASE_URL}/content/section/${sectionId}?&blocked=false`
     );
     if (!res.ok) return [];
 
@@ -55,7 +54,7 @@ export async function fetchContentBySection(sectionId: number, program: ProgramI
  */
 export async function fetchContentById(id: string): Promise<{ content: ApiContent; program: ProgramId } | null> {
   try {
-    const res = await fetch(`${API_BASE_URL}/api/content/${id}`);
+    const res = await fetch(`${API_BASE_URL}/content/${id}`);
     if (!res.ok) return null;
 
     const json = await res.json();
@@ -68,5 +67,24 @@ export async function fetchContentById(id: string): Promise<{ content: ApiConten
     return { content, program };
   } catch {
     return null;
+  }
+}
+
+/**
+ * Obtiene todos los eventos del calendario.
+ * Solo trae eventos no bloqueados.
+ * Retorna una promesa que se resuelve con un array de objetos ApiCalendar o un array vacío si hay un error en el fetch.
+ * @returns {Promise<ApiCalendar[]>}
+ */
+export async function fetchCalendarEvents(): Promise<ApiCalendar[]> {
+  try {
+    const res = await fetch(`${API_BASE_URL}/calendar?blocked=false`);
+    if (!res.ok) return [];
+
+    const json: ApiPaginatedResponse<ApiCalendar> = await res.json();
+    return json.data;
+  } catch (error) {
+    console.error('Error fetching calendar events:', error);
+    return [];
   }
 }

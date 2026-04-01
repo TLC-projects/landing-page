@@ -12,6 +12,13 @@ export interface Course {
   buttonLink?: string;
 }
 
+/** Evento del calendario usado en el frontend */
+export interface CalendarEvent {
+  id: number;
+  title: string;
+  date: string;
+}
+
 /** Recurso multimedia asociado a un contenido (imagen, archivo, etc.) */
 export interface ApiResource {
   id: number;
@@ -39,6 +46,14 @@ export interface ApiContent {
   /** Lista de desempeños en formato JSON string */
   performance?: string;
   resources: ApiResource[];
+}
+
+/** Evento del calendario tal como lo devuelve el API */
+export interface ApiCalendar {
+  id: number;
+  title: string;
+  date: string;
+  blocked: boolean;
 }
 
 /** Respuesta paginada genérica del API */

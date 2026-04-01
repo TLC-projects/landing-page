@@ -1,9 +1,11 @@
 ---
+export const prerender = false;
 import { Card, A11yButton } from '@components/ui';
 
 import Layout from '@layouts/Layout.astro';
 import HeroCarousel from '@components/sections/HeroCarousel';
 import Communication from '@components/sections/Communication';
+import CalendarSection from '@/components/sections/CalendarSection.astro';
 import FormularioContacto from '@/components/sections/FormularioContacto.astro';
 
 const slides = [
@@ -72,29 +74,6 @@ const programas = [
   }
 ];
 
-const eventos = [
-  {
-    dia: '02',
-    mes: 'febrero',
-    titulo: 'Programa Inglés en el Mundo'
-  },
-  {
-    dia: '02',
-    mes: 'febrero',
-    titulo: 'Programa Francés'
-  },
-  {
-    dia: '02',
-    mes: 'febrero',
-    titulo: 'Cursos Capacitación docente'
-  },
-  {
-    dia: '02',
-    mes: 'febrero',
-    titulo: 'Cursos de Fundamentos de la Enseñanza del Inglés en Colombia'
-  }
-];
-
 const services = [
   {
     id: 1,
@@ -106,15 +85,15 @@ const services = [
   },
   {
     id: 2,
-    title: 'Talleres y Capacitaciones',
-    description: 'Formación especializada para docentes y profesionales en el área de idiomas.',
+    title: 'Capacitación y entrenamiento',
+    description: 'Programas de idiomas especialmente diseñados para  llevar a los estudiantes a lograr sus objetivos.',
     image: '/assets/images/Img_Asesorias.webp',
     url: '/comunicaciones-institucionales'
   },
   {
     id: 3,
-    title: 'Consultoría Educativa',
-    description: 'Servicios de consultoría para mejorar procesos educativos en la enseñanza de lenguas.',
+    title: 'Desarrollo profesional para docentes',
+    description: 'Fortalecimiento pedagógico y didáctico, realizando talleres de actualización metodológica en la enseñanza de idiomas (enfoque comunicativo, aprendizaje basado en tareas, gamificación, etc.).',
     image: '/assets/images/Img_Asesorias.webp',
     url: '/comunicaciones-institucionales'
   }
@@ -141,32 +120,7 @@ const services = [
     </div>
   </section>
 
-  <section id="calendario" class="py-16 bg-primary-100/15">
-    <div class="u-wrapper mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 dark:text-white text-center mb-4">
-        Calendario académico
-      </h2>
-      <p class="text-center mb-12 max-w-3xl mx-auto">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam euismod tincidunt ut laoreet.
-      </p>
-
-      <div class="calendar grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 bg-background rounded-xl">
-        {
-          eventos.map((evento) => (
-            <div class="p-6 text-center calendar__event">
-              <div class="text-5xl md:text-6xl font-bold text-secondary-900 dark:text-white mb-2">{evento.dia}</div>
-              <div class="text-secondary-500 dark:text-secondary-400 text-sm uppercase tracking-wide mb-6">
-                {evento.mes}
-              </div>
-              <div class="text-secondary-700 dark:text-secondary-400 font-medium text-sm leading-snug">
-                {evento.titulo}
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+  <CalendarSection />
 
   <section id="quienes-somos" class="py-16">
     <div class="u-wrapper mx-auto px-4">
@@ -204,31 +158,4 @@ const services = [
   <FormularioContacto />
 </Layout>
 
-<style>
-  .calendar__event {
-    position: relative;
-  }
-  .calendar__event:not(:nth-child(1))::after {
-    --size: 100%;
-    --padding: 20%;
-    --position: 50%;
 
-    content: '';
-    position: absolute;
-    top: var(--position);
-    left: var(--position);
-    width: calc(var(--size) - var(--padding));
-    height: var(--size);
-    border-top: 1px solid var(--color-secondary-200);
-    transform: translate(calc(var(--position) * -1), calc(var(--position) * -1));
-  }
-
-  @media (width >= 48rem) {
-    .calendar__event:not(:nth-child(1))::after {
-      width: var(--size);
-      height: calc(var(--size) - var(--padding));
-      border-top: none;
-      border-left: 1px solid var(--color-secondary-200);
-    }
-  }
-</style>
