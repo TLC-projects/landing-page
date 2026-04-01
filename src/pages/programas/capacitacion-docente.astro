@@ -1,7 +1,7 @@
 ---
 import CoursesSection from '@/components/sections/CoursesSection.astro';
 import HeroProgram from '@/components/sections/HeroProgram.astro';
-import { getCoursesByProgram } from '@/lib/courses';
+import { getCoursesByProgram } from '@/lib/core/services';
 import Layout from '@layouts/Layout.astro';
 
 const courses = await getCoursesByProgram('CAPACITACION_DOCENTE');

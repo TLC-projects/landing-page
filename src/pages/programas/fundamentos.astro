@@ -2,7 +2,7 @@
 import HeroProgram from '@/components/sections/HeroProgram.astro';
 import CoursesSection from '@/components/sections/CoursesSection.astro';
 import Layout from '@layouts/Layout.astro';
-import { getCoursesByProgram } from '@/lib/courses';
+import { getCoursesByProgram } from '@/lib/core/services';
 
 const courses = await getCoursesByProgram('FUNDAMENTOS');
 

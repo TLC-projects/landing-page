@@ -2,7 +2,7 @@
 import Breadcrumb from '@/components/sections/Breadcrumb.astro';
 import { Audio, Link } from '@/components/ui';
 import Layout from '@/layouts/Layout.astro';
-import { getCourseBySlug, getProgramLabel, getProgramSlug, type ProgramId } from '@/lib/courses';
+import { getCourseBySlug, getProgramLabel, getProgramSlug, type ProgramId } from '@/lib/core/services';
 import { Check, GraduationCap } from 'lucide-react';
 
 const { slug, program } = Astro.params;

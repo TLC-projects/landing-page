@@ -70,6 +70,12 @@ export async function fetchContentById(id: string): Promise<{ content: ApiConten
   }
 }
 
+/**
+ * Obtiene todos los eventos del calendario.
+ * Solo trae eventos no bloqueados.
+ * Retorna una promesa que se resuelve con un array de objetos ApiCalendar o un array vacío si hay un error en el fetch.
+ * @returns {Promise<ApiCalendar[]>}
+ */
 export async function fetchCalendarEvents(): Promise<ApiCalendar[]> {
   try {
     const res = await fetch(`${API_BASE_URL}/calendar?blocked=false`);
