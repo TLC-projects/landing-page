@@ -14,7 +14,7 @@ interface HeroCarouselProps {
 export default function HeroCarousel({ slides }: HeroCarouselProps) {
   return (
     <Carousel>
-      <Audio a11y className="mx-auto mt-5" src="" />
+      {/* <Audio a11y className="mx-auto mt-5" src={undefined} /> */}
       <Carousel.Slides>
         {slides.map((slide) => (
           <>
