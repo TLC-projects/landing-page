@@ -27,7 +27,7 @@ export function createContext<T>(options: CreateContextOptions<T> = {}) {
     
     if (context === undefined) {
       throw new Error(
-        `use${name || 'Context'} must be used within a ${name || 'Context'}Provider`
+        `use${name || 'Context'} must be used within a ${name || 'Context'} Provider`
       );
     }
     

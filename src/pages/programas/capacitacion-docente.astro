@@ -2,7 +2,7 @@
 export const prerender = false;
 import CoursesSection from '@/components/sections/CoursesSection.astro';
 import HeroProgram from '@/components/sections/HeroProgram.astro';
-import { getCoursesByProgram } from '@/lib/courses';
+import { getCoursesByProgram } from '@/lib/core/services';
 import Layout from '@layouts/Layout.astro';
 
 console.log('[SSR] Renderizando /programas/capacitacion-docente');

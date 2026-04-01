@@ -1,11 +1,11 @@
 export type { Course } from './types';
 export type { ProgramId } from './programs';
 export { getProgramSlug, getProgramLabel, programsMap, PROGRAM_LABELS } from './programs';
-import { fetchSections, fetchContentBySection, fetchContentById } from './fetchers';
+import { fetchSections, fetchContentBySection, fetchContentById, fetchCalendarEvents } from './fetchers';
 import { mapContentToCourse } from './mappers';
 import { getProgramSlug } from './programs';
 import type { ProgramId } from './programs';
-import type { Course } from './types';
+import type { CalendarEvent, Course } from './types';
 
 /**
  * Obtiene todos los cursos de todas las secciones del proyecto.
@@ -13,9 +13,7 @@ import type { Course } from './types';
  */
 export async function getCourses(): Promise<Course[]> {
   const sections = await fetchSections();
-  const results = await Promise.all(
-    sections.map(({ id, program }) => fetchContentBySection(id, program))
-  );
+  const results = await Promise.all(sections.map(({ id, program }) => fetchContentBySection(id, program)));
   return results.flat();
 }
 
@@ -33,7 +31,7 @@ export async function getCoursesByProgram(program: ProgramId): Promise<Course[]>
 
   return courses.map((course) => ({
     ...course,
-    buttonLink: `/programas/${programSlug}/cursos/${course.id}`,
+    buttonLink: `/programas/${programSlug}/cursos/${course.id}`
   }));
 }
 
@@ -45,4 +43,13 @@ export async function getCourseBySlug(slug: string): Promise<Course | null> {
   const result = await fetchContentById(slug);
   if (!result) return null;
   return mapContentToCourse(result.content, result.program);
+}
+
+/**
+ * Obtiene todos los eventos del calendario.
+ * Retorna una promesa que se resuelve con un array de objetos CalendarEvent o null si hay un error.
+ * @returns {Promise<CalendarEvent[] | null>} - Una promesa que se resuelve con un array de objetos CalendarEvent o null si hay un error.
+ */
+export async function getCalendarEvents(): Promise<CalendarEvent[]> {
+  return fetchCalendarEvents();
 }
