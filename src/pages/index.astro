@@ -5,6 +5,7 @@ import Layout from '@layouts/Layout.astro';
 import HeroCarousel from '@components/sections/HeroCarousel';
 import Communication from '@components/sections/Communication';
 import FormularioContacto from '@/components/sections/FormularioContacto.astro';
+import { getCalendarEvents } from '@/lib/courses-service';
 
 const slides = [
   {
@@ -72,28 +73,7 @@ const programas = [
   }
 ];
 
-const eventos = [
-  {
-    dia: '02',
-    mes: 'febrero',
-    titulo: 'Programa Inglés en el Mundo'
-  },
-  {
-    dia: '02',
-    mes: 'febrero',
-    titulo: 'Programa Francés'
-  },
-  {
-    dia: '02',
-    mes: 'febrero',
-    titulo: 'Cursos Capacitación docente'
-  },
-  {
-    dia: '02',
-    mes: 'febrero',
-    titulo: 'Cursos de Fundamentos de la Enseñanza del Inglés en Colombia'
-  }
-];
+const eventos = await getCalendarEvents();
 
 const services = [
   {
@@ -152,17 +132,21 @@ const services = [
 
       <div class="calendar grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 bg-background rounded-xl">
         {
-          eventos.map((evento) => (
-            <div class="p-6 text-center calendar__event">
-              <div class="text-5xl md:text-6xl font-bold text-secondary-900 dark:text-white mb-2">{evento.dia}</div>
-              <div class="text-secondary-500 dark:text-secondary-400 text-sm uppercase tracking-wide mb-6">
-                {evento.mes}
+          eventos.map((evento) => {
+            const [year, month, day] = evento.date.slice(0, 10).split('-').map(Number);
+            const fecha = new Date(year, month - 1, day);
+            const dia = String(day).padStart(2, '0');
+            const mes = fecha.toLocaleDateString('es-CO', { month: 'long' });
+            return (
+              <div class="p-6 text-center calendar__event">
+                <div class="text-5xl md:text-6xl font-bold text-secondary-900 dark:text-white mb-2">{dia}</div>
+                <div class="text-secondary-500 dark:text-secondary-400 text-sm uppercase tracking-wide mb-6">{mes}</div>
+                <div class="text-secondary-700 dark:text-secondary-400 font-medium text-sm leading-snug">
+                  {evento.title}
+                </div>
               </div>
-              <div class="text-secondary-700 dark:text-secondary-400 font-medium text-sm leading-snug">
-                {evento.titulo}
-              </div>
-            </div>
-          ))
+            );
+          })
         }
       </div>
     </div>
