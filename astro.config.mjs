@@ -5,8 +5,6 @@ import sitemap from '@astrojs/sitemap';
 
 import tailwindcss from '@tailwindcss/vite';
 
-import node from '@astrojs/node';
-
 // https://astro.build/config
 export default defineConfig({
   site: 'https://ceaitlc.edu.co/',
@@ -19,8 +17,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  output: 'static',
-  adapter: node({
-    mode: 'standalone'
-  })
+  output: 'static'
 });
