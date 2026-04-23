@@ -16,15 +16,15 @@ const politicas = [
 const downloads = [
   {
     name: 'Adjunto Política de Calidad.',
-    link: '/brochures/adjunto-politica-calidad.pdf'
+    link: '/assets/documents/GA-DO-18 (POLITICA DE TRATAMIENTO Y PROTECCIÓN DE DATOS PERSONALES TLC).pdf'
   },
   {
     name: 'Adjunto Manual de convivencia.',
-    link: '/brochures/manual-convivencia.pdf'
+    link: '/assets/documents/GA-DO-18 (POLITICA DE TRATAMIENTO Y PROTECCIÓN DE DATOS PERSONALES TLC).pdf'
   },
   {
     name: 'Adjunto Política de tratamiento de datos personales.',
-    link: '/brochures/politica-tratamiento-datos.pdf'
+    link: '/assets/documents/GA-DO-18 (POLITICA DE TRATAMIENTO Y PROTECCIÓN DE DATOS PERSONALES TLC).pdf'
   }
 ];
 
@@ -194,15 +194,24 @@ const characteristics = [
         <ul class="space-y-5">
           {
             downloads.map((download) => (
-              <li class="flex items-start gap-4">
-                <span class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent-600 text-white shrink-0">
+                <li class="flex items-start gap-4">
+                <span
+                  class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent-600 text-white shrink-0"
+                  aria-hidden="true"
+                >
                   <ArrowDownToLine size={14} />
                 </span>
-                <a href={download.link} download class="underline">
+                <a
+                  href={download.link}
+                  download
+                  class="underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 focus-visible:ring-offset-2"
+                  aria-label={`Descargar ${download.name}`}
+                >
                   {download.name}
+                  <span class="sr-only"> (se descargará un archivo)</span>
                 </a>
-              </li>
-            ))
+                </li>
+              ))
           }
         </ul>
       </div>
