@@ -11,8 +11,8 @@ const formSchema = z.object({
   programa: z.string().min(1, 'El programa/curso es requerido'),
   comentario: z.string().optional(),
   privacidad: z.boolean().refine((val) => val === true, {
-    message: 'Debes aceptar la política de privacidad para continuar',
-  }),
+    message: 'Debes aceptar la política de privacidad para continuar'
+  })
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -22,9 +22,9 @@ export const Form = () => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    reset,
+    reset
   } = useForm<FormData>({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(formSchema)
   });
 
   const onSubmit = async (data: FormData) => {
@@ -40,7 +40,9 @@ export const Form = () => {
   return (
     <div className="order-1 lg:order-2">
       <div className="bg-white dark:bg-secondary-800 rounded-lg shadow-xl p-8">
-        <h2 className="text-2xl font-bold text-secondary-900 dark:text-white mb-6">¿Quieres recibir más información?</h2>
+        <h2 className="text-2xl font-bold text-secondary-900 dark:text-white mb-6">
+          ¿Quieres recibir más información?
+        </h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -56,9 +58,7 @@ export const Form = () => {
                   errors.nombre ? 'border-red-500' : 'border-secondary-300'
                 }`}
               />
-              {errors.nombre && (
-                <p className="mt-1 text-sm text-red-600">{errors.nombre.message}</p>
-              )}
+              {errors.nombre && <p className="mt-1 text-sm text-red-600">{errors.nombre.message}</p>}
             </div>
             <div>
               <label htmlFor="apellido" className="block text-sm font-medium text-secondary-700 dark:text-white mb-1">
@@ -72,9 +72,7 @@ export const Form = () => {
                   errors.apellido ? 'border-red-500' : 'border-secondary-300'
                 }`}
               />
-              {errors.apellido && (
-                <p className="mt-1 text-sm text-red-600">{errors.apellido.message}</p>
-              )}
+              {errors.apellido && <p className="mt-1 text-sm text-red-600">{errors.apellido.message}</p>}
             </div>
           </div>
 
@@ -91,9 +89,7 @@ export const Form = () => {
                   errors.email ? 'border-red-500' : 'border-secondary-300'
                 }`}
               />
-              {errors.email && (
-                <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-              )}
+              {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
             </div>
             <div>
               <label htmlFor="telefono" className="block text-sm font-medium text-secondary-700 dark:text-white mb-1">
@@ -107,9 +103,7 @@ export const Form = () => {
                   errors.telefono ? 'border-red-500' : 'border-secondary-300'
                 }`}
               />
-              {errors.telefono && (
-                <p className="mt-1 text-sm text-red-600">{errors.telefono.message}</p>
-              )}
+              {errors.telefono && <p className="mt-1 text-sm text-red-600">{errors.telefono.message}</p>}
             </div>
           </div>
 
@@ -125,9 +119,7 @@ export const Form = () => {
                 errors.programa ? 'border-red-500' : 'border-secondary-300'
               }`}
             />
-            {errors.programa && (
-              <p className="mt-1 text-sm text-red-600">{errors.programa.message}</p>
-            )}
+            {errors.programa && <p className="mt-1 text-sm text-red-600">{errors.programa.message}</p>}
           </div>
 
           <div>
@@ -143,30 +135,24 @@ export const Form = () => {
 
           <div>
             <div className="flex items-start">
-              <input
-                type="checkbox"
-                id="privacidad"
-                {...register('privacidad')}
-                className="mt-1 mr-2"
-              />
+              <input type="checkbox" id="privacidad" {...register('privacidad')} className="mt-1 mr-2" />
               <label htmlFor="privacidad" className="text-xs text-secondary-700 dark:text-white">
                 Si doy autorización expresa para el tratamiento de los datos aquí consignados, según&nbsp;
-                <a href="/politica-privacidad" className="text-accent-600 hover:underline">
+                <a
+                  href="/assets/documents/GA-DO-18 (POLITICA DE TRATAMIENTO Y PROTECCIÓN DE DATOS PERSONALES TLC).pdf"
+                  download
+                  aria-label="Descargar política de privacidad y tratamiento de datos"
+                  className="text-accent-600 hover:underline">
                   política de privacidad y tratamiento de datos.
+                  <span className="sr-only">(se descargará un archivo)</span>
                 </a>
                 <span className="text-red-500">*</span>
               </label>
             </div>
-            {errors.privacidad && (
-              <p className="mt-1 text-sm text-red-600">{errors.privacidad.message}</p>
-            )}
+            {errors.privacidad && <p className="mt-1 text-sm text-red-600">{errors.privacidad.message}</p>}
           </div>
 
-          <Button
-            type="submit"
-            size="lg"
-            className="w-full"
-            disabled={isSubmitting}>
+          <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
             {isSubmitting ? 'Enviando...' : 'Enviar'}
           </Button>
         </form>
