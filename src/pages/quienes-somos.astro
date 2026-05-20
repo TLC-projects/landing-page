@@ -194,24 +194,22 @@ const characteristics = [
         <ul class="space-y-5">
           {
             downloads.map((download) => (
-                <li class="flex items-start gap-4">
+              <li class="flex items-start gap-4">
                 <span
                   class="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-accent-600 text-white shrink-0"
-                  aria-hidden="true"
-                >
+                  aria-hidden="true">
                   <ArrowDownToLine size={14} />
                 </span>
                 <a
                   href={download.link}
                   download
                   class="underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 focus-visible:ring-offset-2"
-                  aria-label={`Descargar ${download.name}`}
-                >
+                  aria-label={`Descargar ${download.name}`}>
                   {download.name}
-                  <span class="sr-only"> (se descargará un archivo)</span>
+                  <span class="sr-only">(se descargará un archivo)</span>
                 </a>
-                </li>
-              ))
+              </li>
+            ))
           }
         </ul>
       </div>
