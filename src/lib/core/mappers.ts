@@ -40,7 +40,8 @@ export function mapContentToCourse(content: ApiContent, program: ProgramId): Cou
     duration: content.duration,
     objective: content.objectives,
     performances: parsePerformances(content.performance),
-    img: getMainImageUrl(content.resources)
+    img: getMainImageUrl(content.resources),
+    brochure_url: content.brochure_url,
   };
 }
 
