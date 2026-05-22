@@ -8,6 +8,7 @@ export interface Course {
   objective?: string;
   performances?: string[];
   img: string;
+  brochure_url?: string;
   /** URL hacia el detalle del curso, generada dinámicamente */
   buttonLink?: string;
 }
@@ -46,6 +47,7 @@ export interface ApiContent {
   /** Lista de desempeños en formato JSON string */
   performance?: string;
   resources: ApiResource[];
+  brochure_url?: string;
 }
 
 /** Evento del calendario tal como lo devuelve el API */

@@ -4,7 +4,7 @@ import Breadcrumb from '@/components/sections/Breadcrumb.astro';
 import { Audio, Link } from '@/components/ui';
 import Layout from '@/layouts/Layout.astro';
 import { getCourseBySlug, getProgramLabel, getProgramSlug, type ProgramId } from '@/lib/core/services';
-import { Check, GraduationCap } from 'lucide-react';
+import { Check, Download, GraduationCap } from 'lucide-react';
 
 const { slug, program } = Astro.params;
 console.log(`[SSR] Renderizando /programas/${program}/cursos/${slug}`);
@@ -67,6 +67,13 @@ const programLabel = getProgramLabel(course.program as ProgramId);
         <div class="flex gap-8 md:flex-row flex-col mt-6 lg:ml-16">
           <Link href="/inscripcion"> Inscripción </Link>
           <Link href="/#contacto"> Contáctanos </Link>
+          {
+            course.brochure_url && (
+              <Link href={course.brochure_url} download target="_blank" rel="noopener noreferrer">
+                Ver brochure
+              </Link>
+            )
+          }
         </div>
       </div>
     </div>
