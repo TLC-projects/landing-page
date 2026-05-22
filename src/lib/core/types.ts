@@ -63,3 +63,19 @@ export interface ApiPaginatedResponse<T> {
   page: number;
   limit: number;
 }
+
+/** Payload enviado al endpoint POST /api/email */
+export interface EmailPayload {
+  name: string;
+  lastName: string;
+  email: string;
+  numberPhone: string;
+  program: string;
+  comment?: string;
+}
+
+/** Respuesta del endpoint de envío de correo */
+export interface EmailResult {
+  success: boolean;
+  message: string;
+}

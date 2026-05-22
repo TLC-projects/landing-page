@@ -1,11 +1,11 @@
-export type { Course } from './types';
+export type { Course, EmailPayload, EmailResult } from './types';
 export type { ProgramId } from './programs';
 export { getProgramSlug, getProgramLabel, programsMap, PROGRAM_LABELS } from './programs';
-import { fetchSections, fetchContentBySection, fetchContentById, fetchCalendarEvents } from './fetchers';
+import { fetchSections, fetchContentBySection, fetchContentById, fetchCalendarEvents, fetchSendEmail } from './fetchers';
 import { mapContentToCourse } from './mappers';
 import { getProgramSlug } from './programs';
 import type { ProgramId } from './programs';
-import type { CalendarEvent, Course } from './types';
+import type { CalendarEvent, Course, EmailPayload, EmailResult } from './types';
 
 /**
  * Obtiene todos los cursos de todas las secciones del proyecto.
@@ -52,4 +52,16 @@ export async function getCourseBySlug(slug: string): Promise<Course | null> {
  */
 export async function getCalendarEvents(): Promise<CalendarEvent[]> {
   return fetchCalendarEvents();
+}
+
+/**
+ * Envía el formulario de contacto al endpoint POST /api/email.
+ */
+export async function sendEmail(payload: EmailPayload): Promise<EmailResult> {
+  try {
+    return await fetchSendEmail(payload);
+  } catch (error) {
+    console.error('Error al enviar el correo:', error);
+    return { success: false, message: 'Error inesperado al enviar el correo' };
+  }
 }

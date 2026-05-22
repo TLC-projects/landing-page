@@ -2,6 +2,8 @@ import { Button } from '@components/ui';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { Toaster, toast } from 'sonner';
+import { sendEmail } from '@/lib/core/services';
 
 const formSchema = z.object({
   nombre: z.string().min(1, 'El nombre es requerido').min(2, 'El nombre debe tener al menos 2 caracteres'),
@@ -9,7 +11,7 @@ const formSchema = z.object({
   email: z.string().min(1, 'El email es requerido').email('Ingresa un email válido'),
   telefono: z.string().min(1, 'El número de contacto es requerido').min(10, 'Ingresa un número de contacto válido'),
   programa: z.string().min(1, 'El programa/curso es requerido'),
-  comentario: z.string().optional(),
+  comentario: z.string().min(1, 'El comentario es requerido'),
   privacidad: z.boolean().refine((val) => val === true, {
     message: 'Debes aceptar la política de privacidad para continuar'
   })
@@ -17,7 +19,7 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-export const Form = () => {
+const FormContent = () => {
   const {
     register,
     handleSubmit,
@@ -28,12 +30,22 @@ export const Form = () => {
   });
 
   const onSubmit = async (data: FormData) => {
-    try {
-      // TODO: Implementar lógica de envío (API call, etc.)
-      alert('Formulario enviado correctamente');
+    console.log('entre');
+
+    const result = await sendEmail({
+      name: data.nombre,
+      lastName: data.apellido,
+      email: data.email,
+      numberPhone: data.telefono,
+      program: data.programa,
+      comment: data.comentario
+    });
+
+    if (result.success) {
+      toast.success(result.message);
       reset();
-    } catch (error) {
-      console.error('Error al enviar el formulario:', error);
+    } else {
+      toast.error(result.message);
     }
   };
 
@@ -124,13 +136,14 @@ export const Form = () => {
 
           <div>
             <label htmlFor="comentario" className="block text-sm font-medium text-secondary-700 dark:text-white mb-1">
-              Comentario
+              Comentario<span className="text-red-500">*</span>
             </label>
             <textarea
               id="comentario"
               {...register('comentario')}
               rows={3}
               className="w-full px-4 py-2 border border-secondary-300 rounded-md focus:ring-2 focus:ring-accent-500 focus:border-transparent resize-none"></textarea>
+            {errors.comentario && <p className="mt-1 text-sm text-red-600">{errors.comentario.message}</p>}
           </div>
 
           <div>
@@ -157,6 +170,11 @@ export const Form = () => {
           </Button>
         </form>
       </div>
+        <Toaster position="bottom-right" richColors />
     </div>
   );
 };
+
+export const Form = () => (
+ <FormContent />
+);
