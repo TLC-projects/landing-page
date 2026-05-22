@@ -9,9 +9,10 @@ interface Props {
   imagen: string;
   reverse?: boolean;
   src?: string;
+  brochure?: string;
 }
 
-const { programa, titulo, descripcion, imagen, reverse = false, src } = Astro.props;
+const { programa, titulo, descripcion, imagen, reverse = false, src, brochure } = Astro.props;
 ---
 
 <section
@@ -37,7 +38,13 @@ const { programa, titulo, descripcion, imagen, reverse = false, src } = Astro.pr
     <div class={cn('flex flex-col gap-4', reverse ? 'md:order-1' : 'md:order-2')}></div>
   </div>
   <div class="flex gap-8 md:flex-row flex-col z-10">
-    <Link href="/brochures/ingles-mundo.pdf" download size="lg"> Ver brochure </Link>
+    {
+      brochure && (
+        <Link href={brochure} size="lg" download aria-label="Descargar archivo">
+          Ver brochure
+        </Link>
+      )
+    }
     <Link href="/inscripcion" size="lg"> Inscripción </Link>
     <Link href="/#contacto" size="lg"> Contáctanos </Link>
   </div>
