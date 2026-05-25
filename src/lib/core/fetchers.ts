@@ -1,4 +1,4 @@
-import type { ApiCalendar, ApiContent, ApiPaginatedResponse, ApiSection, Course } from './types';
+import type { ApiCalendar, ApiContent, ApiPaginatedResponse, ApiSection, Course, EmailPayload, EmailResult } from './types';
 import type { ProgramId } from './programs';
 import { sectionNameToProgramId } from './programs';
 import { mapContentToCourse } from './mappers';
@@ -86,5 +86,32 @@ export async function fetchCalendarEvents(): Promise<ApiCalendar[]> {
   } catch (error) {
     console.error('Error fetching calendar events:', error);
     return [];
+  }
+}
+
+/**
+ * Envia el formulario de contacto al endpoint POST
+ * /api/email. Retorna un objeto EmailResult indicando el éxito o fracaso del envío.
+ * En caso de error de conexión o respuesta no exitosa, retorna un mensaje de error genérico.
+ * @param {EmailPayload} payload - Los datos del formulario a enviar.
+ * @returns {Promise<EmailResult>} - El resultado del envío del correo.
+ */
+export async function fetchSendEmail(payload: EmailPayload): Promise<EmailResult> {
+  try {
+    const res = await fetch(`${API_BASE_URL}/email`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (!res.ok) {
+      console.error('Error response from email endpoint:', await res.text());
+      return { success: false, message: 'Error al enviar el correo' };
+    }
+
+    const { message } = await res.json();
+    return { success: true, message };
+  } catch {
+    return { success: false, message: 'Error de conexión al enviar el correo' };
   }
 }

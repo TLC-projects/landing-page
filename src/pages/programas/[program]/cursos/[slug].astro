@@ -62,6 +62,13 @@ const programLabel = getProgramLabel(course.program as ProgramId);
         <div class="flex gap-8 md:flex-row flex-col mt-6 lg:ml-16">
           <Link href="/inscripcion"> Inscripción </Link>
           <Link href="/#contacto"> Contáctanos </Link>
+          {
+            course.brochure_url && (
+              <Link href={course.brochure_url} download target="_blank" rel="noopener noreferrer">
+                Ver brochure
+              </Link>
+            )
+          }
         </div>
       </div>
     </div>

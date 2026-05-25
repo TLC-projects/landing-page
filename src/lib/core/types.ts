@@ -8,6 +8,7 @@ export interface Course {
   objective?: string;
   performances?: string[];
   img: string;
+  brochure_url?: string;
   /** URL hacia el detalle del curso, generada dinámicamente */
   buttonLink?: string;
 }
@@ -46,6 +47,7 @@ export interface ApiContent {
   /** Lista de desempeños en formato JSON string */
   performance?: string;
   resources: ApiResource[];
+  brochure_url?: string;
 }
 
 /** Evento del calendario tal como lo devuelve el API */
@@ -62,4 +64,20 @@ export interface ApiPaginatedResponse<T> {
   total: number;
   page: number;
   limit: number;
+}
+
+/** Payload enviado al endpoint POST /api/email */
+export interface EmailPayload {
+  name: string;
+  lastName: string;
+  email: string;
+  numberPhone: string;
+  program: string;
+  comment?: string;
+}
+
+/** Respuesta del endpoint de envío de correo */
+export interface EmailResult {
+  success: boolean;
+  message: string;
 }
